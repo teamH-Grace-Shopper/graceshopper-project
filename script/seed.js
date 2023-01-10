@@ -13,15 +13,25 @@ async function seed() {
   // Creating Users
   const users = await Promise.all([
     User.create({ username: 'cody', password: '123', email: "cody@gmail.com", firstName: "Cody", lastName: "Cody", address1: "123 Main St.", userType: "CUSTOMER" }),
-    User.create({ username: 'murphy', password: '123', email: "murphy@gmail.com", firstName: "Murphy", lastName: "Murphy", address1: "323 Main St.", userType: "CUSTOMER" })
+    User.create({ username: 'murphy', password: '123', email: "murphy@gmail.com", firstName: "Murphy", lastName: "Murphy", address1: "323 Main St.", userType: "CUSTOMER" }),
+    User.create({ username: 'ashley', password: '123', email: "ashley@gmail.com", firstName: "Ashley", lastName: "Ashley", address1: "456 Main St.", userType: "CUSTOMER" }),
+    User.create({ username: 'jordan', password: '123', email: "jordan@gmail.com", firstName: "Jordan", lastName: "Jordan", address1: "789 Main St.", userType: "CUSTOMER" })
    ])
   
    const products = await Promise.all([
-    Product.create({ name: 'hope', price: 10.00, quantity: 5, description: "hope" })
+    Product.create({ name: 'hope', price: 10.00, quantity: 5, description: "hope"}),
+    Product.create({ name: 'desire', price: 15.00, quantity: 10, description: "desire" }),
+    Product.create({ name: 'bad soul', price: 3.00, quantity: 2, description: "bad soul 1" }),
+    Product.create({ name: 'bad soul 2', price: 4.50, quantity: 3, description: "bad soul 2" })
+   ])
+
+   const cart = await Promise.all([
+    Cart.create({quantity: 4, totalPrice: 20, userId: 1}),
+    Cart.create({quantity: 2, totalPrice: 25, userId: 2})
    ])
 
    const orders = await Promise.all([
-    Order.create({userId: 1})
+    Order.create({completed: true, userId: 1})
    ])
 
   
