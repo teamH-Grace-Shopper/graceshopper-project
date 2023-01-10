@@ -1,20 +1,118 @@
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
+const { STRING, ENUM, INTEGER } = Sequelize
 const db = require('../db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 5;
 
+const states = [
+  "AL",
+  "AK",
+  "AZ",
+  "AR",
+  "AS",
+  "CA",
+  "CO",
+  "CT",
+  "DE",
+  "DC",
+  "FL",
+  "GA",
+  "GU",
+  "HI",
+  "ID",
+  "IL",
+  "IN",
+  "IA",
+  "KS",
+  "KY",
+  "LA",
+  "ME",
+  "MD",
+  "MA",
+  "MI",
+  "MN",
+  "MS",
+  "MO",
+  "MT",
+  "NE",
+  "NV",
+  "NH",
+  "NJ",
+  "NM",
+  "NY",
+  "NC",
+  "ND",
+  "CM",
+  "OH",
+  "OK",
+  "OR",
+  "PA",
+  "PR",
+  "RI",
+  "SC",
+  "SD",
+  "TN",
+  "TX",
+  "TT",
+  "UT",
+  "VT",
+  "VA",
+  "VI",
+  "WA",
+  "WV",
+  "WI",
+  "WY",
+];
+
 const User = db.define('user', {
   username: {
-    type: Sequelize.STRING,
+    type: STRING,
     unique: true,
     allowNull: false
   },
   password: {
-    type: Sequelize.STRING,
+    type: STRING,
+  },
+  email: {
+    type: STRING,
+    allowNull: false,
+    unique: true,
+    validate: {
+      isEmail: true
+    }
+  },
+  firstName: {
+    type: STRING,
+    allowNull: false
+  },
+  lastName: {
+    type: STRING,
+    allowNull: false
+  },
+  address1: {
+    type: STRING,
+    allowNull: false
+  },
+  address2: {
+    type: STRING
+  },
+  city: {
+    type: STRING,
+  },
+  state: {
+    type: ENUM(states)
+  },
+  zipCode: {
+    type: INTEGER,
+    len: [5]
+  },
+  userType: {
+    type: ENUM(["ADMIN", "CUSTOMER"])
   }
 })
+
 
 module.exports = User
 
