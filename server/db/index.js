@@ -9,8 +9,8 @@ const Cart = require('./models/Cart')
 
 // ASSOCIATIONS
 
-// User and Product - one-to-many
-User.hasMany(Product);
+// User and Product - one-to-many - need to figure this out
+User.hasMany(Product); 
 Product.belongsTo(User);
 
 // User and Order - one-to-many
