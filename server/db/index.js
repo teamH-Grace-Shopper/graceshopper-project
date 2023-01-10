@@ -31,7 +31,7 @@ Product.belongsToMany(Cart, { through: "CartItem" });
 
 // Order and Product - many-to-many
 Order.belongsToMany(Product, { through: "OrderItem"});
-Product.belongsToMany(Product, { through: "OrderItem"})
+Product.belongsToMany(Order, { through: "OrderItem"})
 
 module.exports = {
   db,
