@@ -19,7 +19,7 @@ async function seed() {
    ])
   
    const products = await Promise.all([
-    Product.create({ name: 'hope', price: 10.00, quantity: 5, description: "hope", userId: 3 }),
+    Product.create({ name: 'hope', price: 10.00, quantity: 5, description: "hope"}),
     Product.create({ name: 'desire', price: 15.00, quantity: 10, description: "desire" }),
     Product.create({ name: 'bad soul', price: 3.00, quantity: 2, description: "bad soul 1" }),
     Product.create({ name: 'bad soul 2', price: 4.50, quantity: 3, description: "bad soul 2" })
@@ -29,6 +29,7 @@ async function seed() {
     Cart.create({quantity: 4, totalPrice: 20, userId: 1}),
     Cart.create({quantity: 2, totalPrice: 25, userId: 2})
    ])
+
    const orders = await Promise.all([
     Order.create({completed: true, userId: 1})
    ])
