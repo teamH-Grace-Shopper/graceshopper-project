@@ -1,0 +1,16 @@
+#footerbox{
+    color: ivory;
+    position: absolute;
+    bottom: 0;
+    background-color: #390b4a;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+
+}
+
+a{
+    color: ivory;
+    font-family: "Raleway", sans-serif;
+}
