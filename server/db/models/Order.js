@@ -7,7 +7,7 @@ const Order = db.define('order', {
         type: UUID,
         defaultValue: UUIDV4
     },
-    completed: {
+    completeStatus: {
         type: DATE
     }
 })

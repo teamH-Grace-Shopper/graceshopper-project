@@ -1,6 +1,6 @@
 'use strict'
 
-const {db, models: {User, Product, Order, Cart} } = require('../server/db')
+const {db, models: {User, Product, Order, OrderItem} } = require('../server/db')
 
 /**
  * seed - this function clears the database, updates tables to
@@ -25,23 +25,32 @@ async function seed() {
     Product.create({ name: 'bad soul 2', price: 4.50, quantity: 3, description: "bad soul 2" })
    ])
 
-   const cart = await Promise.all([
-    Cart.create({quantity: 4, totalPrice: 20, userId: 1}),
-    Cart.create({quantity: 2, totalPrice: 25, userId: 2})
-   ])
 
    const orders = await Promise.all([
-    Order.create({completed: true, userId: 1})
+    Order.create({completed: '2023-01-01T00:00:00.000Z', userId: 1}),
+    Order.create({completed: '2023-02-02T00:00:00.000Z', userId: 3}),
+   ])
+
+   const orderItems = await Promise.all([
+    OrderItem.create({quantity: 3, orderId: 1, productId: products[0].id, price: products[0].price}),
+    OrderItem.create({quantity: 2, orderId: 1, productId: products[1].id, price: products[1].price}),
+    OrderItem.create({quantity: 1, orderId: 1, productId: products[2].id, price: products[2].price}),
+    OrderItem.create({quantity: 1, orderId: 1, productId: products[3].id, price: products[3].price}),
+    OrderItem.create({quantity: 2, orderId: 2, productId: products[2].id, price: products[2].price}),
+    OrderItem.create({quantity: 2, orderId: 2, productId: products[3].id, price: products[3].price})
    ])
 
   
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${products.length} products` )
+  console.log(`seeded ${orderItems.length} order items`)
   console.log(`seeded successfully`)
   return {
     users: {
       cody: users[0],
-      murphy: users[1]
+      murphy: users[1],
+      ashley: users[2],
+      jordan: users[3]
     }
   }
 }
