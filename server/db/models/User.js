@@ -69,11 +69,12 @@ const states = [
 const User = db.define('user', {
   username: {
     type: STRING,
-    // unique: true,
+    unique: true,
     allowNull: false
   },
   password: {
     type: STRING,
+    allowNull: false
   },
   email: {
     type: STRING,
@@ -109,7 +110,8 @@ const User = db.define('user', {
     len: [5]
   },
   userType: {
-    type: ENUM(["ADMIN", "CUSTOMER"])
+    type: ENUM(["ADMIN", "CUSTOMER"]),
+    defaultValue: "CUSTOMER"
   }
 })
 
