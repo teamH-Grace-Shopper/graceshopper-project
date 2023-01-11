@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../app/store';
 import AuthForm from '../auth/AuthForm';
 import Home from '../home/Home';
+import AppRoutes from '../../app/AppRoutes';
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -14,6 +15,11 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  const showLoginSignUp = () => {
+    document.querySelector("#login-signup-input").style.display= "block";
+  }
+
+
   return (
     <div id= "navbarBox">
       <h1 id= "storeName">Soul Shopper<span>Put a little soul in it</span></h1>
@@ -22,7 +28,7 @@ const Navbar = () => {
           <input type="text" placeholder="Soul Searching..." id="search-bar"></input>
           <button type="submit" id="go-button">Go</button>
         </div>
-          <Home />
+          <AppRoutes />
       <nav>
         {isLoggedIn ? (
           <div>
@@ -35,8 +41,8 @@ const Navbar = () => {
         ) : (
           <div className= "loginAndSignUp">
             {/* The navbar will show these links before you log in */}
-            <Link to="/login" className= "loginButton">Login</Link>
-            <Link to="/signup" className= "signUpButton">Sign Up</Link>
+            <Link to="/login" className= "loginButton" onClick={showLoginSignUp}>Login</Link>
+            <Link to="/signup" className= "signUpButton" onClick={showLoginSignUp}>Sign Up</Link>
           </div>
         )}
       </nav>

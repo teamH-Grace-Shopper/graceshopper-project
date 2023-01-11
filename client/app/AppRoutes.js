@@ -19,7 +19,7 @@ const AppRoutes = () => {
   }, []);
 
   return (
-    <div>
+    <div id="login-signup-input">
       {isLoggedIn ? (
         <Routes>
           <Route path="/*" element={<Home />} />
