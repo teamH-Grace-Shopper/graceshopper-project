@@ -1,0 +1,120 @@
+#navbarBox{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border: 3px solid black;
+    background-color: #390b4a;
+    height: 12vh;
+  }
+  
+  /* STORE NAME */
+  #storeName{
+    color: ivory;
+      text-align:center; 
+      font-size:50px; text-transform:uppercase;
+      font-family:"Playfair Display", serif; font-weight:400;
+      margin-left: 40px;
+    }
+  
+  #storeName span {
+    margin-top: 5px;
+      font-size:15px; 
+      color: ivory; 
+      word-spacing:1px; 
+      font-weight:normal; 
+      letter-spacing:2px;
+      text-transform: uppercase; 
+      font-family:"Raleway", sans-serif; 
+      font-weight:500;
+  
+      display: grid;
+      grid-template-columns: 1fr max-content 1fr;
+      grid-template-rows: 27px 0;
+      grid-gap: 20px;
+      align-items: center;
+  }
+  
+  #storeName span:after, #storeName span:before {
+      content: " ";
+      display: block;
+      border-bottom: 1px solid ivory;
+      border-top: 1px solid ivory;
+      height: 5px;
+    background-color:ivory;
+  }
+    /* END STORE NAME */
+  
+  .loginButton, .signUpButton, .homeButton, .logoutButton, #go-button {
+    align-self: center;
+    background-color: #fff;
+    background-size: 4px 3px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    color: #41403e;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Neucha, sans-serif;
+    font-size: 1rem;
+    outline: none;
+    padding: .75rem;
+    text-decoration: none;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+  }
+  
+  .loginButton:hover, .signUpButton:hover, .homeButton:hover, .logoutButton:hover {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+    transform: translate3d(0, 2px, 0);
+  }
+
+  #welcome-box{
+    text-decoration: underline;
+    text-transform: uppercase;
+    text-align: center;
+    color: ivory;
+  }
+
+  #search-box{
+    display: block;
+    width: 20%;
+    position: absolute;
+    top: 110px;
+    right: 20px;
+  }
+
+  #search-bar, #go-button{
+    position: relative;
+    top: 60%;
+  }
+  #search-bar{
+    width: 70%;
+    height: 40px;
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid ivory;
+    border-left: 2px solid ivory;
+  }
+
+  #search-bar::placeholder{
+    color: ivory;
+    padding-left: 10px;
+  }
+
+  #navbar-right{
+    display: flex;
+    justify-content: flex-end;
+    width: 60%;
+  }
+
+  .cartButton img{
+    margin: 20px;
+    /* position: absolute;
+    right: 20px; */
+    height: 30px;
+    width: 40px;
+  }
