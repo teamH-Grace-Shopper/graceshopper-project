@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const { models: { Product }} = require('../db')
 
+//GET route all product
 router.get('/', async (req, res, next) => {
     try {
       const products = await Product.findAll()
@@ -12,7 +13,7 @@ router.get('/', async (req, res, next) => {
   })
 
 
-
+//GET route single product
   router.get('/:id', async (req, res, next) => {
     try {
       const product = await Product.findByPk(req.params.id)
@@ -22,7 +23,7 @@ router.get('/', async (req, res, next) => {
     }
   })
 
-  
+
 
 
 
