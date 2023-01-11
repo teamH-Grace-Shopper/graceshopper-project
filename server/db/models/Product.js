@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize');
-const { STRING, DECIMAL, INTEGER, TEXT } = Sequelize
+const { STRING, DECIMAL, INTEGER, TEXT, ENUM } = Sequelize
 const db = require('../db');
 
 const Product = db.define('product', {
     name: {
         type: STRING,
         allowNull: false,
-        unique: true
+        // unique: true
     },
     price: {
         type: DECIMAL,
@@ -19,6 +19,9 @@ const Product = db.define('product', {
     },
     description: {
         type: TEXT
+    },
+    type: {
+        type: ENUM(['BAD', 'GOOD'])
     },
     imageUrl: {
         type: STRING,
