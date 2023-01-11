@@ -27,14 +27,17 @@ async function seed() {
 
 
    const orders = await Promise.all([
-    Order.create({completed: '2023-01-01T00:00:00.000Z', userId: 1})
+    Order.create({completed: '2023-01-01T00:00:00.000Z', userId: 1}),
+    Order.create({completed: '2023-02-02T00:00:00.000Z', userId: 3}),
    ])
 
    const orderItems = await Promise.all([
     OrderItem.create({quantity: 3, orderId: 1, productId: products[0].id, price: products[0].price}),
     OrderItem.create({quantity: 2, orderId: 1, productId: products[1].id, price: products[1].price}),
     OrderItem.create({quantity: 1, orderId: 1, productId: products[2].id, price: products[2].price}),
-    OrderItem.create({quantity: 1, orderId: 1, productId: products[3].id, price: products[3].price})
+    OrderItem.create({quantity: 1, orderId: 1, productId: products[3].id, price: products[3].price}),
+    OrderItem.create({quantity: 2, orderId: 2, productId: products[2].id, price: products[2].price}),
+    OrderItem.create({quantity: 2, orderId: 2, productId: products[3].id, price: products[3].price})
    ])
 
   

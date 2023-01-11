@@ -16,6 +16,7 @@ const OrderItem = require('./models/OrderItem')
 User.hasMany(Order);
 Order.belongsTo(User);
 
+// OrderItem and Order - one-to-many
 OrderItem.belongsTo(Order)
 Order.hasMany(OrderItem)
 
