@@ -69,7 +69,7 @@ const states = [
 const User = db.define('user', {
   username: {
     type: STRING,
-    unique: true,
+    // unique: true,
     allowNull: false
   },
   password: {
