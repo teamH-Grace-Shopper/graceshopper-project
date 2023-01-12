@@ -142,6 +142,7 @@
     font-size: 25px;
     color: ivory;
     transition: 0.3s;
+    overflow-x: hidden;
   }
 
   .link:hover{

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -18,8 +19,7 @@ const Navbar = () => {
   const showLoginSignUp = () => {
     document.querySelector("#login-signup-input").style.display= "block";
   }
-
-
+  
   return (
     <div id= "navbarBox">
       <h1 id= "storeName">Soul Shopper<span>Put a little soul in it</span></h1>
