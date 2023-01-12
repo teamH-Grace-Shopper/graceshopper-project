@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct, selectProduct } from "../Slices/productSlice";
 
 
 export const SingleProductView = () => {
+    const [count, setCount] = useState(0)
     const dispatch = useDispatch();
     const { id } = useParams();
 const product = useSelector(selectProduct);
@@ -15,13 +17,14 @@ useEffect(() => {
   }, [dispatch]);
 
     const increment =(e) =>{
-        product.quantity++
+        quantity++
         
     }
 
     const decrement = (e) => {
-        product.quantity--
+        quantity--
     }
+
     return(
         <div id="box">
         <div id="single-product-view-box">
@@ -33,11 +36,12 @@ useEffect(() => {
                 <h3>{product.price}</h3>
                 <hr></hr>
                 <h4>{product.description}</h4>
-                <form id='quantity-input' method='POST' action='#'>
-                <input type='button' value='-' className='qtyminus minus' field='quantity' onChange={(e) => decrement(e.target.value)}/>
-                <input type='text' name='quantity' value={product.quantity} className='qty'></input>
-                <input type='button' value='+' className='qtyplus plus' field='quantity' onChange={(e) =>increment(e.target.value)} />
-                </form>
+                
+                {/* <section id='quantity-input'>
+                <button type='button' value='-' className='qtyminus minus' field='quantity' onClick={() => setCount(count--)}> - </button>
+                <p style= {{color: "black"}} name='quantity' value={count} className='qty'></p>
+                <button type='button' value='+' className='qtyplus plus' field='quantity' onClick={() =>setCount(count++)}> + </button>
+                </section> */}
 
                 <button className="add-to-cart">add to cart</button>
                 <h4>In Stock: {product.quantity}</h4>
