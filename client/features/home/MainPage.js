@@ -14,7 +14,7 @@ export const MainPage = () => {
   }, [dispatch]);
 
   const addToCart = () => {
-    
+
   }
     return(
       <>
@@ -30,7 +30,7 @@ export const MainPage = () => {
                 <h3 className="product-name"> {product.name}
                     {/* <Link to={`/products/${product.id}`} className="product-name">{product.name} </Link> */}
                 </h3>
-                <button className="add-to-cart" onClick={addToCart}></button>
+                <button className="quick-add-to-cart" onClick={addToCart}></button>
                 </div>
                 <h4 className="product-price">{product.price}</h4>
             </div>

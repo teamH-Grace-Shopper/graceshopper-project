@@ -1,0 +1,97 @@
+#box{
+    margin-top: 50px;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+}
+
+#single-product-view-box{
+    display: flex;
+    justify-content: center;
+
+    width: 80%;
+    position: absolute;
+
+    height: 50%;
+    border: 10px inset #390b4a;
+}
+
+#single-product-image{
+    margin: 10px;
+    margin-right: 50px;
+    width: 40%;
+}
+
+#single-product-details{
+    border: 1px solid blue;
+    width: 60%;
+    text-align: center;
+    margin: 10px;
+    margin-left: 50px;
+}
+
+
+/* //ADD TO CART BUTTON */
+.add-to-cart{
+    --b: 3px;   /* border thickness */
+    --s: .45em; /* size of the corner */
+    --color: #390b4a;
+    
+    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    color: var(--color);
+    --_p: var(--s);
+    background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .6em;
+    font-size: 16px;
+
+    border: 0;
+}
+
+.add-to-cart:hover,
+.add-to-cart:focus-visible{
+    --_p: 0px;
+    outline-color: var(--color);
+    outline-offset: .05em;
+}
+
+.add-to-cart:active {
+    background: var(--color);
+    color: #fff;
+}
+/* //END ADD TO CART BUTTON */
+
+/* QUANTITY INPUT */
+#quantity-input {
+    text-align: center;
+    padding: 5px;
+    margin: 2%;
+}
+.qty {
+    width: 40px;
+    height: 25px;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 2px solid #390b4a;
+}
+input.qtyplus {
+    width:25px;
+    height:25px;
+    border: 2px solid #390b4a;
+    background-color: transparent;
+}
+input.qtyminus {
+    width:25px;
+    height:25px;
+    border: 2px solid #390b4a;
+    background-color: transparent;
+}
+input.qtyplus:hover, input.qtyminus:hover {
+    color: ivory;
+    background-color: #390b4a;
+}
+/* END QUANTITY INPUT */

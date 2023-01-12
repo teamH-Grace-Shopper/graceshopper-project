@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import AuthForm from "../features/auth/AuthForm";
 import Home from "../features/home/Home";
 import { me } from "./store";
+import MainPage from "../features/home/MainPage";
 
 /**
  * COMPONENT
@@ -19,6 +20,7 @@ const AppRoutes = () => {
   }, []);
 
   return (
+    <>
     <div id="login-signup-input">
       {isLoggedIn ? (
         <Routes>
@@ -40,8 +42,11 @@ const AppRoutes = () => {
             element={<AuthForm name="signup" displayName="Sign Up" />}
           />
         </Routes>
+
       )}
+
     </div>
+    </>
   );
 };
 
