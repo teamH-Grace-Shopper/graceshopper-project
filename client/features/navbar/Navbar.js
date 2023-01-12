@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -19,13 +20,12 @@ const Navbar = () => {
     document.querySelector("#login-signup-input").style.display= "block";
   }
 
-
   return (
     <div id= "navbarBox">
       <h1 id= "storeName">Soul Shopper<span>Put a little soul in it</span></h1>
         <div id="navbar-right">
         <div id="search-box">
-          <input type="text" placeholder="Soul Searching..." id="search-bar"></input>
+          <input type="text" placeholder="S o u l   S e a r c h i n g . . ." id="search-bar"></input>
           <button type="submit" id="go-button">Go</button>
         </div>
           <AppRoutes />

@@ -1,5 +1,7 @@
 #navbarBox{
     width: 100%;
+    background-image: url(https://img.freepik.com/premium-photo/synth-wave-retro-wave-vaporwave-futuristic-aesthetics-glowing-neon-style-wallpaper-background_489646-21228.jpg);
+    background-size: 125%;
     display: flex;
     justify-content: space-between;
     border: 3px solid black;
@@ -142,6 +144,7 @@
     font-size: 25px;
     color: ivory;
     transition: 0.3s;
+    overflow-x: hidden;
   }
 
   .link:hover{
@@ -154,12 +157,13 @@
     color: ivory;
     border: none;
     position: relative;
-    left: 60px;
+    left: 0px;
     top: 0;
   }
 
   .close-button:hover{
     cursor: pointer;
+    color:#390b4a;
   }
 
   .open-button img{
