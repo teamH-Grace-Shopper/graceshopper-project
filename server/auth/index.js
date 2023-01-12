@@ -4,6 +4,8 @@ const {
 } = require('../db');
 module.exports = router;
 
+
+// POST /auth/login
 router.post('/login', async (req, res, next) => {
   try {
     res.send({ token: await User.authenticate(req.body) });
@@ -12,6 +14,7 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
+// POST /auth/signup
 router.post('/signup', async (req, res, next) => {
   try {
     const user = await User.create(req.body);

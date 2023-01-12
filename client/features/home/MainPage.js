@@ -1,8 +1,18 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductsAsync, selectProducts } from "../Slices/productsSlice";
 
 export const MainPage = () => {
+  const dispatch = useDispatch();
+
+  const products = useSelector(selectProducts);
+
+  useEffect(() => {
+    dispatch(fetchProductsAsync());
+  }, [dispatch]);
+
   const addToCart = () => {
 
   }
@@ -11,22 +21,22 @@ export const MainPage = () => {
        <div id="main-product-section">
         <h1 id="product-page-header">Featured Virtues</h1>
         <hr></hr>
-        {/* {products.map((product) => {
+        {products.map((product) => {
           return(
-            <ul key={product.id}> */}
+            <ul key={product.id}>
               <div className="product-box">
-                <img src="https://images.unsplash.com/photo-1531318701087-32c11653dd77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c291bHxlbnwwfHwwfHw%3D&w=1000&q=80" className="product-image"></img>
+                <img src={product.imageUrl} className="product-image"></img>
                 <div id="product-details">
-                <h3 className="product-name">
-                    <Link to={`/products`} className="product-name">Product Name</Link>
+                <h3 className="product-name"> {product.name}
+                    {/* <Link to={`/products/${product.id}`} className="product-name">{product.name} </Link> */}
                 </h3>
                 <button className="quick-add-to-cart" onClick={addToCart}></button>
                 </div>
-                <h4 className="product-price">$19.99</h4>
+                <h4 className="product-price">{product.price}</h4>
             </div>
-            {/* </ul>
+            </ul>
                 )
-            })} */}
+            })}
         </div>
         </>
     )

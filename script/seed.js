@@ -76,6 +76,21 @@ async function seed() {
   await Promise.all(users.map(user=>User.create(user)));
   await Promise.all(admin.map(ad=>User.create(ad)))
 
+  await Promise.all([
+    User.create({
+      username: 'aguila',
+      password: '123',
+      email: 'aguila@gmail.com',
+      firstName: 'Nick',
+      lastName: 'Aguila',
+      address1: '123 Lupe Track',
+      city: 'Miami',
+      state: 'FL',
+      zipCode: 55555,
+      userType: 'ADMIN'
+    })
+  ])
+
   // Create Products
   await Promise.all(productList.map(product=>Product.create(product)))
 
