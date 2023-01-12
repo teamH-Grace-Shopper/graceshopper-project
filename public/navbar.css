@@ -125,17 +125,16 @@
 
   /* SIDEBAR */
   .sidenav{
-    height: 95%;
-    width: 0;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    z-index: 1;
-    top: 5;
-    left: 0;
-    background-color: #8a6298;
-    transition: 0.5s;
-    padding-top: 60px;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 5;
+  left: 0;
+  background-color: #986ca8;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
   }
 
   .link{
@@ -144,7 +143,7 @@
     font-size: 25px;
     color: ivory;
     transition: 0.3s;
-    overflow-x: hidden;
+    display: block;
   }
 
   .link:hover{

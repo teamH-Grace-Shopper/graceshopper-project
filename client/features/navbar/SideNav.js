@@ -6,12 +6,12 @@ const Sidebar = () => {
     const openSideBar = () => {
         document.getElementById("side-nav").style.width = "250px"
         document.querySelector(".open-button").style.display = "none"
-        document.getElementById("main-product-section").style.width = "80%"
+        // document.getElementById("main-product-section").style.width = "80%"
     }
     const closeSideBar = () => {
         document.getElementById("side-nav").style.width = "0";
         document.querySelector(".open-button").style.display = "flex"
-        document.getElementById("main-product-section").style.width = "95%"
+        // document.getElementById("main-product-section").style.width = "95%"
     }
     return(
         <>
