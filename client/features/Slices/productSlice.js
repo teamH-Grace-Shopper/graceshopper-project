@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchSingleProduct = createAsyncThunk(
+//GET - a single product
+export const fetchProduct = createAsyncThunk(
     "singleProduct",
     async (id) => {
       try {
@@ -13,13 +14,59 @@ export const fetchSingleProduct = createAsyncThunk(
     }
   );
 
+  //POST - create a product - Admin only view&feature
+  export const addProductAsync = createAsyncThunk(
+    "product/addProduct",
+    async ({ name, price, quantity, description, type, imageUrl }) => {
+      try {
+        const { data } = await axios.post(`/api/products`, {
+          name, price,  quantity, description, type, imageUrl
+        });
+        return data;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  );
+  //PUT - update product - Admin only view&feature
+  export const updateProductAsync = createAsyncThunk(
+    "product/updateProduct",
+    async (product) => {
+      try {
+        const { id, name, price, quantity, description, type, imageUrl } = product;
+        const updatedProduct = { name, price, quantity, description, type, imageUrl }; 
+        const { data } = await axios.put(
+          `/api/campuses/${id}`,
+          updatedProduct
+        );
+        return data;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  );
 
-  const singleProductSlice = createSlice({
+  //DELETE - remove product - Admin only view&feature
+  export const deleteProductAsync = createAsyncThunk(
+    "product/deleteProduct",
+    async (id) => {
+      try {
+        const { data } = await axios.delete(`/api/products/${id}`);
+        return data;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  );
+
+
+
+  const ProductSlice = createSlice({
     name: "product",
     initialState: {},
     reducers: {},
     extraReducers: (builder) => {
-      builder.addCase(fetchSingleProduct.fulfilled, (state, action) => {
+      builder.addCase(fetchProduct.fulfilled, (state, action) => {
         return action.payload;
       });
 
@@ -27,6 +74,8 @@ export const fetchSingleProduct = createAsyncThunk(
     },
   });
   
-  export const selectSingleProduct = (state) => state.product;
+  export const selectProduct = (state) => state.product;
   
-  export default singleProductSlice.reducer;
+  export default ProductSlice.reducer;
+
+
