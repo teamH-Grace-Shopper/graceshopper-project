@@ -14,20 +14,7 @@ export const fetchProduct = createAsyncThunk(
     }
   );
 
-  //POST - create a product - Admin only view&feature
-  export const addProductAsync = createAsyncThunk(
-    "product/addProduct",
-    async ({ name, price, quantity, description, type, imageUrl }) => {
-      try {
-        const { data } = await axios.post(`/api/products`, {
-          name, price,  quantity, description, type, imageUrl
-        });
-        return data;
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  );
+
   //PUT - update product - Admin only view&feature
   export const updateProductAsync = createAsyncThunk(
     "product/updateProduct",
@@ -69,8 +56,13 @@ export const fetchProduct = createAsyncThunk(
       builder.addCase(fetchProduct.fulfilled, (state, action) => {
         return action.payload;
       });
+      builder.addCase(updateProductAsync.fulfilled, (state, action) => {
+        return action.payload;
+      });
 
-
+      builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
+        //we dont update the state for delete
+      });
     },
   });
   
