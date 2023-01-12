@@ -13,6 +13,21 @@ export const fetchProductsAsync = createAsyncThunk(
     }
   );
 
+   //POST - create a product; must be pushed into products arr - Admin only view&feature
+   export const addProductAsync = createAsyncThunk(
+    "products/addProduct",
+    async ({ name, price, quantity, description, type, imageUrl }) => {
+      try {
+        const { data } = await axios.post(`/api/products`, {
+          name, price,  quantity, description, type, imageUrl
+        });
+        return data;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  );
+
   const ProductsSlice = createSlice({
     name: "products",
     initialState: [],
@@ -21,7 +36,9 @@ export const fetchProductsAsync = createAsyncThunk(
       builder.addCase(fetchProductsAsync.fulfilled, (state, action) => {
         return action.payload;
       });
-  
+      builder.addCase(addProductAsync.fulfilled, (state, action) => {
+        state.push(action.payload);
+      });
      
     },
   });
