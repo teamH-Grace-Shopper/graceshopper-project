@@ -1,5 +1,7 @@
 #navbarBox{
     width: 100%;
+    background-image: url(https://img.freepik.com/premium-photo/synth-wave-retro-wave-vaporwave-futuristic-aesthetics-glowing-neon-style-wallpaper-background_489646-21228.jpg);
+    background-size: 125%;
     display: flex;
     justify-content: space-between;
     border: 3px solid black;
