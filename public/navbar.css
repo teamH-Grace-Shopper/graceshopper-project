@@ -155,12 +155,13 @@
     color: ivory;
     border: none;
     position: relative;
-    left: 60px;
+    left: 0px;
     top: 0;
   }
 
   .close-button:hover{
     cursor: pointer;
+    color:#390b4a;
   }
 
   .open-button img{

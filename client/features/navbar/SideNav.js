@@ -11,7 +11,7 @@ const Sidebar = () => {
     const closeSideBar = () => {
         document.getElementById("side-nav").style.width = "0";
         document.querySelector(".open-button").style.display = "flex"
-        document.getElementById("main-product-section").style.width = "98%"
+        document.getElementById("main-product-section").style.width = "95%"
     }
     return(
         <>
