@@ -16,10 +16,10 @@ export const fetchUsersAsync = createAsyncThunk(
    //POST - create a user; must be pushed into user arr - 
    export const addUserAsync = createAsyncThunk(
     "users/addUser",
-    async ({ username, email, firstName, lastName, address1, address2, city, state, zipCode, userType}) => {
+    async ({ username, email, firstName, lastName, address1, address2, city, state, zipCode, isAdmin}) => {
       try {
         const { data } = await axios.post(`/api/users`, {
-            username, email, firstName, lastName, address1, address2, city, state, zipCode, userType
+            username, email, firstName, lastName, address1, address2, city, state, zipCode, isAdmin
         });
         return data;
       } catch (err) {
