@@ -28,7 +28,7 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     // find user by token
-    const user = await User.findByToken(req.body.token);
+    const user = await User.findByToken(req.headers.authorization);
     // if this user has a userType of ADMIN then able to create a product
     if (user && user.isAdmin)
       res.status(201).send(await Product.create(req.body));

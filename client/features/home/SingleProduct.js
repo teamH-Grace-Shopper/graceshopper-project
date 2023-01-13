@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct, selectProduct } from "../Slices/productSlice";
-import UpdateProduct from "../admin/UpdateProduct";
 
 export const SingleProductView = () => {
   const dispatch = useDispatch();
@@ -31,9 +30,6 @@ export const SingleProductView = () => {
           <h5>Category:{product.type}</h5>
         </div>
       </div>
-          <section>
-          <UpdateProduct id = {product.id}/>
-          </section>
     </div>
   );
 };

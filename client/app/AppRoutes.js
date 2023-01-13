@@ -8,9 +8,10 @@ import MainPage from "../features/home/MainPage";
 import SingleProductView from "../features/home/SingleProduct";
 import Checkout from "../features/checkout/Checkout";
 import AdminPage from "../features/admin/AdminPage";
-import Cart from "../features/cart/Cart"
-
-
+import Cart from "../features/cart/Cart";
+import UpdateProduct from "../features/admin/UpdateProduct";
+import PageNotFound from "../features/PageNotFound";
+import AddProduct from "../features/admin/AddProduct";
 
 /**
  * COMPONENT
@@ -18,9 +19,8 @@ import Cart from "../features/cart/Cart"
 
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const isAdmin = useSelector((state) => state.auth.me.isAdmin)
+  const isAdmin = useSelector((state) => state.auth.me.isAdmin);
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(me());
@@ -32,7 +32,6 @@ const AppRoutes = () => {
         {/* IF LOGGED IN ROUTES */}
         {isLoggedIn ? (
           <Routes>
-
             <Route to="/*" element={<MainPage />} />
             <Route path="/" element={<MainPage />} />
 
@@ -43,17 +42,31 @@ const AppRoutes = () => {
 
             {/* ADMIN ROUTES */}
             {isAdmin ? (
-            <Route path="/admin" element={<AdminPage />} />
-          ) : (
-            <Route element={<MainPage />} />
-          )}
+              <Route path="/admin" element={<AdminPage />} />
+            ) : (
+              <Route element={<MainPage />} />
+            )}
+            {isAdmin ? (
+              <Route
+                path="/admin/products/edit/:id"
+                element={<UpdateProduct />}
+              />
+            ) : null}
+            {isAdmin ? (
+              <Route
+                path="/admin/products/addProduct"
+                element={<AddProduct />}
+              />
+            ) : null}
+
+            {/* PAGE NOT FOUND */}
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         ) : (
-
           // NOT LOGGED IN ROUTES
           <Routes>
-            <Route to="/*" element={<MainPage/>}/>
-            <Route path="/" element={<MainPage/>}/>
+            <Route to="/*" element={<MainPage />} />
+            <Route path="/" element={<MainPage />} />
             <Route
               path="/login"
               element={<AuthForm name="login" displayName="Login" />}
@@ -65,7 +78,10 @@ const AppRoutes = () => {
             {/* Product Routes */}
             <Route path="/products/:id" element={<SingleProductView />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/cart" element={<Cart/>} />
+            <Route path="/cart" element={<Cart />} />
+
+            {/* PAGE NOT FOUND */}
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         )}
       </div>
