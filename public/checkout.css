@@ -1,0 +1,27 @@
+#checkout-page{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 100vh;
+}
+
+#client-details{
+    border: 1px solid blue;
+    width: 40%;
+}
+
+#contact-information, #shipping-address, #billing-address, #payment-details{
+    border: 1px solid green;
+    height: 100px;
+}
+
+#cart-and-orderbtn{
+    border: 1px solid pink;
+    width: 40%;
+    height: 200px;
+}
+#cart-items{
+    border: 1px solid brown;
+    height: 100px
+}
