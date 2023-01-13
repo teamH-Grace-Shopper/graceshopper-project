@@ -17,14 +17,14 @@ export const AddProduct = () =>  {
     }
 
     return (
-        <form className = "newProductForm" onSubmit = {handleSubmit}>
+        <form className = "AddProductForm" onSubmit = {handleSubmit}>
         <div className = "formTitle"> New Product Form</div>
         <input className = "productName" placeholder = "product name" onChange = {(e) =>setProductName(e.target.value) }/>
         <input className = "productPrice" placeholder = "product price" onChange = {(e) =>setPrice(e.target.value) }/>
         <input className = "productQuantity" placeholder = "product quantity" onChange = {(e) =>setQuantity(e.target.value) }/>
         <input className = "productDescription" placeholder = "product description" onChange = {(e) =>setDescription(e.target.value) }/>
         <input className = "productType" placeholder = "product type" onChange = {(e) =>setType(e.target.value) }/>
-        <button type = "submit"> Submit </button>
+        <button className = "addProductFormButton" type = "submit"> Submit </button>
     </form>
     )
 
