@@ -11,7 +11,7 @@
     background-color: rgb(192, 0, 192)
 }
 
-.updateProductButton {
+.updateProductFormButton {
     border-radius: 5px;
     font-size: 20px;
     border: 1px, solid, black;
@@ -21,4 +21,21 @@
     color: rbga(84,84,84, 0.386);
 }
 
-#Add
+.AddProductForm{
+    position: fixed; left: 140vh;
+    font-size: 30px;
+    font-weight: bold;
+    width: 30vh;
+}
+
+.addProductformButton{
+    border-radius: 5px;
+    font-size: 20px;
+    border: 1px, solid, black;
+}
+
+.addProductFormButton:hover{
+    color: rgba(84,84,84, 0.386) 
+}
+
+
