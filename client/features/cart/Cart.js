@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 
-export const Cart = () => {
+const Cart = () => {
  return (
     <div className="cart-container">
         <h2>Shopping Cart</h2>
@@ -79,3 +79,5 @@ export const Cart = () => {
   )
 
 }
+
+export default Cart
