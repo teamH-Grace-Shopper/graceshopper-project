@@ -17,7 +17,7 @@ export const AddProduct = () =>  {
     }
 
     return (
-        <form className = "newProductForm" onSubmit = {handleSubmit}>
+        <form className = "AddProductForm" onSubmit = {handleSubmit}>
         <div className = "formTitle"> New Product Form</div>
         <input className = "productName" placeholder = "product name" onChange = {(e) =>setProductName(e.target.value) }/>
         <input className = "productPrice" placeholder = "product price" onChange = {(e) =>setPrice(e.target.value) }/>
