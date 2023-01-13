@@ -1,27 +1,203 @@
 #checkout-page{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    height: 100vh;
+    height: 150vh;
+}
+
+
+
+#checkout-page h1{
+    margin: 20px;
 }
 
 #client-details{
-    border: 1px solid blue;
-    width: 40%;
+    /* border: 1px solid blue; */
+    width: 60%;
+    margin: 5px;
 }
 
-#contact-information, #shipping-address, #billing-address, #payment-details{
-    border: 1px solid green;
+#contact-info-box, #shipping-address-box, #billing-address-box, #payment-details-box{
+    border: 3px solid #691687;
     height: 100px;
+    margin: 5px;
+    box-shadow: -3px 3px 7px 3px rgb(74, 62, 90);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 15px;
 }
 
-#cart-and-orderbtn{
+/* CART AND ORDER BUTTON */ 
+#cart-and-orderbtn-box{
     border: 1px solid pink;
     width: 40%;
-    height: 200px;
+    height: 35%;
+    margin: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #691687;
+    box-shadow: -3px 3px 7px 3px rgb(74, 62, 90);
+    border-radius: 15px;
 }
+
 #cart-items{
-    border: 1px solid brown;
-    height: 100px
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
+
+.cart-container {
+background-color: #f2f2f2;
+padding: 5px 20px 15px 20px;
+border: 1px solid #390b4a;
+border-radius: 3px;
+margin: 10px;
+height: 75%;
+}
+
+.cart-total{
+    float: right;
+}
+
+.total{
+    float: bottom;
+    font-size: 30px;
+}
+
+.price {
+float: right;
+color: grey;
+}
+
+#order-btn {
+  align-items: center;
+  background-image: radial-gradient(100% 100% at 100% 0, #9473b6 0, #390b4a 100%);
+  border-radius: 6px;
+  box-shadow: -2px 2px 10px 2px #390b4a;
+  color: #fff;
+  cursor: pointer;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  line-height: 1;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+  margin: 20px;
+}
+
+#order-btn:focus {
+  box-shadow: -2px 2px 10px 2px #390b4a;
+}
+
+#order-btn:hover {
+  box-shadow: -2px 2px 10px 2px #390b4a;
+  transform: translateY(-2px);
+}
+
+#order-btn:active {
+  box-shadow: #390b4a 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+
+/* END CART AND ORDER BUTTON */ 
+
+.input-box{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* CONTACT INFO */
+#contact-info-box{
+    height: 10%;
+}
+#contact-info{
+    display: flex;
+}
+
+.contact-input-box{
+    margin: 15px;
+}
+/* END CONTACT INFO */
+
+/* SHIPPING AND BILLING ADDRESS */
+#shipping-address-box{
+    height: 30%;
+}
+
+#billing-address-box{
+    height: 35%;
+}
+
+.checkbox{
+    margin: 20px;
+  }
+
+#address-details-box{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.address-input-box{
+    margin: 10px;
+}
+
+.name{
+    width: 45%;
+}
+.address, .city, .company{
+    width: 90%;
+}
+.country, .state, .zip{
+    width: 30%;
+}
+
+.address-input{
+    width: 100%;
+}
+/* END SHIPPING AND BILLING ADDRESS */
+
+/* PAYMENT DETAILS */
+#payment-details-box{
+    height: 22%;
+}
+
+#payment-info-box{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.payment-input-box{
+    margin: 10px;
+}
+
+.payment{
+    width: 90%;
+}
+.month-year, .CVV, .zip{
+    width: 30%;
+}
+/* END PAYMENT DETAILS */
+
+@media (max-width: 1250px) {
+    #checkout-page {
+      flex-direction: column-reverse;
+    }
+    #cart-and-orderbtn-box {
+      margin-bottom: 20px;
+    }
+  }

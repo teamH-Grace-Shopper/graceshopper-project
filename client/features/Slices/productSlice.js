@@ -23,7 +23,7 @@ export const fetchProduct = createAsyncThunk(
         const { id, name, price, quantity, description, type, imageUrl } = product;
         const updatedProduct = { name, price, quantity, description, type, imageUrl }; 
         const { data } = await axios.put(
-          `/api/campuses/${id}`,
+          `/api/products/${id}`,
           updatedProduct
         );
         return data;

@@ -13,7 +13,7 @@ const dispatch = useDispatch()
 
 const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(updateProductAsync({id: props.id, productName, price, quantity, description, type}))
+    dispatch(updateProductAsync({id: props.id, productName, price, quantity, description, type }))
 }
 
 return (
@@ -24,7 +24,7 @@ return (
         <input className = "productQuantity" placeholder = "product quantity" onChange = {(e) =>setQuantity(e.target.value) }/>
         <input className = "productDescription" placeholder = "product description" onChange = {(e) =>setDescription(e.target.value) }/>
         <input className = "productType" placeholder = "product type" onChange = {(e) =>setType(e.target.value) }/>
-        <button type = "submit"> Submit </button>
+        <button className = "updateProductButton" type = "submit"> Submit </button>
     </form>
 )
 }
