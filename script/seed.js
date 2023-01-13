@@ -78,7 +78,7 @@ async function seed() {
 
   await Promise.all([
     User.create({
-      username: 'aguila',
+      username: 'joe',
       password: '123',
       email: 'aguila@gmail.com',
       firstName: 'Nick',
@@ -87,7 +87,22 @@ async function seed() {
       city: 'Miami',
       state: 'FL',
       zipCode: 55555,
-      userType: 'ADMIN'
+      isAdmin: true
+    })
+  ])
+
+  await Promise.all([
+    User.create({
+      username: 'robert',
+      password: '123',
+      email: 'robert@gmail.com',
+      firstName: 'robert',
+      lastName: 'robert',
+      address1: '123 Lupe Track',
+      city: 'Robert',
+      state: 'FL',
+      zipCode: 55555,
+      isAdmin: false
     })
   ])
 

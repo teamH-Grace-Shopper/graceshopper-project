@@ -3,9 +3,13 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import AuthForm from "../features/auth/AuthForm";
-import Home from "../features/home/Home";
 import { me } from "./store";
 import MainPage from "../features/home/MainPage";
+import SingleProductView from "../features/home/SingleProduct";
+import Checkout from "../features/checkout/Checkout";
+import AdminPage from "../features/admin/AdminPage";
+
+
 
 /**
  * COMPONENT
@@ -13,7 +17,9 @@ import MainPage from "../features/home/MainPage";
 
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const isAdmin = useSelector((state) => state.auth.me.isAdmin)
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(me());
@@ -21,31 +27,45 @@ const AppRoutes = () => {
 
   return (
     <>
-    <div id="login-signup-input">
-      {isLoggedIn ? (
-        <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route to="/home" element={<Home />} />
-        </Routes>
-      ) : (
-        <Routes>
-          <Route
-            path="/*"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
-          <Route
-            path="/login"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
-          <Route
-            path="/signup"
-            element={<AuthForm name="signup" displayName="Sign Up" />}
-          />
-        </Routes>
+      <div>
+        {/* IF LOGGED IN ROUTES */}
+        {isLoggedIn ? (
+          <Routes>
 
-      )}
+            <Route to="/*" element={<MainPage />} />
+            <Route path="/" element={<MainPage />} />
 
-    </div>
+            {/* Product Routes */}
+            <Route path="/products/:id" element={<SingleProductView />} />
+            <Route path="/checkout" element={<Checkout />} />
+
+            {/* ADMIN ROUTES */}
+            {isAdmin ? (
+            <Route path="/admin" element={<AdminPage />} />
+          ) : (
+            <Route element={<MainPage />} />
+          )}
+          </Routes>
+        ) : (
+
+          // NOT LOGGED IN ROUTES
+          <Routes>
+            <Route to="/*" element={<MainPage/>}/>
+            <Route path="/" element={<MainPage/>}/>
+            <Route
+              path="/login"
+              element={<AuthForm name="login" displayName="Login" />}
+            />
+            <Route
+              path="/signup"
+              element={<AuthForm name="signup" displayName="Sign Up" />}
+            />
+            {/* Product Routes */}
+            <Route path="/products/:id" element={<SingleProductView />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+        )}
+      </div>
     </>
   );
 };
