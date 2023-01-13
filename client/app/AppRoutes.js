@@ -8,6 +8,7 @@ import MainPage from "../features/home/MainPage";
 import SingleProductView from "../features/home/SingleProduct";
 import Checkout from "../features/checkout/Checkout";
 import AdminPage from "../features/admin/AdminPage";
+import Cart from "../features/cart/Cart"
 
 
 
@@ -38,6 +39,7 @@ const AppRoutes = () => {
             {/* Product Routes */}
             <Route path="/products/:id" element={<SingleProductView />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/cart" element={<Cart />} />
 
             {/* ADMIN ROUTES */}
             {isAdmin ? (
@@ -63,6 +65,7 @@ const AppRoutes = () => {
             {/* Product Routes */}
             <Route path="/products/:id" element={<SingleProductView />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/cart" element={<Cart/>} />
           </Routes>
         )}
       </div>
