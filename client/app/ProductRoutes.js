@@ -15,7 +15,7 @@ const ProductRoutes = () => {
     <>
     <div>
         <Routes>
-          <Route path="/products" element={<SingleProductView />} />
+          <Route path="/products/:id" element={<SingleProductView />} />
           <Route path="/*" element={[<Home />, <MainPage />]} />
           <Route to="/home" element={[<Home />, <MainPage />]} />
           <Route path="/checkout" element={<Checkout />} />
