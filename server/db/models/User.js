@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { STRING, ENUM, INTEGER } = Sequelize
+const { STRING, ENUM, INTEGER, BOOLEAN } = Sequelize
 const db = require('../db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
@@ -109,9 +109,9 @@ const User = db.define('user', {
     type: INTEGER,
     len: [5]
   },
-  userType: {
-    type: ENUM(["ADMIN", "CUSTOMER"]),
-    defaultValue: "CUSTOMER"
+  isAdmin: {
+    type: BOOLEAN,
+    defaultValue: false
   }
 })
 

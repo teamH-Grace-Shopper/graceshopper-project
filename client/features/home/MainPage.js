@@ -11,35 +11,46 @@ export const MainPage = () => {
 
   useEffect(() => {
     dispatch(fetchProductsAsync());
-  }, [dispatch]);
+  }, []);
 
-  const addToCart = () => {
+  // const addToCart = () => {
 
-  }
-    return(
-      <>
-       <div id="main-product-section">
+  // }
+  return (
+    <>
+      <div>
+        <h1>THIS IS THE MAIN PAGE WITH PRODUCTS</h1>
+      </div>
+      <div id="main-product-section">
         <h1 id="product-page-header">Featured Virtues</h1>
         <hr></hr>
-        {products.map((product) => {
-          return(
-            <ul key={product.id}>
-              <div className="product-box">
-                <img src={product.imageUrl} className="product-image"></img>
-                <div id="product-details">
-                <h3 className="product-name"> {product.name}
-                    {/* <Link to={`/products/${product.id}`} className="product-name">{product.name} </Link> */}
-                </h3>
-                <button className="quick-add-to-cart" onClick={addToCart}></button>
-                </div>
-                <h4 className="product-price">{product.price}</h4>
-            </div>
-            </ul>
-                )
-            })}
-        </div>
-        </>
-    )
-}
+        {products
+          ? products.map((product) => {
+              return (
+                <ul key={product.id}>
+                  <div className="product-box">
+                    <img src={product.imageUrl} className="product-image"></img>
+                    <div id="product-details">
+                      <h3 className="product-name">
+                        {product.name}
+                        <Link
+                          to={`/products/${product.id}`}
+                          className="product-name"
+                        >
+                          {product.name}{" "}
+                        </Link>
+                      </h3>
+                      {/* <button className="quick-add-to-cart" onClick={addToCart}></button> */}
+                    </div>
+                    <h4 className="product-price">{product.price}</h4>
+                  </div>
+                </ul>
+              );
+            })
+          : null}
+      </div>
+    </>
+  );
+};
 
-export default MainPage
+export default MainPage;

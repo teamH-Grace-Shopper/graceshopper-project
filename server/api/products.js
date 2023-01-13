@@ -30,7 +30,7 @@ router.post("/", async (req, res, next) => {
     // find user by token
     const user = await User.findByToken(req.body.token);
     // if this user has a userType of ADMIN then able to create a product
-    if (user && user.userType === "ADMIN")
+    if (user && user.isAdmin)
       res.status(201).send(await Product.create(req.body));
     else {
       let err = new Error("Not authorized!");
@@ -48,7 +48,7 @@ router.put("/:id", async (req, res, next) => {
     const user = await User.findByToken(req.body.token);
     const product = await Product.findByPk(req.params.id);
 
-    if (user && user.userType === "ADMIN") {
+    if (user && user.isAdmin) {
       res.status(200).send(await product.update(req.body));
     } else {
       const err = new Error("Not authorized!");
@@ -66,7 +66,7 @@ router.delete("/:id", async (req, res, next) => {
     const product = await Product.findByPk(id);
     const user = await User.findByToken(req.headers.authorization);
 
-    if (user && user.userType === "ADMIN") {
+    if (user && user.isAdmin) {
       if (!product) {
         let err = new Error("cannot remove product, product does not exist");
         next(err);

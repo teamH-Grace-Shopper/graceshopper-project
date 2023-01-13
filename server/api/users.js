@@ -5,20 +5,9 @@ const {
 const OrderItem = require("../db/models/OrderItem");
 module.exports = router;
 
-//middleware
-const requireToken = async (req, res, next) => {
-  try {
-    const token = req.headers.authorization;
-    const user = await User.findByToken(token);
-    req.user = user;
-    next();
-  } catch (error) {
-    next(error);
-  }
-};
 
 // GET route /api/users
-router.get("/", requireToken, async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     // only users with a token will be able to see the users
     const users = await User.findAll({
@@ -32,7 +21,7 @@ router.get("/", requireToken, async (req, res, next) => {
         "city",
         "state",
         "zipCode",
-        "userType",
+        "isAdmin",
       ],
     });
     res.json(users);
@@ -42,7 +31,7 @@ router.get("/", requireToken, async (req, res, next) => {
 });
 
 // GET route /api/users/:id
-router.get("/:id", requireToken, async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     // only users with token can view page
     const user = await User.findByPk(req.params.id, {
