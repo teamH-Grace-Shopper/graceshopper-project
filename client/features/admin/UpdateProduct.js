@@ -13,7 +13,7 @@ const dispatch = useDispatch()
 
 const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(updateProductAsync({id: props.id, productName, price, quantity, description, type}))
+    dispatch(updateProductAsync({id: props.id, productName, price, quantity, description, type }))
 }
 
 return (
