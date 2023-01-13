@@ -24,9 +24,9 @@ const Navbar = () => {
 
   return (
     <div id="navbarBox">
-      <h1 id="storeName">
+      <Link to="/"><h1 id="storeName">
         Soul Shopper<span>Put a little soul in it</span>
-      </h1>
+      </h1></Link>
       <div id="navbar-right">
         <div id="search-box">
           <input

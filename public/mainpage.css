@@ -1,18 +1,31 @@
 #main-product-section{
     border: 10px ridge #390b4a;
     box-shadow: -7px 7px 15px 3px gray;
-    height: 100%;
+    height: 500vh;
     width: 95%;
     position: absolute;
     right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.view-products{
+display: flex;
+flex-direction: row;
+width: 100%;
+flex-wrap:wrap;
+}
+
+.test{
+    width: 20%;
 }
 
 .product-box{
     border: 3px solid black;
     box-shadow: -7px 3px 15px 3px gray;
-    width: 20%;
-    margin: 30px;
-    height: 30%;
+    width: 100%;
+    margin: 20px;
+    height: 100%;
 }
 
 .quick-add-to-cart{

@@ -50,8 +50,7 @@ const Cart = () => {
               <p>Taxes and shipping calculated at checkout</p>
     
                 <button
-                  className="cart-login">
-                  Login to Check out
+                  className="checkout-button"><Link to="/checkout">Check out!</Link>
                 </button>
             </div>
           </div>

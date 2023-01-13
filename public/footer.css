@@ -9,11 +9,10 @@
     display: flex;
     justify-content: center;
     justify-content: space-around;
-
 }
 
 #footer{
-    margin-top: 100%;
+    margin-top: 525vh;
 }
 
 a{
