@@ -49,6 +49,7 @@ const Navbar = () => {
       <div id="icon-box">
           <Link to="/cart" className="cartButton"><img src="https://www.pngkey.com/png/full/307-3071593_accessories-shopping-cart-icon-white.png"></img></Link>
         </div>
+        
       </div>
     </div>
   );
