@@ -16,7 +16,7 @@ const createRandomCustomer = () => {
         city: faker.address.cityName(),
         state: state,
         zipCode: Math.floor(Math.random()*90000)+10000,
-        userType: "CUSTOMER"
+        isAdmin: false
     }
 }
 
@@ -36,7 +36,7 @@ const createRandomAdmin = () => {
         city: faker.address.cityName(),
         state: state,
         zipCode: Math.floor(Math.random()*90000)+10000,
-        userType: "ADMIN"
+        isAdmin: true
     }
 }
 
