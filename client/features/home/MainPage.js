@@ -19,20 +19,19 @@ export const MainPage = () => {
   return (
     <>
       <div>
-        <h1>THIS IS THE MAIN PAGE WITH PRODUCTS</h1>
       </div>
       <div id="main-product-section">
         <h1 id="product-page-header">Featured Virtues</h1>
         <hr></hr>
+        <div className="view-products">
         {products
           ? products.map((product) => {
               return (
-                <ul key={product.id}>
+                <ul className="test" key={product.id}>
                   <div className="product-box">
                     <img src={product.imageUrl} className="product-image"></img>
                     <div id="product-details">
                       <h3 className="product-name">
-                        {product.name}
                         <Link
                           to={`/products/${product.id}`}
                           className="product-name"
@@ -48,6 +47,7 @@ export const MainPage = () => {
               );
             })
           : null}
+          </div>
       </div>
     </>
   );
