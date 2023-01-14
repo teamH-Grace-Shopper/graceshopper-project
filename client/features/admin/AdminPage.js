@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductsAsync, selectProducts, deleteProductAsync } from "../Slices/productsSlice";
+import {
+  fetchProductsAsync,
+  selectProducts,
+  deleteProductAsync,
+} from "../Slices/productsSlice";
 import { fetchUsersAsync, selectUsers } from "../Slices/usersSlice";
-
 
 // MaterialUI
 import PropTypes from "prop-types";
@@ -48,13 +51,13 @@ const AdminPage = () => {
   const [value, setValue] = useState(0);
   const username = useSelector((state) => state.auth.me.username);
 
-//   const [showForm, setShowForm] = useState(false)
+  //   const [showForm, setShowForm] = useState(false)
 
   const products = useSelector(selectProducts);
   const users = useSelector(selectUsers);
   console.log(users);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch(selectUsers);
 
   useEffect(() => {
@@ -66,16 +69,20 @@ const AdminPage = () => {
     setValue(newValue);
   };
 
+  const handleClick = (id) => {
+    navigate(`/admin/user/${id}`)
+  }
+
   const handleEdit = (id) => {
-        console.log("EDIT FORM")
-        // navigate to form?
-        navigate(`/admin/products/edit/${id}`)
-        // setShowForm(!showForm)
-  }
-  const handleDelete = (id)=> {
-        // delete the form
-        dispatch(deleteProductAsync(id))
-  }
+    console.log("EDIT FORM");
+    // navigate to form?
+    navigate(`/admin/products/edit/${id}`);
+    // setShowForm(!showForm)
+  };
+  const handleDelete = (id) => {
+    // delete the form
+    dispatch(deleteProductAsync(id));
+  };
 
   return (
     <div>
@@ -93,7 +100,11 @@ const AdminPage = () => {
             <Tab label="users" {...a11yProps(1)} />
           </Tabs>
         </Box>
-        <button><Link to="/admin/products/addProduct" style={{color:"black"}}>Add Product</Link></button>
+        <button>
+          <Link to="/admin/products/addProduct" style={{ color: "black" }}>
+            Add Product
+          </Link>
+        </button>
         <TabPanel value={value} index={0}>
           <div
             style={{
@@ -126,8 +137,12 @@ const AdminPage = () => {
                       </div>
                       <div>Quantity: {product.quantity}</div>
                       <div>Price: ${product.price}</div>
-                      <button onClick={()=>handleEdit(product.id)}>Edit</button>
-                      <button onClick={()=>handleDelete(product.id)}>Delete</button>
+                      <button onClick={() => handleEdit(product.id)}>
+                        Edit
+                      </button>
+                      <button onClick={() => handleDelete(product.id)}>
+                        Delete
+                      </button>
                       {/* {showForm ? <UpdateProduct product={product} /> : null} */}
                     </div>
                   );
@@ -135,19 +150,28 @@ const AdminPage = () => {
               : null}
           </div>
         </TabPanel>
-        <TabPanel
-          value={value}
-          index={1}
-        >
+        <TabPanel value={value} index={1}>
           <div
-            style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "1rem" }}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              gap: "1rem",
+            }}
           >
             {users && users.length
               ? users.map((user) => {
                   return (
                     <div
                       key={user.id}
-                      style={{ border: "1px solid black", width: "250px", display: "flex", flexDirection: "column", justifyContent: "space-evenly", padding: "5px" }}
+                      style={{
+                        border: "1px solid black",
+                        width: "250px",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-evenly",
+                        padding: "5px",
+                      }}
                     >
                       <div
                         style={{
@@ -161,7 +185,9 @@ const AdminPage = () => {
                       </div>
                       <div>Email: {user.email}</div>
                       <div>Admin Rights: {user.isAdmin ? "Yes" : "No"}</div>
-                      <button style={{width: "50px"}}>Edit</button>
+                      <div style ={{display: "flex", gap: "1rem"}}>
+                        <button onClick={()=>handleClick(user.id)}>View User</button>
+                      </div>
                     </div>
                   );
                 })

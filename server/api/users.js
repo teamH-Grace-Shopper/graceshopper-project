@@ -24,7 +24,7 @@ router.get("/", async (req, res, next) => {
         "isAdmin",
       ],
     });
-    res.json(users);
+    res.status(200).send(users);
   } catch (err) {
     next(err);
   }
@@ -75,11 +75,11 @@ router.post("/", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     // if request body has token
-    if (req.body.token) {
+    if (req.headers.authorization) {
       // user is the one with token
-      const user = await User.findByToken(req.body.token);
+      const user = await User.findByToken(req.headers.authorization);
       // user can update their information
-      res.status(200).send(await user.update(req.body.user));
+      res.status(200).send(await user.update(req.body));
     } else {
       // if user doesn't have a token and is a guest
       const user = await User.findByPk(req.params.id);
