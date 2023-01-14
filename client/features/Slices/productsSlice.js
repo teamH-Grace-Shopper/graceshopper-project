@@ -37,6 +37,22 @@ export const addProductAsync = createAsyncThunk(
   }
 );
 
+//DELETE - remove product - Admin only view&feature
+export const deleteProductAsync = createAsyncThunk(
+  "product/deleteProduct",
+  async (id) => {
+    try {
+      const token = window.localStorage.getItem("token");
+      const { data } = await axios.delete(`/api/products/${id}`, {
+        headers: { authorization: token },
+      });
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
 const ProductsSlice = createSlice({
   name: "products",
   initialState: [],
@@ -47,6 +63,9 @@ const ProductsSlice = createSlice({
     });
     builder.addCase(addProductAsync.fulfilled, (state, action) => {
       state.push(action.payload);
+    });
+    builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
+      return state.filter((product) => product.id !== action.payload.id);
     });
   },
 });

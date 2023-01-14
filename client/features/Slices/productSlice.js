@@ -33,20 +33,6 @@ export const fetchProduct = createAsyncThunk(
     }
   );
 
-  //DELETE - remove product - Admin only view&feature
-  export const deleteProductAsync = createAsyncThunk(
-    "product/deleteProduct",
-    async (id) => {
-      try {
-        const { data } = await axios.delete(`/api/products/${id}`);
-        return data;
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  );
-
-
 
   const ProductSlice = createSlice({
     name: "product",
@@ -58,10 +44,6 @@ export const fetchProduct = createAsyncThunk(
       });
       builder.addCase(updateProductAsync.fulfilled, (state, action) => {
         return action.payload;
-      });
-
-      builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
-        //we dont update the state for delete
       });
     },
   });

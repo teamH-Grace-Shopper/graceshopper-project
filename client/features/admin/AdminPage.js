@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductsAsync, selectProducts } from "../Slices/productsSlice";
+import { fetchProductsAsync, selectProducts, deleteProductAsync } from "../Slices/productsSlice";
 import { fetchUsersAsync, selectUsers } from "../Slices/usersSlice";
 import UpdateProduct from "./UpdateProduct";
 
@@ -74,8 +74,7 @@ const AdminPage = () => {
   }
   const handleDelete = (id)=> {
         // delete the form
-        // dispatch(deleteProduct(id))
-        console.log("FORM DELETE")
+        dispatch(deleteProductAsync(id))
   }
 
   return (

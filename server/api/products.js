@@ -41,7 +41,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// PUT route /api/products
+// PUT route /api/products/:id
 router.put("/:id", async (req, res, next) => {
   try {
     // get user by token and product
@@ -59,7 +59,7 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-// DELETE route /api/products
+// DELETE route /api/products/:id
 router.delete("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
