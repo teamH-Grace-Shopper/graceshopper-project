@@ -52,7 +52,7 @@ const AppRoutes = () => {
             )}
             {isAdmin ? (
               <Route
-                path="/admin/products/edit/:id"
+                path="/admin/products/edit/:productId"
                 element={<UpdateProduct />}
               />
             ) : null}

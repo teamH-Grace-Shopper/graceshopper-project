@@ -45,7 +45,7 @@ router.post("/", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     // get user by token and product
-    const user = await User.findByToken(req.body.token);
+    const user = await User.findByToken(req.headers.authorization);
     const product = await Product.findByPk(req.params.id);
 
     if (user && user.isAdmin) {

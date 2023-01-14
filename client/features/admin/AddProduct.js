@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 export const AddProduct = () => {
   const [name, setName] = useState("");
@@ -21,12 +22,14 @@ export const AddProduct = () => {
   const [type, setType] = useState("");
   const theme = createTheme();
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
       addProductAsync({ name, price, quantity, description, type })
     );
+    navigate('./admin')
   };
 
   const onChange = (e) => {
@@ -42,7 +45,7 @@ export const AddProduct = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="lg">
+        <Container component="main" maxWidth="sm">
           <CssBaseline />
           <Box
             sx={{

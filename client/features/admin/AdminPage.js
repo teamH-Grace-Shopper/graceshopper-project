@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsAsync, selectProducts, deleteProductAsync } from "../Slices/productsSlice";
 import { fetchUsersAsync, selectUsers } from "../Slices/usersSlice";
-import UpdateProduct from "./UpdateProduct";
+
 
 // MaterialUI
 import PropTypes from "prop-types";
