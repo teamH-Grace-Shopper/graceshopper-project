@@ -6,11 +6,17 @@ const OrderItem = db.define('orderItem', {
     quantity: {
         type: INTEGER,
         allowNull: false,
-        defaultValue: 1
+        defaultValue: 1,
+        valid: {
+            min: 0
+        }
     },
     price: {
         type: DECIMAL,
-        allowNull: false
+        allowNull: false,
+        valid: {
+            min: 0
+        }
     }
 })
 

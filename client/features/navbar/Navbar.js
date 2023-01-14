@@ -3,9 +3,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../app/store";
-// import Home from "../home/Home";
-// import AuthForm from "../auth/AuthForm";
-// import AppRoutes from "../../app/AppRoutes";
+import SettingsSharpIcon from '@mui/icons-material/SettingsSharp';
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -16,7 +14,7 @@ const Navbar = () => {
     dispatch(logout());
     navigate("/login");
   };
-  const username = useSelector((state) => state.auth.me.username);
+  const firstName = useSelector((state) => state.auth.me.firstName);
 
   const showLoginSignUp = () => {
     document.querySelector("#login-signup-input").style.display = "block";
@@ -41,11 +39,13 @@ const Navbar = () => {
         {/* <AppRoutes /> */}
         <nav>
           {isLoggedIn ? (
-            <div>
-              <div id="welcome-box">
-                <h3>Welcome {username} !</h3>
-              </div>
-              {/* The navbar will show these links after you log in */}
+            <div style={{display: "flex", flexDirection: "row", height: "50%"}}>
+
+              <Link to="/my-account" className="homeButton" style={{fontSize: ".8rem", height: "50px"}}>
+              Welcome {firstName},
+              <br/>
+              Account
+              </Link>
               <Link to="/" className="homeButton">
                 Home
               </Link>
@@ -56,7 +56,7 @@ const Navbar = () => {
               >
                 Logout
               </button>
-              {isAdmin ? <Link to="/admin"> ADMIN MANAGEMENT PAGE</Link> : null}
+              {isAdmin ? <Link to="/admin" style={{alignSelf:"center"}}> <SettingsSharpIcon/> </Link> : null}
             </div>
           ) : (
             <div className="loginAndSignUp">
@@ -84,6 +84,7 @@ const Navbar = () => {
         <div id="icon-box">
           <Link to="/cart" className="cartButton">
             <img src="https://www.pngkey.com/png/full/307-3071593_accessories-shopping-cart-icon-white.png"></img>
+            
           </Link>
         </div>
       </div>

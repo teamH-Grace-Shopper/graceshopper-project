@@ -10,11 +10,18 @@ const Product = db.define('product', {
     },
     price: {
         type: DECIMAL,
-        allowNull: false
+        allowNull: false,
+        valid: {
+            min: 0
+        }
     },
     quantity: {
         type: INTEGER,
         allowNull: false,
+        valid: {
+            min: 0,
+            max: Infinity
+        },
         defaultValue: 0
     },
     description: {

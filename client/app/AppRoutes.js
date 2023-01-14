@@ -10,8 +10,11 @@ import Checkout from "../features/checkout/Checkout";
 import AdminPage from "../features/admin/AdminPage";
 import Cart from "../features/cart/Cart";
 import UpdateProduct from "../features/admin/UpdateProduct";
-import PageNotFound from "../features/PageNotFound";
 import AddProduct from "../features/admin/AddProduct";
+import MyAccount from "../features/account/MyAccount";
+import UserAccount from "../features/admin/UserAccount";
+import PageNotFound from "../features/PageNotFound";
+
 
 /**
  * COMPONENT
@@ -35,6 +38,9 @@ const AppRoutes = () => {
             <Route to="/*" element={<MainPage />} />
             <Route path="/" element={<MainPage />} />
 
+            {/* My Account Page */}
+            <Route path="/my-account" element={<MyAccount />} />
+
             {/* Product Routes */}
             <Route path="/products/:id" element={<SingleProductView />} />
             <Route path="/checkout" element={<Checkout />} />
@@ -48,7 +54,7 @@ const AppRoutes = () => {
             )}
             {isAdmin ? (
               <Route
-                path="/admin/products/edit/:id"
+                path="/admin/products/edit/:productId"
                 element={<UpdateProduct />}
               />
             ) : null}
@@ -56,6 +62,12 @@ const AppRoutes = () => {
               <Route
                 path="/admin/products/addProduct"
                 element={<AddProduct />}
+              />
+            ) : null}
+            {isAdmin ? (
+              <Route
+                path="/admin/user/:userId"
+                element={<UserAccount />}
               />
             ) : null}
 
