@@ -18,9 +18,13 @@ const AuthForm = ({ name, displayName }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
+    const firstName = evt.target.firstName.value;
+    const lastName = evt.target.lastName.value;
+    const email = evt.target.email.value;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-    dispatch(authenticate({ username, password, method: formName }));
+    const address1 = evt.target.address1.value
+    dispatch(authenticate({ firstName, lastName, email, username, password, address1, method: formName }));
     navigate('/')
   };
 
@@ -45,7 +49,13 @@ const AuthForm = ({ name, displayName }) => {
               <label htmlFor="email">
                 <small>Email</small>
               </label>
-              <input name="username" type="text" />
+              <input name="email" type="text" />
+            </div>
+            <div>
+              <label htmlFor="address1">
+                <small>Address 1:</small>
+              </label>
+              <input name="address1" type="text" />
             </div>
           </div>
         ) : null}
