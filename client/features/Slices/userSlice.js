@@ -35,6 +35,34 @@ export const updateUserAsync = createAsyncThunk(
     }
   );
 
+//GET single user's order
+export const fetchUserOrder = createAsyncThunk(
+  "singleUser",
+  async (id) => {
+    try {
+      const { data } = await axios.get(`/api/users/${id}`);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+
+//PUT update single user's order
+export const updateUserOrders = createAsyncThunk(
+  "singleUser",
+  async (id) => {
+    try {
+      const { data } = await axios.get(`/api/users/${id}`);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+
 //DELETE  remove user - did not build backend route.. should we do this?
 
 const UserSlice = createSlice({

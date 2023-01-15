@@ -147,15 +147,6 @@ const MyAccount = () => {
     setZipCode("");
   };
 
-  // const onChange = (e) => {
-  //   const value = e.target.value;
-  //   const nameInput = e.target.name;
-  //   if (nameInput === "address1") setAddress1(value);
-  //   if (nameInput === "city") setCity(value);
-  //   if (nameInput === "state") setState(value);
-  //   if (nameInput === "zipcode") setZipCode(value);
-  // };
-
   return (
     <div>
       <div>
@@ -191,7 +182,7 @@ const MyAccount = () => {
                 user.orders.map((order) => {
                   return (
                     <div
-                      key={order.orderNumber}
+                      key={order.id}
                       // style={{ border: "1px solid black" }}
                     >
                       {order.completeStatus ? (
@@ -234,7 +225,7 @@ const MyAccount = () => {
                               ? order.orderItems.reduce((total, currVal) => {
                                   return (
                                     total +
-                                    Number(currVal.price * currVal.quantity)
+                                    Number(currVal.product.price * currVal.quantity)
                                   );
                                 }, 0)
                               : "Not completed"}
