@@ -17,13 +17,16 @@ export const fetchUser = createAsyncThunk(
 //PUT update user information - customer only?
 export const updateUserAsync = createAsyncThunk(
     "User/updateUser",
-    async (user) => {
+    async ({ id, address1, city, state, zipCode } ) => {
       try {
-        const { id,  username, email, firstName, lastName, address1, address2, city, state, zipCode } = product;
-        const updatedUser = { username, email, firstName, lastName, address1, address2, city, state, zipCode }; 
+        const token = window.localStorage.getItem("token");
         const { data } = await axios.put(
           `/api/users/${id}`,
-          updatedUser
+          { address1, city, state, zipCode },
+          {
+            headers: { authorization: token },
+          }
+          
         );
         return data;
       } catch (err) {
