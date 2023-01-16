@@ -1,7 +1,7 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { authenticate } from '../../app/store';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { authenticate } from "../../app/store";
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -13,22 +13,47 @@ const AuthForm = ({ name, displayName }) => {
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
+    console.log("form: ", formName);
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-    dispatch(authenticate({ username, password, method: formName }));
-    navigate('/')
+    let firstName = "";
+    let lastName = "";
+    let email = "";
+    let address1 = "";
+    if (formName === "signup") {
+      firstName = evt.target.firstName.value;
+      lastName = evt.target.lastName.value;
+      email = evt.target.email.value;
+      address1 = evt.target.address1.value;
+    }
+    dispatch(
+      authenticate({
+        firstName,
+        lastName,
+        email,
+        username,
+        password,
+        address1,
+        method: formName,
+      })
+    );
+    navigate("/");
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
+      <form
+        onSubmit={handleSubmit}
+        name={name}
+        style={{ display: "flex", flexDirection: "column" }}
+      >
         {name === "signup" ? (
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div>
             <div>
               <label htmlFor="firstName">
                 <small>First Name</small>
@@ -45,11 +70,17 @@ const AuthForm = ({ name, displayName }) => {
               <label htmlFor="email">
                 <small>Email</small>
               </label>
-              <input name="username" type="text" />
+              <input name="email" type="text" />
+            </div>
+            <div>
+              <label htmlFor="address1">
+                <small>Address 1</small>
+              </label>
+              <input name="address1" type="text" />
             </div>
           </div>
         ) : null}
-        <div style={{ display: "flex", flexDirection: "column" }}> 
+        <div>
           <div>
             <label htmlFor="username">
               <small>Username</small>
