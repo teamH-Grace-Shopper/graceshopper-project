@@ -97,7 +97,6 @@ const AppRoutes = () => {
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         )}
-      </div>
     </>
   );
 };
