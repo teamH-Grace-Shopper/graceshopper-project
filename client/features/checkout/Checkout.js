@@ -18,27 +18,32 @@ const Checkout = () => {
     <>
       <div id="checkout-page">
         <div id="client-details">
+
           <div id="contact-info-box">
             <h1>Contact Information:</h1>
             <div id="contact-info">
+
               <div className="contact-input-box">
                 <label className="contact-input-title">First Name</label>
                 <input className="contact-input input-box"></input>
               </div>
+
               <div className="contact-input-box">
                 <label className="contact-input-title">Last Name</label>
                 <input className="contact-input input-box"></input>
               </div>
-              <div className="contact-input-box">
+              {/* <div className="contact-input-box">
                 <label className="contact-input-title">Phone</label>
                 <input className="contact-input input-box"></input>
-              </div>
+              </div> */}
               <div className="contact-input-box">
                 <label className="contact-input-title">Email</label>
                 <input className="contact-input input-box"></input>
               </div>
             </div>
           </div>
+
+
           <div id="shipping-address-box">
             <h1>Shipping Address:</h1>
             <div id="address-details-box">
@@ -64,14 +69,14 @@ const Checkout = () => {
                 <label className="address-input-title">City</label>
                 <input className="address-input input-box"></input>
               </div>
-              <div className="address-input-box country">
+              {/* <div className="address-input-box country">
                 <label className="address-input-title">Country/region</label>
                 <select className="address-input  input-box" name="country">
                   <option value="australia">Australia</option>
                   <option value="canada">Canada</option>
                   <option value="usa">USA</option>
                 </select>
-              </div>
+              </div> */}
               <div className="address-input-box state">
                 <label className="address-input-title">State</label>
                 <input className="address-input input-box"></input>
@@ -118,14 +123,14 @@ const Checkout = () => {
                 <label className="address-input-title">City</label>
                 <input className="address-input input-box"></input>
               </div>
-              <div className="address-input-box country">
+              {/* <div className="address-input-box country">
                 <label className="address-input-title">Country/region</label>
                 <select className="address-input  input-box" name="country">
                   <option value="australia">Australia</option>
                   <option value="canada">Canada</option>
                   <option value="usa">USA</option>
                 </select>
-              </div>
+              </div> */}
               <div className="address-input-box state">
                 <label className="address-input-title">State</label>
                 <input className="address-input input-box"></input>
