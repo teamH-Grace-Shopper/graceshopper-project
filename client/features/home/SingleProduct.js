@@ -17,7 +17,7 @@ export const SingleProductView = () => {
     <div id="box">
       <div id="single-product-view-box">
         <div id="single-product-image">
-          <img src={product.imageUrl}></img>
+        <img className = "singleProductImage" src={product.imageUrl}></img>
         </div>
         <div id="single-product-details">
           <h1>{product.name}</h1>
