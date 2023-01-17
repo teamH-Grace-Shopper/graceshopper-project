@@ -3,19 +3,21 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsAsync, selectProducts } from "../Slices/productsSlice";
+import { addToCart } from "../Slices/cartSlice";
 
 export const MainPage = () => {
   const dispatch = useDispatch();
 
   const products = useSelector(selectProducts);
 
+  
   useEffect(() => {
     dispatch(fetchProductsAsync());
   }, []);
 
-  // const addToCart = () => {
-
-  // }
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product))
+  }
   return (
     <>
       <div>
@@ -36,12 +38,13 @@ export const MainPage = () => {
                           to={`/products/${product.id}`}
                           className="product-name"
                         >
-                          {product.name}{" "}
+                          {product.name}
                         </Link>
                       </h3>
-                      {/* <button className="quick-add-to-cart" onClick={addToCart}></button> */}
+                      {/* button className="quick-add-to-cart" */}
+                      <button onClick={()=> handleAddToCart(product)}>Add To Cart</button>
                     </div>
-                    <h4 className="product-price">{product.price}</h4>
+                    <h4 className="product-price">${product.price}</h4>
                   </div>
                 </ul>
               );

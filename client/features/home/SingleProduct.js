@@ -21,7 +21,7 @@ export const SingleProductView = () => {
         </div>
         <div id="single-product-details">
           <h1>{product.name}</h1>
-          <h3>{product.price}</h3>
+          <h3>${product.price}</h3>
           <hr></hr>
           <h4>{product.description}</h4>
 

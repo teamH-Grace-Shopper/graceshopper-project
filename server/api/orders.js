@@ -1,20 +1,9 @@
 const router = require("express").Router();
 const {
-  models: { Order, OrderItem, User },
+  models: { Order, OrderItem, User, Product },
 } = require("../db");
 module.exports = router;
 
-//middleware
-const requireToken = async (req, res, next) => {
-  try {
-    const token = req.headers.authorization;
-    const user = await User.findByToken(token);
-    req.user = user;
-    next();
-  } catch (error) {
-    next(error);
-  }
-};
 
 //GET route /api/orders - All Orders
 router.get("/", async (req, res, next) => {
@@ -58,11 +47,16 @@ router.put("/:id", async (req, res, next) => {
 });
 
 //GET route /api/orders/users/:id // ORDERs of specific user
-router.get("/users/:id", requireToken, async (req, res, next) => {
+router.get("/users/:id", async (req, res, next) => {
   try {
     const orders = await Order.findAll({
       where: { userId: req.params.id },
-      include: OrderItem,
+      include: {
+        model: OrderItem,
+        include: {
+          model: Product
+        }
+      }
     });
     res.send(orders);
   } catch (err) {
