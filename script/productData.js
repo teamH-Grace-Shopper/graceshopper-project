@@ -17,8 +17,8 @@ const loremHipsum = () =>
 const createBadSoul = () => {
     return {
         name: faker.word.verb({ length: { min: 4, max: 8}, strategy: "fail"}), 
-        price: faker.commerce.price(5, 200, 2), 
-        quantity: faker.datatype.number({ min: 10, max: 200}), 
+        price: Number(faker.commerce.price(5, 200, 2)), 
+        quantity: Number(faker.datatype.number({ min: 10, max: 200})), 
         description: loremHipsum(),
         type: "BAD"
     }
@@ -28,8 +28,8 @@ const createBadSoul = () => {
 const createGoodSoul = () => {
     return {
         name: faker.word.verb({ length: { min: 4, max: 8}, strategy: "fail"}), 
-        price: faker.commerce.price(5, 200, 2), 
-        quantity: faker.datatype.number({ min: 10, max: 200}), 
+        price: Number(faker.commerce.price(5, 200, 2)), 
+        quantity: Number(faker.datatype.number({ min: 10, max: 200})), 
         description: loremHipsum(),
         type: "GOOD"
     }

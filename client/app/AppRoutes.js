@@ -15,7 +15,6 @@ import MyAccount from "../features/account/MyAccount";
 import UserAccount from "../features/admin/UserAccount";
 import PageNotFound from "../features/PageNotFound";
 
-
 /**
  * COMPONENT
  */
@@ -31,72 +30,66 @@ const AppRoutes = () => {
 
   return (
     <>
-      <div>
-        {/* IF LOGGED IN ROUTES */}
-        {isLoggedIn ? (
-          <Routes>
-            <Route to="/*" element={<MainPage />} />
-            <Route path="/" element={<MainPage />} />
+      {/* IF LOGGED IN ROUTES */}
+      {isLoggedIn ? (
+        <Routes>
+          <Route to="/*" element={<MainPage />} />
+          <Route path="/" element={<MainPage />} />
 
-            {/* My Account Page */}
-            <Route path="/my-account" element={<MyAccount />} />
+          {/* My Account Page */}
+          <Route path="/my-account" element={<MyAccount />} />
 
-            {/* Product Routes */}
-            <Route path="/products/:id" element={<SingleProductView />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/cart" element={<Cart />} />
+          {/* Product Routes */}
+          <Route path="/products/:id" element={<SingleProductView />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/cart" element={<Cart />} />
+          
 
-            {/* ADMIN ROUTES */}
-            {isAdmin ? (
-              <Route path="/admin" element={<AdminPage />} />
-            ) : (
-              <Route element={<MainPage />} />
-            )}
-            {isAdmin ? (
-              <Route
-                path="/admin/products/edit/:productId"
-                element={<UpdateProduct />}
-              />
-            ) : null}
-            {isAdmin ? (
-              <Route
-                path="/admin/products/addProduct"
-                element={<AddProduct />}
-              />
-            ) : null}
-            {isAdmin ? (
-              <Route
-                path="/admin/user/:userId"
-                element={<UserAccount />}
-              />
-            ) : null}
-
-            {/* PAGE NOT FOUND */}
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        ) : (
-          // NOT LOGGED IN ROUTES
-          <Routes>
-            <Route to="/*" element={<MainPage />} />
-            <Route path="/" element={<MainPage />} />
+          {/* ADMIN ROUTES */}
+          {isAdmin ? (
+            <Route path="/admin" element={<AdminPage />} />
+          ) : (
+            <Route element={<MainPage />} />
+          )}
+          {isAdmin ? (
             <Route
-              path="/login"
-              element={<AuthForm name="login" displayName="Login" />}
+              path="/admin/products/edit/:productId"
+              element={<UpdateProduct />}
             />
-            <Route
-              path="/signup"
-              element={<AuthForm name="signup" displayName="Sign Up" />}
-            />
-            {/* Product Routes */}
-            <Route path="/products/:id" element={<SingleProductView />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/cart" element={<Cart />} />
+          ) : null}
+          {isAdmin ? (
+            <Route path="/admin/products/addProduct" element={<AddProduct />} />
+          ) : null}
+          {isAdmin ? (
+            <Route path="/admin/user/:userId" element={<UserAccount />} />
+          ) : null}
 
-            {/* PAGE NOT FOUND */}
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        )}
-      </div>
+          {/* PAGE NOT FOUND */}
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      ) : (
+        // NOT LOGGED IN ROUTES
+        <Routes>
+          <Route to="/*" element={<MainPage />} />
+          <Route path="/" element={<MainPage />} />
+          <Route
+            path="/login"
+            element={<AuthForm name="login" displayName="Login" />}
+          />
+          <Route
+            path="/signup"
+            element={<AuthForm name="signup" displayName="Sign Up" />}
+          />
+          {/* Product Routes */}
+          <Route path="/products/:id" element={<SingleProductView />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/cart" element={<Cart />} />
+         
+
+          {/* PAGE NOT FOUND */}
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      )}
     </>
   );
 };
