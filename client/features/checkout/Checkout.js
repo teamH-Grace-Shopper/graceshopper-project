@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
     return(
@@ -160,7 +161,7 @@ const Checkout = () => {
                     <p className="total">Total: <span className="cart-total total"><b>$30</b></span></p>
                     </div>
                 </div>
-                <button id="order-btn">ORDER YOUR SOUL</button>
+               <Link to = "/confirmation"> <button id="order-btn">ORDER YOUR SOUL</button></Link>
             </div>
         </div>
         </>

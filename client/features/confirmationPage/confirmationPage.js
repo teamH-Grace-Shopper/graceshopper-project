@@ -1,21 +1,23 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Confirmation = () => {
 
         const email = useSelector((state) => state.auth.me.email);
+        const orderNumber = useSelector((state) => state.auth.me.orderNumber)
 
     return(
         <div id= "confirmation-page">
             <div className = "confirmationBox">
-                THANK YOU
+                <h1 className = "thank-you">THANK YOU FOR YOUR PATRONAGE</h1>
                 <hr></hr>
 
-                <div className = "confirmation-text"> Your souls are being summoned</div>
-                <div className = "confirmation-text-2"> Thank you for your patronage. Your Contract ID is: (cart ID)</div>
-                <div className = "confirmation-text-3"> A confirmation contract will be sent to: {email} </div>
+                <h2 className = "confirmation-text"> Your souls are being summoned</h2>
+                <h2 className = "confirmation-text-2"> Your Contract ID is: {orderNumber}</h2>
+                <h2 className = "confirmation-text-3"> A confirmation contract will be sent to: {email} </h2>
 
-                <button>continue shopping</button> 
+                <Link to="/"> <button className = "confirmation-button">continue shopping</button> </Link>
             </div>
             
             </div>
