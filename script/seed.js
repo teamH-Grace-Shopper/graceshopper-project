@@ -102,9 +102,47 @@ async function seed() {
       city: 'Robert',
       state: 'FL',
       zipCode: 55555,
-      isAdmin: false
+      isAdmin: false,
+      // orders: [
+      //   {
+      //   id: 21,
+      //   orderNumber: "65f60d20-4b3a-4691-81ab-sdfadsfasdfdsfasdf",
+      //   completeStatus: null,
+      //   userId: 37,
+      //   orderItems: [
+      //   {
+      //   id: 2,
+      //   quantity: 1,
+      //   price: "17.00",
+      //   orderId: 1,
+      //   productId: 58,
+      //   product: {
+      //   id: 58,
+      //   name: "favour",
+      //   price: 112.00,
+      //   quantity: 163,
+      //   description: "Bushwick tofu readymade ethical PBR polaroid. Flannel quinoa Wes Anderson keytar XOXO ethnic. Bicycle rights tote bag cray trust fund pug cray mumblecore Portland distillery 8-bit four loko Godard readymade flexitarian selfies. Gentrify roof party DIY American Apparel blog narwhal mlkshk flexitarian synth sriracha next level readymade gastropub. Pork belly raw denim Tonx tattooed kale chips keytar pug Williamsburg XOXO VHS Vice. Yr distillery cornhole flannel paleo pop-up semiotics lo-fi before they sold out disrupt Austin tattooed you probably haven't heard of them cray Pinterest.\r\nHigh Life Brooklyn lo-fi vegan ennui narwhal. Beard bicycle rights twee ethical bespoke 90's plaid food truck Vice authentic Kickstarter kitsch Portland. Vice organic flexitarian food truck gluten-free DIY umami disrupt viral. Cray gastropub beard jean shorts squid. Semiotics master cleanse jean shorts butcher flexitarian Williamsburg disrupt occupy wayfarers dreamcatcher. Roof party meh sriracha sustainable literally blog butcher tattooed post-ironic Pinterest chillwave Brooklyn.\r\nSustainable Banksy VHS umami fingerstache gentrify kogi. Crucifix normcore artisan leggings kale chips skateboard occupy Tumblr flexitarian hella semiotics aesthetic. Synth Vice Cosby sweater kogi messenger bag kitsch you probably haven't heard of them art party Tumblr pop-up pork belly. Letterpress scenester sustainable Blue Bottle semiotics literally gastropub kale chips lo-fi slow-carb. Direct trade  trust fund banjo occupy single-origin coffee Blue Bottle. Narwhal vegan street art selfies Bushwick ugh retro tousled.\r\n",
+      //   type: "GOOD",
+      //   imageUrl: "https://images.unsplash.com/photo-1531318701087-32c11653dd77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      //   }
+    //     }
+    //   ]
+    // },
+  // ]},
     })
-  ])
+  ]);
+
+  await Promise.all([
+   Order.create({
+        completeStatus: null,
+        userId: 37,
+   })
+   ])
+
+
+
+
+
 
   // Create Products
   await Promise.all(productList.map(product=>Product.create(product)))

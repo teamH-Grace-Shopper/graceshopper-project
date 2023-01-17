@@ -17,13 +17,16 @@ export const fetchUser = createAsyncThunk(
 //PUT update user information - customer only?
 export const updateUserAsync = createAsyncThunk(
     "User/updateUser",
-    async (user) => {
+    async ({ id, address1, city, state, zipCode } ) => {
       try {
-        const { id,  username, email, firstName, lastName, address1, address2, city, state, zipCode } = product;
-        const updatedUser = { username, email, firstName, lastName, address1, address2, city, state, zipCode }; 
+        const token = window.localStorage.getItem("token");
         const { data } = await axios.put(
           `/api/users/${id}`,
-          updatedUser
+          { address1, city, state, zipCode },
+          {
+            headers: { authorization: token },
+          }
+          
         );
         return data;
       } catch (err) {
@@ -31,6 +34,36 @@ export const updateUserAsync = createAsyncThunk(
       }
     }
   );
+
+
+
+//AddToOrder - add product to a specific order - PUTcreate
+//DecreaseOrder - decrease product quantity in specific order
+//RemoveFromOrder - remove a product completely from order
+//ClearOrder - delete specific order from user's orders array..
+
+export const AddToUserOrderAsync = createAsyncThunk(
+  "User/addToUserOrder",
+  async ({ id, orders} ) => {
+    try {
+      const token = window.localStorage.getItem("token");
+      const { data } = await axios.put(
+        `/api/users/${id}`,
+        { orders },
+        {
+          headers: { authorization: token },
+        }
+        
+      );
+      console.log("data from addUserOrder", data);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+
 
 //DELETE  remove user - did not build backend route.. should we do this?
 
