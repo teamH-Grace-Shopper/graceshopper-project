@@ -30,7 +30,9 @@ export const MainPage = () => {
               return (
                 <ul className="test" key={product.id}>
                   <div className="product-box">
+                    <Link to={`/products/${product.id}`}>
                     <img src={product.imageUrl} className="product-image"></img>
+                    </Link>
                     <div id="product-details">
                       <h3 className="product-name">
                         <Link
