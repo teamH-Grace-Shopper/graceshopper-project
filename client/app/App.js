@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import Navbar from '../features/navbar/Navbar';
-import Sidebar from '../features/navbar/SideNav'
-import Footer from '../features/footer/footer';
-import AppRoutes from './AppRoutes';
+import React from "react";
+import Navbar from "../features/navbar/Navbar";
+import Sidebar from "../features/navbar/SideNav";
+import Footer from "../features/footer/footer";
+import AppRoutes from "./AppRoutes";
+
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       <Navbar />
       <Sidebar />
       <AppRoutes />
-      <Footer/>
+      <Footer />
     </div>
   );
 };

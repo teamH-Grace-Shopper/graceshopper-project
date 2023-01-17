@@ -31,15 +31,14 @@ const AppRoutes = () => {
 
   return (
     <>
-      <div>
-        {/* IF LOGGED IN ROUTES */}
-        {isLoggedIn ? (
-          <Routes>
-            <Route to="/*" element={<MainPage />} />
-            <Route path="/" element={<MainPage />} />
+      {/* IF LOGGED IN ROUTES */}
+      {isLoggedIn ? (
+        <Routes>
+          <Route to="/*" element={<MainPage />} />
+          <Route path="/" element={<MainPage />} />
 
-            {/* My Account Page */}
-            <Route path="/my-account" element={<MyAccount />} />
+          {/* My Account Page */}
+          <Route path="/my-account" element={<MyAccount />} />
 
             {/* Product Routes */}
             <Route path="/products/:id" element={<SingleProductView />} />
