@@ -1,0 +1,55 @@
+#confirmation-page{
+display: flex;
+justify-content: center;
+}
+
+.confirmationBox{
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid #691687;
+    /* border: none;  */
+    height: 60vh;
+    width: 100vh;
+    padding-top: 5vh;
+    margin-bottom: 10vh;
+    border-radius: 15px;
+    box-shadow: 0px 7px 7px 7px rgb(74, 62, 90);
+    }
+
+
+.thank-you{
+    font-size: 40px; 
+}
+
+.confirmation-button{
+    --b: 3px;   /* border thickness */
+    --s: .45em; /* size of the corner */
+    --color: #390b4a;
+    
+    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    color: var(--color);
+    --_p: var(--s);
+    background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .6em;
+    font-size: 16px;
+
+    border: 0;
+} 
+
+.confirmation-button:hover,
+.confirmation-button:focus-visible{
+    --_p: 0px;
+    outline-color: var(--color);
+    outline-offset: .05em;
+    border-radius: 5px;
+}
+
+.confirmation-button:active {
+    background: var(--color);
+    color: #fff;
+    border-radius: 5px;
+}

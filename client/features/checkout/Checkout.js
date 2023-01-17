@@ -234,7 +234,7 @@ const Checkout = () => {
                 })
               : <h1>You have no products in your cart!</h1>}
           </div>
-          <button id="order-btn">ORDER YOUR SOUL</button>
+          <Link to = "/confirmation"><button id="order-btn">ORDER YOUR SOUL</button></Link>
         </div>
 
         {/* <div id="cart-and-orderbtn-box">

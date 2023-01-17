@@ -107,9 +107,11 @@ const Cart = () => {
                 <span className="amount">${cartTotal}</span>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
-              <button className="checkout-button">
-                <Link to="/checkout">Check out!</Link>
+              <Link to="/checkout">
+                <button className="checkout-button">
+               Checkout!
               </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -117,7 +119,6 @@ const Cart = () => {
     </div>
   );
 };
-
 export default Cart;
 
 {

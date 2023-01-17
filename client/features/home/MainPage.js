@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsAsync, selectProducts } from "../Slices/productsSlice";
 import { addToCart } from "../Slices/cartSlice";
 
+
 export const MainPage = () => {
   const dispatch = useDispatch();
 
@@ -20,10 +21,8 @@ export const MainPage = () => {
   }
   return (
     <>
-      <div>
-      </div>
       <div id="main-product-section">
-        <h1 id="product-page-header">Featured Virtues</h1>
+        <h1 id="product-page-header">Deals With The Devil</h1>
         <hr></hr>
         <div className="view-products">
         {products
@@ -31,7 +30,9 @@ export const MainPage = () => {
               return (
                 <ul className="test" key={product.id}>
                   <div className="product-box">
+                    <Link to={`/products/${product.id}`}>
                     <img src={product.imageUrl} className="product-image"></img>
+                    </Link>
                     <div id="product-details">
                       <h3 className="product-name">
                         <Link
