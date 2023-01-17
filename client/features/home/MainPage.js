@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsAsync, selectProducts } from "../Slices/productsSlice";
 
+
 export const MainPage = () => {
   const dispatch = useDispatch();
 
