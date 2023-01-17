@@ -14,8 +14,7 @@ import AddProduct from "../features/admin/AddProduct";
 import MyAccount from "../features/account/MyAccount";
 import UserAccount from "../features/admin/UserAccount";
 import PageNotFound from "../features/PageNotFound";
-import Payment from "../features/paymentPage/paymentPage";
-
+import Confirmation from "../features/confirmationPage/confirmationPage";
 
 /**
  * COMPONENT
@@ -46,7 +45,7 @@ const AppRoutes = () => {
             <Route path="/products/:id" element={<SingleProductView />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/payment" element={<Payment />} />
+            <Route path="/confirmation" element={<Confirmation />} />
 
             {/* ADMIN ROUTES */}
             {isAdmin ? (
@@ -93,7 +92,7 @@ const AppRoutes = () => {
             <Route path="/products/:id" element={<SingleProductView />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path ="/payment" element={<Cart />} />
+            <Route path ="/confirmation" element={<Confirmation />} />
 
             {/* PAGE NOT FOUND */}
             <Route path="*" element={<PageNotFound />} />

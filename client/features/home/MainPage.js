@@ -19,8 +19,6 @@ export const MainPage = () => {
   // }
   return (
     <>
-      <div>
-      </div>
       <div id="main-product-section">
         <h1 id="product-page-header">Deals With The Devil</h1>
         <hr></hr>

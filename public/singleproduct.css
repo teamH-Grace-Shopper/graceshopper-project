@@ -10,10 +10,10 @@
     align-items: center;
 
     width: 70%;
-    position: absolute;
 
     height: 200;
     border: 10px inset #390b4a;
+    margin-bottom: .5%;
 
     /* background-image: url(https://media.gettyimages.com/id/513895948/video/bright-soft-background.jpg?s=640x640&k=20&c=Q5KgKJ8iMGvFo5tekbmL2KCHqIUD04RBq2F7uWHDAkY=);
     background-repeat: no-repeat;
