@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser, selectUser, updateUserAsync } from "../Slices/userSlice";
+import { AddToUserOrderAsync, fetchUser, selectUser, updateUserAsync } from "../Slices/userSlice";
 
 const Cart = () => {
   const username = useSelector((state) => state.auth.me.username);
@@ -15,7 +15,7 @@ const Cart = () => {
 
 
   const handleAddToOrder = (product) => {
-    console.log("Increase product quantity  to order clicked")
+    console.log("Increase product quantity  to order clicked");
     // dispatch(addToOrder(product));
   };
   const handleDecreaseOrder = (product) => {
@@ -36,7 +36,7 @@ const Cart = () => {
     <div className="cart-container">
       <h2>Shopping Cart</h2>
       {/* View if Cart is empty */}
-      {user.orders === [] ? (
+      {user.orders && user.orders.length === 0 ? (
         <div className="cart-empty">
           <p>Your cart is currently empty</p>
           <div className="start-shopping">
@@ -68,7 +68,7 @@ const Cart = () => {
                                   <img src="https://images.unsplash.com/photo-1531318701087-32c11653dd77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
                                   <div>
                                     <h3>{item.product.name}</h3>
-                                    <button onClick={() => handleRemoveFromOrder( )}>Remove</button>
+                                    <button onClick={() => handleRemoveFromOrder()}>Remove</button>
                                   </div>
                                 </div>
                                 <div className="cart-product-price">

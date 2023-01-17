@@ -35,12 +35,27 @@ export const updateUserAsync = createAsyncThunk(
     }
   );
 
-//GET single user's order
-export const fetchUserOrder = createAsyncThunk(
-  "singleUser",
-  async (id) => {
+
+
+//AddToOrder - add product to a specific order - PUTcreate
+//DecreaseOrder - decrease product quantity in specific order
+//RemoveFromOrder - remove a product completely from order
+//ClearOrder - delete specific order from user's orders array..
+
+export const AddToUserOrderAsync = createAsyncThunk(
+  "User/addToUserOrder",
+  async ({ id, orders} ) => {
     try {
-      const { data } = await axios.get(`/api/users/${id}`);
+      const token = window.localStorage.getItem("token");
+      const { data } = await axios.put(
+        `/api/users/${id}`,
+        { orders },
+        {
+          headers: { authorization: token },
+        }
+        
+      );
+      console.log("data from addUserOrder", data);
       return data;
     } catch (err) {
       console.log(err);
@@ -48,19 +63,6 @@ export const fetchUserOrder = createAsyncThunk(
   }
 );
 
-
-//PUT update single user's order
-export const updateUserOrders = createAsyncThunk(
-  "singleUser",
-  async (id) => {
-    try {
-      const { data } = await axios.get(`/api/users/${id}`);
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-);
 
 
 //DELETE  remove user - did not build backend route.. should we do this?
