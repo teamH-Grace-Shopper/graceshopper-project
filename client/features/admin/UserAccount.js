@@ -53,7 +53,7 @@ const UserAccount = () => {
                 </div>
                 <p>Order Total: ${order.orderItems ? order.orderItems.reduce((total,currVal)=>{
                     return (
-                        total + Number(currVal.price * currVal.quantity)
+                        total + Number(currVal.product.price * currVal.quantity)
                     )
                 }, 0): "No"}</p>
               </div>
