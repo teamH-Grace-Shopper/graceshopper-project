@@ -21,7 +21,7 @@ export const MainPage = () => {
       <div>
       </div>
       <div id="main-product-section">
-        <h1 id="product-page-header">Featured Virtues</h1>
+        <h1 id="product-page-header">Deals With The Devil</h1>
         <hr></hr>
         <div className="view-products">
         {products
