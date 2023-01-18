@@ -89,3 +89,25 @@ router.get("/users-cart/:id", async (req, res, next) => {
   }
 });
 
+
+//PUT route /api/orders/users-cart/:id // ORDERs of specific user
+router.put("/users-cart/:id", async (req, res, next) => {
+  try {
+    console.log("Request Headers", req.headers)
+    const userCart = await Order.findOne({
+      where: { 
+        userId: req.params.id,
+        completeStatus: null,
+      },
+      include: {
+        model: OrderItem,
+        include: {
+          model: Product
+        }
+      }
+    });
+    res.send(await userCart.update(req.body));
+  } catch (err) {
+    next(err);
+  }
+});

@@ -1,27 +1,50 @@
-import React from "react";
-import {useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { completeUserCartDatabase } from "../Slices/cartSlice";
 
 const Confirmation = () => {
+  const [date, setDate] = useState();
 
-        const email = useSelector((state) => state.auth.me.email);
-        const orderNumber = useSelector((state) => state.auth.me.orderNumber)
+  const dispatch = useDispatch();
 
-    return(
-        <div id= "confirmation-page">
-            <div className = "confirmationBox">
-                <h1 className = "thank-you">THANK YOU FOR YOUR PATRONAGE</h1>
-                <hr></hr>
+  const email = useSelector((state) => state.auth.me.email);
+  const orderNumber = useSelector((state) => state.auth.me.orderNumber);
+  console.log("state auth me", useSelector((state) => state.auth.me.id));
 
-                <h2 className = "confirmation-text"> Your souls are being summoned</h2>
-                <h2 className = "confirmation-text-2"> Your Contract ID is: {orderNumber}</h2>
-                <h2 className = "confirmation-text-3"> A confirmation contract will be sent to: {email} </h2>
+  const handleCompleteOrder = (id) => {
+    setDate(new Date());
+    const updatedCompleteOrder = {id, date}
+    dispatch(completeUserCartDatabase(updatedCompleteOrder))
+  };
+    
+  return (
+    <div id="confirmation-page">
+      <div className="confirmationBox">
+        <h1 className="thank-you">THANK YOU FOR YOUR PATRONAGE</h1>
+        <hr></hr>
 
-                <Link to="/"> <button className = "confirmation-button">continue shopping</button> </Link>
-            </div>
-            
-            </div>
-    )
-}
+        <h2 className="confirmation-text"> Your souls are being summoned</h2>
+        <h2 className="confirmation-text-2">
+          {" "}
+          Your Contract ID is: {orderNumber}
+        </h2>
+        <h2 className="confirmation-text-3">
+          {" "}
+          A confirmation contract will be sent to: {email}{" "}
+        </h2>
 
-export default Confirmation
+        <Link to="/">
+          <button
+            className="confirmation-button"
+            onClick={() => handleCompleteOrder(orderNumber)}
+          >
+            continue shopping
+          </button>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default Confirmation;
