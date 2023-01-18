@@ -7,6 +7,7 @@ import { addToCart } from "../Slices/cartSlice";
 
 
 export const MainPage = () => {
+  
   const dispatch = useDispatch();
 
   const products = useSelector(selectProducts);
