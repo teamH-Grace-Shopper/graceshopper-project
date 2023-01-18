@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../app/store";
 import SettingsSharpIcon from '@mui/icons-material/SettingsSharp';
 import { selectUserCart } from "../Slices/cartSlice";
+import { clearOrder } from "../Slices/cartSlice";
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -13,6 +14,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const logoutAndRedirectHome = () => {
     dispatch(logout());
+    dispatch(clearOrder())
     navigate("/");
   };
   const firstName = useSelector((state) => state.auth.me.firstName);
