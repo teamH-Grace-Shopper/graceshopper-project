@@ -95,6 +95,7 @@
   #search-bar{
     width: 70%;
     height: 40px;
+    font-size: 12px;
     background: transparent;
     border-top: none;
     border-right: none;

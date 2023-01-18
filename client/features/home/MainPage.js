@@ -19,9 +19,10 @@ export const MainPage = () => {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product))
+    alert(`Added ${product.name} to your cart`)
   }
   return (
-    <>
+    <div id="main-body">
       <div id="main-product-section">
         <h1 id="product-page-header">Deals With The Devil</h1>
         <div className="view-products">
@@ -53,7 +54,7 @@ export const MainPage = () => {
           : null}
           </div>
       </div>
-    </>
+    </div>
   );
 };
 

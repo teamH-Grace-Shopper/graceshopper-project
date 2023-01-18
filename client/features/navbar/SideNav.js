@@ -20,7 +20,6 @@ const Sidebar = () => {
     const openSideBar = () => {
         document.getElementById("side-nav").style.width = "250px"
         document.querySelector(".open-button").style.display = "none"
-        document.getElementById("main-product-section").style.width = "80%"
     }
     const closeSideBar = () => {
         document.getElementById("side-nav").style.width = "0";

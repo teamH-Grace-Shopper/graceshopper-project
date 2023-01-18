@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct, selectProduct } from "../Slices/productSlice";
+import { addToCart } from "../Slices/cartSlice";
 
 export const SingleProductView = () => {
   const dispatch = useDispatch();
@@ -14,11 +15,16 @@ export const SingleProductView = () => {
     dispatch(fetchProduct(id));
   }, [dispatch]);
 
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    alert(`Added ${product.name} to the cart`)
+  };
+
   return (
     <div id="box">
       <div id="single-product-view-box">
         <div id="single-product-image">
-        <img className = "singleProductImage" src={product.imageUrl}></img>
+          <img className="singleProductImage" src={product.imageUrl}></img>
         </div>
         <div id="single-product-details">
           <h1>{product.name}</h1>
@@ -26,10 +32,14 @@ export const SingleProductView = () => {
           <hr></hr>
           <h4>{product.description}</h4>
 
-          
-          <Link to= "/cart">
-            <button className="add-to-cart">add to cart</button>
-            </Link>
+          {/* <Link to="/cart"> */}
+            <button
+              className="add-to-cart"
+              onClick={() => handleAddToCart(product)}
+            >
+              add to cart
+            </button>
+          {/* </Link> */}
           <h4>In Stock: {product.quantity ? "YES" : "NO"}</h4>
           <h5>Category:{product.type}</h5>
         </div>
