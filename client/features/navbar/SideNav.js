@@ -40,7 +40,6 @@ const Sidebar = () => {
             <button className="close-button" onClick= {closeSideBar}>X</button>
             <a className="link" onClick = {filterGood}>Good Souls</a>
             <a className="link" onClick = {filterBad}>Bad Souls</a>
-            <a className="link">All Souls</a>
         </div>
         </>
 
