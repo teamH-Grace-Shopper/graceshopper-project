@@ -7,26 +7,69 @@ import {
   selectUser,
   updateUserAsync,
 } from "../Slices/userSlice";
-import { fetchCartAsync, selectCart, addToCart, decreaseQuantity, increaseQuantity, removeItem } from "../Slices/cartSlice";
+import {
+  fetchCartAsync,
+  selectUserCart,
+  decreaseQuantity,
+  increaseQuantity,
+  removeItem,
+  clearOrder,
+  addItemToCartDatabase,
+  increaseCartItemInDb,
+} from "../Slices/cartSlice";
+import { selectProducts } from "../Slices/productsSlice";
 
-const Cart = () => {
-  // const username = useSelector((state) => state.auth.me.username);
-  // const userId = useSelector((state) => state.auth.me.id);
-  // const user = useSelector(selectUser);
+const Cart = ({ isLoggedIn }) => {
+  const user = useSelector(selectUser);
+  const userId = useSelector((state) => state.auth.me.id);
 
-  const cart = useSelector(selectCart);
-  console.log("cart: ", cart);
-  // console.log("user: ", user);
+  console.log("userId: ", userId);
+  console.log("user: ", user);
+  console.log("logged in?", isLoggedIn);
 
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchUser(userId));
-  //   dispatch(fetchCartAsync(userId));
-  // }, []);
+  const products = useSelector(selectProducts)
+  const cart = useSelector(selectUserCart);
+  console.log("cart: ", cart);
+
+  // find order ID
+  console.log(
+    "user orderId: ",
+    user.orders
+      ? user.orders.find((order) => order.completeStatus === null)
+      : "nothing"
+  );
+  const order = user.orders
+    ? user.orders.find((order) => order.completeStatus === null)
+    : false;
+  const orderId = order ? order.id : false;
+  console.log("orderId:", orderId);
+
+  // const currentCart = cart.find((item) => item.completeStatus === null);
+  // console.log("currentCart: ", currentCart)
+
+  // console.log("users orders:", user.orders ? user.orders.find((item) => item.completeStatus === null) : null)
+
+  // console.log("order: ", order.orderItems ? order.orderItems : "NO")
+
+  // const itemsInCart = order.orderItems ? order.orderItems : "nothing"
+
+  // console.log("itemsInCart: ", itemsInCart)
+
+  useEffect(() => {
+    if (userId) dispatch(fetchUser(userId));
+    if (userId) dispatch(fetchCartAsync({ userId, orderId, products}));
+  }, [dispatch, userId]);
 
   const handleIncreaseToOrder = (product) => {
     console.log("Increase product quantity  to order clicked");
+    console.log("product increased: ", product);
     dispatch(increaseQuantity(product));
+    // if (isLoggedIn){
+    //   const productId = product.id
+    //   const cartQuantity = product.cartQuantity
+    //   dispatch(increaseCartItemInDb({userId, cartQuantity, productId, orderId}))
+    // }
   };
   const handleDecreaseOrder = (product) => {
     console.log("Decrease product quantity in order clicked");
@@ -38,10 +81,16 @@ const Cart = () => {
   };
   const handleClearOrder = () => {
     console.log("Delete order clicked");
-    // dispatch(clearOrder());
+    dispatch(clearOrder());
   };
 
-  const cartTotal = cart.reduce((acc, item) => {
+  // if (!userId) {
+
+  // } else {
+  //   let userCart = user.orders.find((order) => order.completeStatus === null);
+  //   cart = userCart;
+  // }
+  const cartProductTotalPrice = cart.reduce((acc, item) => {
     acc += item.price * item.cartQuantity;
     return acc;
   }, 0);
@@ -78,16 +127,22 @@ const Cart = () => {
                         <img src="https://images.unsplash.com/photo-1531318701087-32c11653dd77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
                         <div>
                           <h3>{order.name}</h3>
-                          <button onClick={() => handleRemoveFromOrder(order.id)}>
+                          <button
+                            onClick={() => handleRemoveFromOrder(order.id)}
+                          >
                             Remove
                           </button>
                         </div>
                       </div>
                       <div className="cart-product-price">${order.price}</div>
                       <div className="cart-product-quantity">
-                        <button onClick={() => handleDecreaseOrder(order)}>-</button>
+                        <button onClick={() => handleDecreaseOrder(order)}>
+                          -
+                        </button>
                         <div className="count">{order.cartQuantity}</div>
-                        <button onClick={() => handleIncreaseToOrder(order)}>+</button>
+                        <button onClick={() => handleIncreaseToOrder(order)}>
+                          +
+                        </button>
                       </div>
                       <div className="cart-product-total-price">
                         ${order.price * order.cartQuantity}
@@ -96,6 +151,37 @@ const Cart = () => {
                   );
                 })
               : null}
+            {/* // : userId && currentCart ? currentCart.orderItems.map((order) => {
+              //   console.log("ORDER: ", order)
+              //       return (
+              //         <div className="cart-item" key={order.productId}>
+              //           <div className="cart-product">
+              //             <img src="https://images.unsplash.com/photo-1531318701087-32c11653dd77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
+              //             <div>
+              //               <h3>{order.product.name}</h3>
+              //               <button
+              //                 onClick={() => handleRemoveFromOrder(order.productId)}
+              //               >
+              //                 Remove
+              //               </button>
+              //             </div>
+              //           </div>
+              //           <div className="cart-product-price">${order.product.price}</div>
+              //           <div className="cart-product-quantity">
+              //             <button onClick={() => handleDecreaseOrder(order.product)}>
+              //               -
+              //             </button>
+              //             <div className="count">{order.cartQuantity}</div>
+              //             <button onClick={() => handleIncreaseToOrder(order.product)}>
+              //               +
+              //             </button>
+              //           </div>
+              //           <div className="cart-product-total-price">
+              //             ${order.price * order.cartQuantity}
+              //           </div>
+              //         </div>
+              //       );
+              //     }) : "Nothing Here"} */}
           </div>
           <div className="cart-summary">
             <button className="clear-btn" onClick={() => handleClearOrder()}>
@@ -104,7 +190,7 @@ const Cart = () => {
             <div className="cart-checkout">
               <div className="subtotal">
                 <span>Subtotal</span>
-                <span className="amount">${cartTotal}</span>
+                <span className="amount">${cartProductTotalPrice}</span>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
               <button className="checkout-button">

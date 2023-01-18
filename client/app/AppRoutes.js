@@ -9,6 +9,7 @@ import SingleProductView from "../features/home/SingleProduct";
 import Checkout from "../features/checkout/Checkout";
 import AdminPage from "../features/admin/AdminPage";
 import Cart from "../features/cart/Cart";
+import LoggedInCart from "../features/cart/LoggedInCart";
 import UpdateProduct from "../features/admin/UpdateProduct";
 import AddProduct from "../features/admin/AddProduct";
 import MyAccount from "../features/account/MyAccount";
@@ -22,6 +23,8 @@ import PageNotFound from "../features/PageNotFound";
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const isAdmin = useSelector((state) => state.auth.me.isAdmin);
+  const userId = useSelector((state)=>state.auth.me.id)
+  const user = useSelector((state)=>state.auth.me)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,7 +45,8 @@ const AppRoutes = () => {
           {/* Product Routes */}
           <Route path="/products/:id" element={<SingleProductView />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart userId={userId} user={user} isLoggedIn={isLoggedIn} />} />
+          {/* <Route path="/cart" element={<LoggedInCart userId={userId} user={user} />} /> */}
           
 
           {/* ADMIN ROUTES */}
@@ -83,7 +87,7 @@ const AppRoutes = () => {
           {/* Product Routes */}
           <Route path="/products/:id" element={<SingleProductView />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart userId={userId} user={user} />} />
          
 
           {/* PAGE NOT FOUND */}
