@@ -29,11 +29,11 @@ const Sidebar = () => {
     }
 
     const filterGood = () => {
-        return products.filter(product => product.type.includes("GOOD"))
+      console.log(products.filter(product => product.type.includes("GOOD")))
     }
 
     const filterBad = () => {
-       return products.filter(product => product.type.includes("BAD"))
+      console.log(products.filter(product => product.type.includes("BAD")))
     }
     return(
         <>
