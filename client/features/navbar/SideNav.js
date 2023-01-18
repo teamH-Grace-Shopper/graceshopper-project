@@ -5,13 +5,12 @@ import { selectProducts } from '../Slices/productsSlice';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { fetchProductsAsync } from '../Slices/productsSlice';
+import { filterGoodProducts } from '../Slices/productsSlice';
+import { filterBadProducts } from '../Slices/productsSlice';
 
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-
-  const products = useSelector(selectProducts);
-
   
   useEffect(() => {
     dispatch(fetchProductsAsync());
@@ -28,11 +27,11 @@ const Sidebar = () => {
     }
 
     const filterGood = () => {
-      console.log(products.filter(product => product.type.includes("GOOD")))
+      dispatch(filterGoodProducts())
     }
 
     const filterBad = () => {
-      console.log(products.filter(product => product.type.includes("BAD")))
+      dispatch(filterBadProducts())
     }
     return(
         <>
