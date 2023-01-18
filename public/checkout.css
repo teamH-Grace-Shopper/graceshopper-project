@@ -2,8 +2,8 @@
     /* border: 1px solid red; */
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    height: 150vh;
+    justify-content: space-evenly;
+    height: 100vh;
 }
 
 
@@ -88,8 +88,8 @@ color: grey;
   padding-right: 16px;
   position: relative;
   text-decoration: none;
-  transition: box-shadow .15s,transform .15s;
-  will-change: box-shadow,transform;
+  /* transition: box-shadow .15s,transform .15s;
+  will-change: box-shadow,transform; */
   font-size: 18px;
   margin: 20px;
 }

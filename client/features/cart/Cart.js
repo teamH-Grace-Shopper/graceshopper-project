@@ -193,9 +193,11 @@ const Cart = ({ isLoggedIn }) => {
                 <span className="amount">${cartProductTotalPrice}</span>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
-              <button className="checkout-button">
-                <Link to="/checkout">Check out!</Link>
+              <Link to="/checkout">
+                <button className="checkout-button">
+               Checkout!
               </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -203,7 +205,6 @@ const Cart = ({ isLoggedIn }) => {
     </div>
   );
 };
-
 export default Cart;
 
 {

@@ -15,6 +15,7 @@ import AddProduct from "../features/admin/AddProduct";
 import MyAccount from "../features/account/MyAccount";
 import UserAccount from "../features/admin/UserAccount";
 import PageNotFound from "../features/PageNotFound";
+import Confirmation from "../features/confirmationPage/confirmationPage";
 
 /**
  * COMPONENT
@@ -42,31 +43,36 @@ const AppRoutes = () => {
           {/* My Account Page */}
           <Route path="/my-account" element={<MyAccount />} />
 
-          {/* Product Routes */}
-          <Route path="/products/:id" element={<SingleProductView />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/cart" element={<Cart userId={userId} user={user} isLoggedIn={isLoggedIn} />} />
-          {/* <Route path="/cart" element={<LoggedInCart userId={userId} user={user} />} /> */}
-          
+            {/* Product Routes */}
+            <Route path="/products/:id" element={<SingleProductView />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/confirmation" element={<Confirmation />} />
 
-          {/* ADMIN ROUTES */}
-          {isAdmin ? (
-            <Route path="/admin" element={<AdminPage />} />
-          ) : (
-            <Route element={<MainPage />} />
-          )}
-          {isAdmin ? (
-            <Route
-              path="/admin/products/edit/:productId"
-              element={<UpdateProduct />}
-            />
-          ) : null}
-          {isAdmin ? (
-            <Route path="/admin/products/addProduct" element={<AddProduct />} />
-          ) : null}
-          {isAdmin ? (
-            <Route path="/admin/user/:userId" element={<UserAccount />} />
-          ) : null}
+            {/* ADMIN ROUTES */}
+            {isAdmin ? (
+              <Route path="/admin" element={<AdminPage />} />
+            ) : (
+              <Route element={<MainPage />} />
+            )}
+            {isAdmin ? (
+              <Route
+                path="/admin/products/edit/:productId"
+                element={<UpdateProduct />}
+              />
+            ) : null}
+            {isAdmin ? (
+              <Route
+                path="/admin/products/addProduct"
+                element={<AddProduct />}
+              />
+            ) : null}
+            {isAdmin ? (
+              <Route
+                path="/admin/user/:userId"
+                element={<UserAccount />}
+              />
+            ) : null}
 
           {/* PAGE NOT FOUND */}
           <Route path="*" element={<PageNotFound />} />
@@ -87,7 +93,7 @@ const AppRoutes = () => {
           {/* Product Routes */}
           <Route path="/products/:id" element={<SingleProductView />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/cart" element={<Cart userId={userId} user={user} />} />
+          <Route path="/cart" element={<Cart />} />
          
 
           {/* PAGE NOT FOUND */}
