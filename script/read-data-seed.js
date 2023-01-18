@@ -75,7 +75,7 @@ async function seed() {
       description: loremHipsum(),
       type: "GOOD",
       stockAmount: 50,
-      imageUrl: 
+      imageUrl: "https://unsplash.com/photos/aiyBwbrWWlo"
     },
     {
       name: "Hope",
