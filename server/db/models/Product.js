@@ -15,14 +15,22 @@ const Product = db.define('product', {
             min: 0
         }
     },
-    quantity: {
+    cartQuantity: {
+        type: INTEGER,
+        valid: {
+            min: 0,
+            max: Infinity
+        },
+        defaultValue: 1
+    },
+    stockAmount: {
         type: INTEGER,
         allowNull: false,
         valid: {
             min: 0,
             max: Infinity
         },
-        defaultValue: 0
+        defaultValue: 10
     },
     description: {
         type: TEXT

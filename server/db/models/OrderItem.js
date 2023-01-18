@@ -3,7 +3,7 @@ const { INTEGER, DECIMAL } = Sequelize
 const db = require('../db');
 
 const OrderItem = db.define('orderItem', {
-    quantity: {
+    cartQuantity: {
         type: INTEGER,
         allowNull: false,
         defaultValue: 1,
@@ -13,7 +13,6 @@ const OrderItem = db.define('orderItem', {
     },
     price: {
         type: DECIMAL,
-        allowNull: false,
         valid: {
             min: 0
         }

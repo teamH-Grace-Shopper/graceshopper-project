@@ -49,8 +49,11 @@ router.put("/:id", async (req, res, next) => {
 //GET route /api/orders/users/:id // ORDERs of specific user
 router.get("/users/:id", async (req, res, next) => {
   try {
+    console.log("Request Headers", req.headers)
     const orders = await Order.findAll({
-      where: { userId: req.params.id },
+      where: { 
+        userId: req.params.id 
+      },
       include: {
         model: OrderItem,
         include: {
@@ -63,3 +66,4 @@ router.get("/users/:id", async (req, res, next) => {
     next(err);
   }
 });
+
