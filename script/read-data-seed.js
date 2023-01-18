@@ -62,74 +62,132 @@ async function seed() {
 
   const productList = [
     {
-      name: "Desire",
+      name: "Integrity",
       price: 10.00,
       description: loremHipsum(),
-      type: "BAD",
-      stockAmount: 50
+      type: "Good",
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/L4YGuSg0fxs"
     },
     {
-      name: "Kindness",
+      name: "Diligence",
       price: 12.00,
       description: loremHipsum(),
       type: "GOOD",
-      stockAmount: 50
+      stockAmount: 50,
+      imageUrl: 
     },
     {
-      name: "Severity",
+      name: "Hope",
       price: 8.00,
       description: loremHipsum(),
-      type: "BAD",
-      stockAmount: 50
+      type: "GOOD",
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/4qHWTuP_RLw"
     },
     {
-      name: "Harmony",
+      name: "Courage",
       price: 15.00,
       description: loremHipsum(),
       type: "GOOD",
-      stockAmount: 50
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/9FMDYPCv8mQ"
     },
     {
-      name: "Greed",
+      name: "Patience",
       price: 8.00,
       description: loremHipsum(),
-      type: "BAD",
-      stockAmount: 50
+      type: "GOOD",
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/dSIcpkddKrM"
     },
     {
       name: "Humility",
       price: 13.00,
       description: loremHipsum(),
       type: "GOOD",
-      stockAmount: 50
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/i5Kx0P8A0d4"
     },
     {
-      name: "Lust",
+      name: "Temperance",
       price: 9.00,
       description: loremHipsum(),
-      type: "BAD",
-      stockAmount: 50
+      type: "GOOD",
+      stockAmount: 50, 
+      imageUrl: "https://unsplash.com/photos/-HBGtRO3dMM"
     },
     {
-      name: "Harmony",
+      name: "Charity",
       price: 18.00,
       description: loremHipsum(),
       type: "GOOD",
-      stockAmount: 50
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/SqjhKY9877M"
+    },
+    {
+      name: "Kindness",
+      price: 4.00,
+      description: loremHipsum(),
+      type: "GOOD",
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/XX2WTbLr3r8"
+    },
+    {
+      name: "Pride",
+      price: 25.00,
+      description: loremHipsum(),
+      type: "BAD",
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/ouVAsbiwzlo"
+    },
+    {
+      name: "Lust",
+      price: 15.00,
+      description: loremHipsum(),
+      type: "Bade",
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/eLsb0XBZLKs"
+    },
+    {
+      name: "Envy",
+      price: 18.00,
+      description: loremHipsum(),
+      type: "BAD",
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/j8a-TEakg78"
+    },
+    {
+      name: "Greed",
+      price: 10.00,
+      description: loremHipsum(),
+      type: "BAD",
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/3gRUlEJoVfY"
+    },
+    {
+      name: "Wrath",
+      price: 25.00,
+      description: loremHipsum(),
+      type: "BAD",
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/CLeKx9-Pg6g"
+    },
+    {
+      name: "Sloth",
+      price: 9.00,
+      description: loremHipsum(),
+      type: "BAD",
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/OoN9JCrF_Og"
     },
     {
       name: "Gluttony",
-      price: 4.00,
+      price: 13.00,
       description: loremHipsum(),
       type: "BAD",
-      stockAmount: 50
-    },
-    {
-      name: "Royalty",
-      price: 25.00,
-      description: loremHipsum(),
-      type: "GOOD",
-      stockAmount: 50
+      stockAmount: 50,
+      imageUrl: "https://unsplash.com/photos/FFn2-TW8pxk"
     },
   ];
   const orders = [
