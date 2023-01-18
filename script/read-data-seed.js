@@ -65,7 +65,7 @@ async function seed() {
       name: "Integrity",
       price: 10.00,
       description: loremHipsum(),
-      type: "Good",
+      type: "GOOD",
       stockAmount: 50,
       imageUrl: "https://unsplash.com/photos/L4YGuSg0fxs"
     },
@@ -145,7 +145,7 @@ async function seed() {
       name: "Lust",
       price: 15.00,
       description: loremHipsum(),
-      type: "Bade",
+      type: "BAD",
       stockAmount: 50,
       imageUrl: "https://unsplash.com/photos/eLsb0XBZLKs"
     },
