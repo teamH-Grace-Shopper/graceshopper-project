@@ -32,10 +32,6 @@ const Checkout = () => {
                 <label className="contact-input-title">Last Name</label>
                 <input className="contact-input input-box"></input>
               </div>
-              {/* <div className="contact-input-box">
-                <label className="contact-input-title">Phone</label>
-                <input className="contact-input input-box"></input>
-              </div> */}
               <div className="contact-input-box">
                 <label className="contact-input-title">Email</label>
                 <input className="contact-input input-box"></input>

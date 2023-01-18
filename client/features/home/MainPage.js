@@ -20,10 +20,9 @@ export const MainPage = () => {
     dispatch(addToCart(product))
   }
   return (
-    <>
+    <div id="main-body">
       <div id="main-product-section">
         <h1 id="product-page-header">Deals With The Devil</h1>
-        <hr></hr>
         <div className="view-products">
         {products
           ? products.map((product) => {
@@ -53,7 +52,7 @@ export const MainPage = () => {
           : null}
           </div>
       </div>
-    </>
+    </div>
   );
 };
 

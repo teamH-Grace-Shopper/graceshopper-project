@@ -1,12 +1,11 @@
+
 #checkout-page{
     /* border: 1px solid red; */
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    height: 100vh;
+    justify-content: center;
+    height: 100%;
 }
-
-
 
 #checkout-page h1{
     margin: 20px;
@@ -20,7 +19,7 @@
 
 #contact-info-box, #shipping-address-box, #billing-address-box, #payment-details-box{
     border: 3px solid #691687;
-    height: 100px;
+    height: 100%;
     margin: 5px;
     box-shadow: -3px 3px 7px 3px rgb(74, 62, 90);
     margin-top: 30px;
