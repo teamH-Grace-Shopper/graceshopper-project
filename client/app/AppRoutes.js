@@ -9,6 +9,7 @@ import SingleProductView from "../features/home/SingleProduct";
 import Checkout from "../features/checkout/Checkout";
 import AdminPage from "../features/admin/AdminPage";
 import Cart from "../features/cart/Cart";
+import LoggedInCart from "../features/cart/LoggedInCart";
 import UpdateProduct from "../features/admin/UpdateProduct";
 import AddProduct from "../features/admin/AddProduct";
 import MyAccount from "../features/account/MyAccount";
@@ -23,6 +24,8 @@ import Confirmation from "../features/confirmationPage/confirmationPage";
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const isAdmin = useSelector((state) => state.auth.me.isAdmin);
+  const userId = useSelector((state)=>state.auth.me.id)
+  const user = useSelector((state)=>state.auth.me)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -71,32 +74,32 @@ const AppRoutes = () => {
               />
             ) : null}
 
-            {/* PAGE NOT FOUND */}
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        ) : (
-          // NOT LOGGED IN ROUTES
-          <Routes>
-            <Route to="/*" element={<MainPage />} />
-            <Route path="/" element={<MainPage />} />
-            <Route
-              path="/login"
-              element={<AuthForm name="login" displayName="Login" />}
-            />
-            <Route
-              path="/signup"
-              element={<AuthForm name="signup" displayName="Sign Up" />}
-            />
-            {/* Product Routes */}
-            <Route path="/products/:id" element={<SingleProductView />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path ="/confirmation" element={<Confirmation />} />
+          {/* PAGE NOT FOUND */}
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      ) : (
+        // NOT LOGGED IN ROUTES
+        <Routes>
+          <Route to="/*" element={<MainPage />} />
+          <Route path="/" element={<MainPage />} />
+          <Route
+            path="/login"
+            element={<AuthForm name="login" displayName="Login" />}
+          />
+          <Route
+            path="/signup"
+            element={<AuthForm name="signup" displayName="Sign Up" />}
+          />
+          {/* Product Routes */}
+          <Route path="/products/:id" element={<SingleProductView />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/cart" element={<Cart />} />
+         
 
-            {/* PAGE NOT FOUND */}
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        )}
+          {/* PAGE NOT FOUND */}
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      )}
     </>
   );
 };
