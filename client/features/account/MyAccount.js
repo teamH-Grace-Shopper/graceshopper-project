@@ -149,8 +149,8 @@ const MyAccount = () => {
 
   return (
     <div>
-      <div>
-        <p>Welcome back {name}!</p>
+      <div style={{fontSize: "1.5rem", width: "100%", display: "flex", justifyContent: "center", fontFamily: "'Playfair Display', serif", fontWeight: "bold"}}>
+        <p >WELCOME BACK {name.toUpperCase()}!</p>
       </div>
 
       <Box sx={{ width: "100%" }}>
@@ -180,11 +180,9 @@ const MyAccount = () => {
             <div className="cart-container">
               {user.orders && user.orders.length ? (
                 user.orders.map((order) => {
+                  console.log("order: ", order);
                   return (
-                    <div
-                      key={order.id}
-                      // style={{ border: "1px solid black" }}
-                    >
+                    <div key={order.id} style={{ border: "1px solid black",padding: "25px" }}>
                       {order.completeStatus ? (
                         <>
                           <p>Order Number: {order.orderNumber}</p>
@@ -197,45 +195,16 @@ const MyAccount = () => {
                               ? order.orderItems.reduce((total, currVal) => {
                                   return (
                                     total +
-                                    Number(currVal.price * currVal.quantity)
+                                    Number(
+                                      currVal.product.price *
+                                        currVal.product.cartQuantity
+                                    )
                                   );
                                 }, 0)
                               : "Not completed"}
                           </p>
                         </>
-                      ) : (
-                        //if no date on complete status
-                        <div className="cart-checkout">
-                          <h2>Order not completed yet</h2>
-                        
-                          {order.orderItems
-                            ? order.orderItems.map((item) => {
-                                return (
-                                  <p key={item.product.id}>
-                                    {/* {" "} */}
-                                    Product name: {item.product.name}
-                                  </p>
-                                );
-                              })
-                            : "no order items/products"}
-                          <div>Items in Order: {order.orderItems.length}</div>
-                          <p id="order-total">
-                            Order Total: $
-                            {order.orderItems
-                              ? order.orderItems.reduce((total, currVal) => {
-                                  return (
-                                    total +
-                                    Number(currVal.product.price * currVal.quantity)
-                                  );
-                                }, 0)
-                              : "Not completed"}
-                          </p>
-
-                          <button>
-                            <Link to="/checkout">Check out!</Link>
-                          </button>
-                        </div>
-                      )}
+                      ) : null}
                     </div>
                   );
                 })
