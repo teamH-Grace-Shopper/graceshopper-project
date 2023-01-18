@@ -50,6 +50,8 @@ const AppRoutes = () => {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/confirmation" element={<Confirmation />} />
+            <Route path="/contact" element={<ContactForm />}></Route>
+            <Route path="/AboutUs" element={<AboutUs />}></Route>
 
             {/* ADMIN ROUTES */}
             {isAdmin ? (
