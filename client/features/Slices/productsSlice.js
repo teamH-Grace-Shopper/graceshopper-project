@@ -56,7 +56,15 @@ export const deleteProductAsync = createAsyncThunk(
 const ProductsSlice = createSlice({
   name: "products",
   initialState: [],
-  reducers: {},
+  reducers: {    
+    filterGoodProducts(state, action){
+    return state.filter(product => product.type.includes("GOOD"));
+  },
+  filterBadProducts(state, action){
+    return state.filter(product => product.type.includes("BAD"))
+  },
+},
+
   extraReducers: (builder) => {
     builder.addCase(fetchProductsAsync.fulfilled, (state, action) => {
       return action.payload;
@@ -67,11 +75,12 @@ const ProductsSlice = createSlice({
     builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
       return state.filter((product) => product.id !== action.payload.id);
     });
-  },
+}
 });
 
 export const selectProducts = (state) => {
   return state.products;
 };
 
+export const {filterGoodProducts, filterBadProducts} = ProductsSlice.actions
 export default ProductsSlice.reducer;

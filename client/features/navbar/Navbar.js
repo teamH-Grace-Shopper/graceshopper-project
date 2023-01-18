@@ -23,6 +23,7 @@ const Navbar = () => {
     document.querySelector("#login-signup-input").style.display = "block";
   };
 
+ 
   return (
     <div id="navbarBox">
       <Link to="/"><h1 id="storeName">
