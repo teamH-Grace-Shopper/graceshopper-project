@@ -1,3 +1,9 @@
+
+#main-body{
+    display: flex;
+    justify-content: center;
+}
+
 #main-product-section{
     border: 10px ridge #390b4a;
     box-shadow: -7px 7px 15px 3px gray;
