@@ -37,18 +37,34 @@ export const authenticate = createAsyncThunk(
     { firstName, lastName, email, username, password, address1, method },
     thunkAPI
   ) => {
+    // cart from localStorage if !cart
+    const cart = window.localStorage.getItem("cartItems");
     try {
-      const res = await axios.post(`/auth/${method}`, {
-        firstName,
-        lastName,
-        email,
-        username,
-        password,
-        address1
-      });
-      console.log("response data", res)
-      window.localStorage.setItem(TOKEN, res.data.token);
-      thunkAPI.dispatch(me());
+      if (!cart) {
+        const res = await axios.post(`/auth/${method}`, {
+          firstName,
+          lastName,
+          email,
+          username,
+          password,
+          address1,
+        });
+        console.log("response data", res);
+        window.localStorage.setItem(TOKEN, res.data.token);
+        thunkAPI.dispatch(me());
+      } else {
+        const res = await axios.post(`/auth/${method}`, {
+          firstName,
+          lastName,
+          email,
+          username,
+          password,
+          address1,
+        }, cart);
+        console.log("response data", res);
+        window.localStorage.setItem(TOKEN, res.data.token);
+        thunkAPI.dispatch(me());
+      }
     } catch (err) {
       if (err.response.data) {
         return thunkAPI.rejectWithValue(err.response.data);
@@ -70,6 +86,7 @@ export const authSlice = createSlice({
   },
   reducers: {
     logout(state, action) {
+      window.localStorage.removeItem("cartItems")
       window.localStorage.removeItem(TOKEN);
       state.me = {};
       state.error = null;

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../app/store";
 import SettingsSharpIcon from '@mui/icons-material/SettingsSharp';
+import { selectUserCart } from "../Slices/cartSlice";
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -12,10 +13,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const logoutAndRedirectHome = () => {
     dispatch(logout());
-    navigate("/login");
+    navigate("/");
   };
   const firstName = useSelector((state) => state.auth.me.firstName);
-
+  const cart = useSelector(selectUserCart);
   const showLoginSignUp = () => {
     document.querySelector("#login-signup-input").style.display = "block";
   };
@@ -84,7 +85,7 @@ const Navbar = () => {
         <div id="icon-box">
           <Link to="/cart" className="cartButton">
             <img src="https://www.pngkey.com/png/full/307-3071593_accessories-shopping-cart-icon-white.png"></img>
-            
+            <span style={{position: "absolute", top: "20px", right: "32px", fontSize: "1.5rem"}}>{cart?cart.length : 0}</span>
           </Link>
         </div>
       </div>

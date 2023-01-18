@@ -18,6 +18,7 @@ export const MainPage = () => {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product))
+    alert(`Added ${product.name} to your cart`)
   }
   return (
     <>

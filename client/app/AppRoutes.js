@@ -94,7 +94,7 @@ const AppRoutes = () => {
           <Route path="/products/:id" element={<SingleProductView />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/cart" element={<Cart />} />
-         
+          <Route path="/confirmation" element={<Confirmation />} />
 
           {/* PAGE NOT FOUND */}
           <Route path="*" element={<PageNotFound />} />

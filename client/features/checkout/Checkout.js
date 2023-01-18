@@ -3,26 +3,32 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser, selectUser, updateUserAsync } from "../Slices/userSlice";
+import { selectUserCart } from "../Slices/cartSlice";
 
 const Checkout = () => {
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const username = useSelector((state) => state.auth.me.username);
   const userId = useSelector((state) => state.auth.me.id);
   const user = useSelector(selectUser);
+  const cart = useSelector(selectUserCart);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUser(userId));
   }, []);
 
+  const cartProductTotalPrice = cart.reduce((acc, item) => {
+    acc += item.price * item.cartQuantity;
+    return acc;
+  }, 0);
+
   return (
     <>
       <div id="checkout-page">
         <div id="client-details">
-
           <div id="contact-info-box">
             <h1>Contact Information:</h1>
             <div id="contact-info">
-
               <div className="contact-input-box">
                 <label className="contact-input-title">First Name</label>
                 <input className="contact-input input-box"></input>
@@ -42,7 +48,6 @@ const Checkout = () => {
               </div>
             </div>
           </div>
-
 
           <div id="shipping-address-box">
             <h1>Shipping Address:</h1>
@@ -172,86 +177,84 @@ const Checkout = () => {
           </div>
         </div>
 
-        <div id="cart-and-orderbtn-box">
+        <div id="cart-and-orderbtn-box" style={{display: "flex", flexDirection:"column"}}>
           <h1>CHECKOUT</h1>
           <div id="cart-items">
-            {user.orders && user.orders.length
-              ? user.orders.map((order) => {
-                  return (
-                    <div className="cart-container" key={order.id}>
-                      {/* if order is completed */}
-                      {order.completeStatus ? (
-                        <h1>You have no products in your cart!</h1>
-                      ) : (
-                        <>
-                          <h4>
-                            {" "}
-                            Cart:{" "}
-                            <span className="cart-total">
-                              {order.orderItems.length} items
-                            </span>
-                          </h4>
-                          {order.orderItems
-                            ? order.orderItems.map((item) => {
-                                return (
-                                  <p key={item.product.id}>
-                                    {item.product.name}
-                                    <span className="price">
-                                      ${item.product.price}
-                                    </span>
-                                  </p>
-                                );
-                              })
-                            : null}
+            {cart && cart.length ? (
+              cart.map((orderItem) => {
+                console.log("orderItem: ", orderItem);
+                return (
+                  <div className = "cart-container" key={orderItem.id}>
+                    <p>Item: {orderItem.name}</p>
+                    <p> Quantity: {orderItem.price}</p>
+                    <p> Total: ${orderItem.price * orderItem.cartQuantity}</p>
+                  </div>
+                );
+              })
+            ) : (
+              <h1> No items in your cart </h1>
+            )}
+            <div className="cart-total total">TOTAL: ${cart ? cartProductTotalPrice : 0}</div>
+            {/* {user.orders && user.orders.length ? (
+              user.orders.map((order) => {
+                return (
+                  <div className="cart-container" key={order.id}>
+                    {order.completeStatus ? (
+                      <h1>You have no products in your cart!</h1>
+                    ) : (
+                      <>
+                        <h4>
+                          {" "}
+                          Cart:{" "}
+                          <span className="cart-total">
+                            {order.orderItems.length} items
+                          </span>
+                        </h4>
+                        {order.orderItems
+                          ? order.orderItems.map((item) => {
+                              return (
+                                <p key={item.product.id}>
+                                  {item.product.name}
+                                  <span className="price">
+                                    ${item.product.price}
+                                  </span>
+                                </p>
+                              );
+                            })
+                          : null}
 
-                          <hr></hr>
-                          <p className="total">
-                            Total:
-                            <span className="cart-total total">
-                              <b>
-                                $
-                                {order.orderItems
-                                  ? order.orderItems.reduce(
-                                      (total, currVal) => {
-                                        return (
-                                          total +
-                                          Number(
-                                            currVal.product.price *
-                                              currVal.quantity
-                                          )
-                                        );
-                                      },
-                                      0
-                                    )
-                                  : "Not total yet"}
-                              </b>
-                            </span>
-                          </p>
-                        </>
-                      )}
-                    </div>
-                  );
-                })
-              : <h1>You have no products in your cart!</h1>}
-          </div>
-          <Link to = "/confirmation"><button id="order-btn">ORDER YOUR SOUL</button></Link>
-        </div>
-
-        {/* <div id="cart-and-orderbtn-box">
-                <h1>CHECKOUT</h1>
-                <div id="cart-items">
-                    <div className="cart-container">
-                        <h4>Cart: <span className="cart-total">4 items</span></h4>
-                        <p>Product 1 <span className="price">$15</span></p>
-                        <p>Product 2 <span className="price">$5</span></p>
-                        <p>Product 3 <span className="price">$8</span></p>
-                        <p>Product 4 <span className="price">$2</span></p>
                         <hr></hr>
-                        <p className="total">Total: <span className="cart-total total"><b>$30</b></span></p>
-                    </div>
-                </div>
-                <button id="order-btn">ORDER YOUR SOUL</button>
-            </div> */}
+                        <p className="total">
+                          Total:
+                          <span className="cart-total total">
+                            <b>
+                              $
+                              {order.orderItems
+                                ? order.orderItems.reduce((total, currVal) => {
+                                    return (
+                                      total +
+                                      Number(
+                                        currVal.product.price * currVal.quantity
+                                      )
+                                    );
+                                  }, 0)
+                                : "Not total yet"}
+                            </b>
+                          </span>
+                        </p>
+                      </>
+                    )}
+                  </div>
+                );
+              })
+            ) : (
+              <h1>You have no products in your cart!</h1>
+            )} */}
+          </div>
+          <Link to="/confirmation">
+            <button id="order-btn">ORDER YOUR SOUL</button>
+          </Link>
+        </div>
       </div>
     </>
   );

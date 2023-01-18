@@ -6,10 +6,11 @@ export const fetchCartAsync = createAsyncThunk(
   async ({ userId, orderId, products }) => {
     //   const token = window.localStorage.getItem("token");
     try {
+        console.log("orderId thunk", orderId)
       if (!userId) {
         window.localStorage.cartItems
-          ? JSON.parse(localStorage.getItem("cartItems"))
-          : localStorage.setItem("cartItems", JSON.stringify([]));
+          ? JSON.parse(window.localStorage.getItem("cartItems"))
+          : window.localStorage.removeItem("cartItems");
       } else {
         if (orderId){
         const { data } = await axios.get(

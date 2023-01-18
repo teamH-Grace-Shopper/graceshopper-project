@@ -57,9 +57,12 @@ const Cart = ({ isLoggedIn }) => {
   // console.log("itemsInCart: ", itemsInCart)
 
   useEffect(() => {
-    if (userId) dispatch(fetchUser(userId));
+    console.log("userId CART: ", userId)
+    if (userId) dispatch(fetchUser(userId))
+    console.log("orderId .THEN--->", orderId)
+    
     if (userId) dispatch(fetchCartAsync({ userId, orderId, products}));
-  }, [dispatch, userId]);
+  }, [dispatch, userId, orderId]);
 
   const handleIncreaseToOrder = (product) => {
     console.log("Increase product quantity  to order clicked");

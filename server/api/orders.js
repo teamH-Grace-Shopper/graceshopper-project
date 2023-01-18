@@ -67,3 +67,25 @@ router.get("/users/:id", async (req, res, next) => {
   }
 });
 
+//GET route /api/orders/users-cart/:id // ORDERs of specific user
+router.get("/users-cart/:id", async (req, res, next) => {
+  try {
+    console.log("Request Headers", req.headers)
+    const userCart = await Order.findOne({
+      where: { 
+        userId: req.params.id,
+        completeStatus: null,
+      },
+      include: {
+        model: OrderItem,
+        include: {
+          model: Product
+        }
+      }
+    });
+    res.send(userCart);
+  } catch (err) {
+    next(err);
+  }
+});
+
