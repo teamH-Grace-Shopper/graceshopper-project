@@ -50,6 +50,7 @@ export const addItemToCartDatabase = createAsyncThunk(
   }
 );
 
+
 export const increaseCartItemInDb = createAsyncThunk(
   "cart/increase",
   async ({ cartQuantity, productId, orderId }) => {
@@ -65,6 +66,28 @@ export const increaseCartItemInDb = createAsyncThunk(
     } catch (err) {}
   }
 );
+
+export const completeUserCartDatabase = createAsyncThunk(
+  "cart/completeOrder",
+  async ({ userId, productId, orderId, cartQuantity }) => {
+    try {
+      await axios.post(
+        `/api/orders/users/${orderId}`,
+        {
+          completeStatus,
+        }
+        // {headers: { authorization: token }}
+      );
+      // const { data } = await axios.get(`api/orders/users/${userId}`);
+      console.log("complete To Cart Order Async: ", data);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+
 
 const cartSlice = createSlice({
   name: "cart",
