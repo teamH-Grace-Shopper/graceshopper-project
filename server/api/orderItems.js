@@ -4,7 +4,7 @@ const {
 } = require("../db");
 module.exports = router;
 
-// GET route All OrderItems
+// GET route /api/order-item
 router.get("/", async (req, res, next) => {
   try {
     const orderItems = await OrderItem.findAll();
@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// GET route single orderItem
+// GET route /api/order-item/orders/:id
 router.get("/orders/:id", async (req, res, next) => {
   try {
     const orderItems = await OrderItem.findAll({
@@ -28,7 +28,7 @@ router.get("/orders/:id", async (req, res, next) => {
   }
 });
 
-// POST route single orderItem
+// POST route /api/order-item/orders/:id
 router.post("/orders/:id", async (req, res, next) => {
   try {
     // create an order item to be posted into the Order with orderId = id
@@ -43,17 +43,21 @@ router.post("/orders/:id", async (req, res, next) => {
   }
 });
 
-// UPDATE /api/orders/:id - update orderItem
+// UPDATE /api/order-item/orders/:id
 router.put("/orders/:id", async (req, res, next) => {
   try {
-    const orderItem = await OrderItem.findByPk(req.params.id);
-    res.status(200).send(await orderItem.update(req.body));
+    const cartOrder = await OrderItem.findAll({
+      where: {
+        orderId: req.params.id},
+        include: [Product]
+      });
+    res.status(200).send(cartOrder.update(req.body));
   } catch (err) {
     next(err);
   }
 });
 
-// CREATE orderItem /api/orders
+// CREATE /api/order-item/orders
 router.post("/", async (req, res, next) => {
   try {
     const orderItem = await OrderItem.create(req.body);
@@ -63,6 +67,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+// DELETE /api/order-item/orders
 router.delete("/:id", async (req, res, next) => {
   try {
     const orderItem = await OrderItem.findByPk(req.params.id);

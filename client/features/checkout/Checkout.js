@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser, selectUser, updateUserAsync } from "../Slices/userSlice";
-import { selectUserCart } from "../Slices/cartSlice";
+import { selectUserCart, clearOrder } from "../Slices/cartSlice";
+
 
 const Checkout = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -21,6 +22,10 @@ const Checkout = () => {
     acc += item.price * item.cartQuantity;
     return acc;
   }, 0);
+  
+  const handleOrder = () => {
+    dispatch(clearOrder());
+  }
 
   return (
     <>
@@ -70,14 +75,6 @@ const Checkout = () => {
                 <label className="address-input-title">City</label>
                 <input className="address-input input-box"></input>
               </div>
-              {/* <div className="address-input-box country">
-                <label className="address-input-title">Country/region</label>
-                <select className="address-input  input-box" name="country">
-                  <option value="australia">Australia</option>
-                  <option value="canada">Canada</option>
-                  <option value="usa">USA</option>
-                </select>
-              </div> */}
               <div className="address-input-box state">
                 <label className="address-input-title">State</label>
                 <input className="address-input input-box"></input>
@@ -124,14 +121,6 @@ const Checkout = () => {
                 <label className="address-input-title">City</label>
                 <input className="address-input input-box"></input>
               </div>
-              {/* <div className="address-input-box country">
-                <label className="address-input-title">Country/region</label>
-                <select className="address-input  input-box" name="country">
-                  <option value="australia">Australia</option>
-                  <option value="canada">Canada</option>
-                  <option value="usa">USA</option>
-                </select>
-              </div> */}
               <div className="address-input-box state">
                 <label className="address-input-title">State</label>
                 <input className="address-input input-box"></input>
@@ -173,16 +162,19 @@ const Checkout = () => {
           </div>
         </div>
 
-        <div id="cart-and-orderbtn-box" style={{display: "flex", flexDirection:"column"}}>
+        <div
+          id="cart-and-orderbtn-box"
+          style={{ display: "flex", flexDirection: "column" }}
+        >
           <h1>CHECKOUT</h1>
           <div id="cart-items">
             {cart && cart.length ? (
               cart.map((orderItem) => {
                 console.log("orderItem: ", orderItem);
                 return (
-                  <div className = "cart-container" key={orderItem.id}>
+                  <div className="cart-container" key={orderItem.id}>
                     <p>Item: {orderItem.name}</p>
-                    <p> Quantity: {orderItem.price}</p>
+                    <p> Quantity: {orderItem.cartQuantity}</p>
                     <p> Total: ${orderItem.price * orderItem.cartQuantity}</p>
                   </div>
                 );
@@ -190,65 +182,12 @@ const Checkout = () => {
             ) : (
               <h1> No items in your cart </h1>
             )}
-            <div className="cart-total total">TOTAL: ${cart ? cartProductTotalPrice : 0}</div>
-            {/* {user.orders && user.orders.length ? (
-              user.orders.map((order) => {
-                return (
-                  <div className="cart-container" key={order.id}>
-                    {order.completeStatus ? (
-                      <h1>You have no products in your cart!</h1>
-                    ) : (
-                      <>
-                        <h4>
-                          {" "}
-                          Cart:{" "}
-                          <span className="cart-total">
-                            {order.orderItems.length} items
-                          </span>
-                        </h4>
-                        {order.orderItems
-                          ? order.orderItems.map((item) => {
-                              return (
-                                <p key={item.product.id}>
-                                  {item.product.name}
-                                  <span className="price">
-                                    ${item.product.price}
-                                  </span>
-                                </p>
-                              );
-                            })
-                          : null}
-
-                        <hr></hr>
-                        <p className="total">
-                          Total:
-                          <span className="cart-total total">
-                            <b>
-                              $
-                              {order.orderItems
-                                ? order.orderItems.reduce((total, currVal) => {
-                                    return (
-                                      total +
-                                      Number(
-                                        currVal.product.price * currVal.quantity
-                                      )
-                                    );
-                                  }, 0)
-                                : "Not total yet"}
-                            </b>
-                          </span>
-                        </p>
-                      </>
-                    )}
-                  </div>
-                );
-              })
-            ) : (
-              <h1>You have no products in your cart!</h1>
-            )} */}
+            <div className="cart-total total">
+              TOTAL: ${cart ? cartProductTotalPrice : 0}
+            </div>
           </div>
           <Link to="/confirmation">
-            <button id="order-btn">ORDER YOUR SOUL</button>
+            <button onClick={()=>handleOrder()}id="order-btn">ORDER YOUR SOUL</button>
           </Link>
         </div>
       </div>

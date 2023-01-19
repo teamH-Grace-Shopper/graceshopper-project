@@ -9,7 +9,6 @@ import SingleProductView from "../features/home/SingleProduct";
 import Checkout from "../features/checkout/Checkout";
 import AdminPage from "../features/admin/AdminPage";
 import Cart from "../features/cart/Cart";
-import LoggedInCart from "../features/cart/LoggedInCart";
 import UpdateProduct from "../features/admin/UpdateProduct";
 import AddProduct from "../features/admin/AddProduct";
 import MyAccount from "../features/account/MyAccount";
@@ -39,8 +38,8 @@ const AppRoutes = () => {
       {/* IF LOGGED IN ROUTES */}
       {isLoggedIn ? (
         <Routes>
-          <Route to="/*" element={<MainPage />} />
-          <Route path="/" element={<MainPage />} />
+          <Route to="/*" element={<MainPage userId={userId} isLoggedIn={isLoggedIn} user={user} />} />
+          <Route path="/" element={<MainPage userId={userId} isLoggedIn={isLoggedIn} user={user}/>} />
 
           {/* My Account Page */}
           <Route path="/my-account" element={<MyAccount />} />
@@ -57,7 +56,7 @@ const AppRoutes = () => {
             {isAdmin ? (
               <Route path="/admin" element={<AdminPage />} />
             ) : (
-              <Route element={<MainPage />} />
+              <Route element={<MainPage userId={userId} isLoggedIn={isLoggedIn} user={user}/>} />
             )}
             {isAdmin ? (
               <Route
@@ -84,8 +83,8 @@ const AppRoutes = () => {
       ) : (
         // NOT LOGGED IN ROUTES
         <Routes>
-          <Route to="/*" element={<MainPage />} />
-          <Route path="/" element={<MainPage />} />
+          <Route to="/*" element={<MainPage userId={userId} isLoggedIn={isLoggedIn} user={user}/>} />
+          <Route path="/" element={<MainPage userId={userId} isLoggedIn={isLoggedIn} user={user}/>} />
           <Route
             path="/login"
             element={<AuthForm name="login" displayName="Login" />}

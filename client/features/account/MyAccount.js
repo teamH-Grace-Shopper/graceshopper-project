@@ -149,8 +149,17 @@ const MyAccount = () => {
 
   return (
     <div>
-      <div style={{fontSize: "1.5rem", width: "100%", display: "flex", justifyContent: "center", fontFamily: "'Playfair Display', serif", fontWeight: "bold"}}>
-        <p >WELCOME BACK {name.toUpperCase()}!</p>
+      <div
+        style={{
+          fontSize: "1.5rem",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          fontFamily: "'Playfair Display', serif",
+          fontWeight: "bold",
+        }}
+      >
+        <p>WELCOME BACK {name.toUpperCase()}!</p>
       </div>
 
       <Box sx={{ width: "100%" }}>
@@ -182,7 +191,10 @@ const MyAccount = () => {
                 user.orders.map((order) => {
                   console.log("order: ", order);
                   return (
-                    <div key={order.id} style={{ border: "1px solid black",padding: "25px" }}>
+                    <div
+                      key={order.id}
+                      style={{ border: "1px solid black", padding: "25px" }}
+                    >
                       {order.completeStatus ? (
                         <>
                           <p>Order Number: {order.orderNumber}</p>
@@ -226,15 +238,31 @@ const MyAccount = () => {
             <div>
               <h1>Your Details</h1>
               <p>
-                Name: {user.firstName} {user.lastName}
+                <b>Name:</b> {user.firstName} {user.lastName}
               </p>
-              <p>Email: {user.email}</p>
-              <p>Username: {user.username}</p>
-              <p>Address: {user.address1}</p>
-              {user.address2 ? <p>Address2: {user.address2}</p> : null}
-              <p>City: {user.city}</p>
-              <p>State: {user.state}</p>
-              <p>Zip Code: {user.zipCode}</p>
+              <p>
+                <b>Email:</b> {user.email}
+              </p>
+              <p>
+                <b>Username:</b> {user.username}
+              </p>
+              <p>
+                <b>Address:</b> {user.address1}
+              </p>
+              {user.address2 ? (
+                <p>
+                  <b>Address2:</b> {user.address2}
+                </p>
+              ) : null}
+              <p>
+                <b>City:</b> {user.city}
+              </p>
+              <p>
+                <b>State:</b> {user.state}
+              </p>
+              <p>
+                <b>Zip Code:</b> {user.zipCode}
+              </p>
             </div>
 
             {/* UPDATING USER  */}
@@ -249,7 +277,7 @@ const MyAccount = () => {
                     alignItems: "center",
                   }}
                 >
-                  <Avatar sx={{ m: 1, bgcolor: "success.main" }}>
+                  <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
                     <LockOutlinedIcon />
                   </Avatar>
                   <Typography component="h1" variant="h4">
@@ -268,7 +296,6 @@ const MyAccount = () => {
                       required
                       fullWidth
                       label="address"
-                      // autoComplete="address"
                       type="text"
                       value={address1}
                       name="address1"
@@ -285,18 +312,6 @@ const MyAccount = () => {
                       name="city"
                       onChange={(e) => setCity(e.target.value)}
                     />
-
-                    {/* <TextField
-              margin="normal"
-              required
-              fullWidth
-              label="state"
-              // autoComplete="state"
-              type="state"
-              value={state}
-              name="state"
-              onChange={(e) => setState(e.target.value)}
-            /> */}
                     <InputLabel id="demo-simple-select-helper-label">
                       state
                     </InputLabel>
@@ -336,7 +351,7 @@ const MyAccount = () => {
                       fullWidth
                       variant="contained"
                       sx={{ mt: 3, mb: 2, height: "60px", fontSize: "1.25rem" }}
-                      color="success"
+                      color="secondary"
                     >
                       Edit Address
                     </Button>
@@ -346,7 +361,7 @@ const MyAccount = () => {
                       sx={{ mt: 3, mb: 2, height: "60px", fontSize: "1.25rem" }}
                       fullWidth
                       href="/my-account"
-                      color="success"
+                      color="secondary"
                     >
                       Back To Orders
                     </Button>

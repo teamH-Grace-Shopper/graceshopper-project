@@ -4,12 +4,36 @@ const {
 } = require("../db");
 module.exports = router;
 
-
 //GET route /api/orders - All Orders
 router.get("/", async (req, res, next) => {
   try {
     const orders = await Order.findAll();
     res.send(orders);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//GET route /api/orders/:id/order-items - All Orders
+router.get("/:id/order-items", async (req, res, next) => {
+  try {
+    const orders = await Order.findByPk(req.params.id, {
+      include: [User, OrderItem],
+    });
+    res.send(orders.orderItems);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//GET route /api/orders/:id/order-items - All Orders
+router.put("/:id/order-items", async (req, res, next) => {
+  try {
+    const orders = await Order.findByPk(req.params.id, {
+      include: [OrderItem],
+    });
+    const updatedOrder = orders.orderItems
+    res.status(200).send(updatedOrder.update(req.body));
   } catch (err) {
     next(err);
   }
@@ -36,7 +60,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-//PUT route  /api/orders  updating an order item
+//PUT route  /api/orders/:id  updating an order item
 router.put("/:id", async (req, res, next) => {
   try {
     const order = await Order.findByPk(req.params.id);
@@ -49,19 +73,42 @@ router.put("/:id", async (req, res, next) => {
 //GET route /api/orders/users/:id // ORDERs of specific user
 router.get("/users/:id", async (req, res, next) => {
   try {
-    console.log("Request Headers", req.headers)
+    console.log("Request Headers", req.headers);
     const orders = await Order.findAll({
-      where: { 
-        userId: req.params.id 
+      where: {
+        userId: req.params.id,
       },
       include: {
         model: OrderItem,
         include: {
-          model: Product
-        }
-      }
+          model: Product,
+        },
+      },
     });
     res.send(orders);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//POST route /api/orders/users/:id // ORDERs of specific user
+router.put("/users/:id", async (req, res, next) => {
+  try {
+    const cart = await User.findByPk(req.params.id, {
+      where: {
+        completeStatus: null,
+      },
+      include: {
+        model: Order,
+        include: {
+          model: OrderItem,
+          include: {
+            model: Product,
+          },
+        },
+      },
+    });
+    res.status(200).send(cart.update(req.body));
   } catch (err) {
     next(err);
   }
@@ -70,18 +117,18 @@ router.get("/users/:id", async (req, res, next) => {
 //GET route /api/orders/users-cart/:id // ORDERs of specific user
 router.get("/users-cart/:id", async (req, res, next) => {
   try {
-    console.log("Request Headers", req.headers)
+    console.log("Request Headers", req.headers);
     const userCart = await Order.findOne({
-      where: { 
+      where: {
         userId: req.params.id,
         completeStatus: null,
       },
       include: {
         model: OrderItem,
         include: {
-          model: Product
-        }
-      }
+          model: Product,
+        },
+      },
     });
     res.send(userCart);
   } catch (err) {
@@ -89,22 +136,21 @@ router.get("/users-cart/:id", async (req, res, next) => {
   }
 });
 
-
 //PUT route /api/orders/users-cart/:id // ORDERs of specific user
 router.put("/users-cart/:id", async (req, res, next) => {
   try {
-    console.log("Request Headers", req.headers)
+    console.log("Request Headers", req.headers);
     const userCart = await Order.findOne({
-      where: { 
+      where: {
         userId: req.params.id,
         completeStatus: null,
       },
       include: {
         model: OrderItem,
         include: {
-          model: Product
-        }
-      }
+          model: Product,
+        },
+      },
     });
     res.send(await userCart.update(req.body));
   } catch (err) {

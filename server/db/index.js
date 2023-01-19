@@ -9,9 +9,6 @@ const OrderItem = require('./models/OrderItem')
 
 // ASSOCIATIONS
 
-// User and Product - one-to-many - need to figure this out
-
-
 // User and Order - one-to-many
 User.hasMany(Order);
 Order.belongsTo(User);
@@ -20,6 +17,7 @@ Order.belongsTo(User);
 OrderItem.belongsTo(Order)
 Order.hasMany(OrderItem)
 
+// OrderItem and the Product
 OrderItem.belongsTo(Product)
 
 module.exports = {

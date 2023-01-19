@@ -23,7 +23,6 @@ const UpdateProduct = (props) => {
 
   const dispatch = useDispatch();
   const product = useSelector(selectProduct);
-  console.log("current product", product);
 
   useEffect(() => {
     dispatch(fetchProduct(productId));
@@ -34,13 +33,21 @@ const UpdateProduct = (props) => {
   const [quantity, setQuantity] = useState();
   const [description, setDescription] = useState();
   const [type, setType] = useState();
-  console.log("current values:", name, price, quantity, type)
 
   const theme = createTheme();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProductAsync({ id: productId, name, price, quantity, description, type }));
+    dispatch(
+      updateProductAsync({
+        id: productId,
+        name,
+        price,
+        quantity,
+        description,
+        type,
+      })
+    );
   };
 
   const onChange = (e) => {
@@ -65,13 +72,11 @@ const UpdateProduct = (props) => {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "success.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h4">
-            EDIT PRODUCT 
-            <br/> 
-            {product.name}
+            EDIT PRODUCT: {product.name}
           </Typography>
           <Box
             component="form"
@@ -148,7 +153,7 @@ const UpdateProduct = (props) => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2, height: "60px", fontSize: "1.25rem" }}
-              color="success"
+              color="secondary"
             >
               Edit Product
             </Button>
@@ -158,7 +163,7 @@ const UpdateProduct = (props) => {
               sx={{ mt: 3, mb: 2, height: "60px", fontSize: "1.25rem" }}
               fullWidth
               href="/admin"
-              color="success"
+              color="secondary"
             >
               Back To Management
             </Button>
