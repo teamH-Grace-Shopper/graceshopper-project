@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-//GET route /api/orders/1/order-items - All Orders
+//GET route /api/orders/:id/order-items - All Orders
 router.get("/:id/order-items", async (req, res, next) => {
   try {
     const orders = await Order.findByPk(req.params.id, {
@@ -26,7 +26,7 @@ router.get("/:id/order-items", async (req, res, next) => {
   }
 });
 
-//GET route /api/orders/1/order-items - All Orders
+//GET route /api/orders/:id/order-items - All Orders
 router.put("/:id/order-items", async (req, res, next) => {
   try {
     const orders = await Order.findByPk(req.params.id, {
@@ -60,7 +60,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-//PUT route  /api/orders  updating an order item
+//PUT route  /api/orders/:id  updating an order item
 router.put("/:id", async (req, res, next) => {
   try {
     const order = await Order.findByPk(req.params.id);

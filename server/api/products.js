@@ -23,7 +23,6 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// Need to figure out admin validation; based on token and userType
 // POST route /api/products
 router.post("/", async (req, res, next) => {
   try {

@@ -9,7 +9,6 @@ import SingleProductView from "../features/home/SingleProduct";
 import Checkout from "../features/checkout/Checkout";
 import AdminPage from "../features/admin/AdminPage";
 import Cart from "../features/cart/Cart";
-import LoggedInCart from "../features/cart/LoggedInCart";
 import UpdateProduct from "../features/admin/UpdateProduct";
 import AddProduct from "../features/admin/AddProduct";
 import MyAccount from "../features/account/MyAccount";
