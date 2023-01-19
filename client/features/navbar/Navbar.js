@@ -57,7 +57,7 @@ const Navbar = () => {
               >
                 Welcome {firstName},
                 <br />
-                Account
+                Account <small>{isAdmin ? "(Admin)" : "(Customer)"}</small>
               </Link>
               <Link to="/" className="homeButton">
                 Home <HomeIcon />

@@ -70,8 +70,8 @@ const AdminPage = () => {
   };
 
   const handleClick = (id) => {
-    navigate(`/admin/user/${id}`)
-  }
+    navigate(`/admin/user/${id}`);
+  };
 
   const handleEdit = (id) => {
     console.log("EDIT FORM");
@@ -100,11 +100,18 @@ const AdminPage = () => {
             <Tab label="users" {...a11yProps(1)} />
           </Tabs>
         </Box>
-        <button>
-          <Link to="/admin/products/addProduct" style={{ color: "black" }}>
-            Add Product
-          </Link>
-        </button>
+        <div
+          style={{ width: "100vw", display: "flex", justifyContent: "center" }}
+        >
+          <button
+            className="add-to-cart"
+            style={{ padding: "20px 40px", marginTop: "20px" }}
+          >
+            <Link to="/admin/products/addProduct" style={{ color: "black" }}>
+              Add Product
+            </Link>
+          </button>
+        </div>
         <TabPanel value={value} index={0}>
           <div
             style={{
@@ -129,20 +136,32 @@ const AdminPage = () => {
                       ></img>
                       <div>
                         <div>
-                          {product.name}
-                          <Link to={`/products/${product.id}`}>
-                            {product.name}
+                          <Link style={{color:"black"}} to={`/products/${product.id}`}>
+                            Name: {product.name}
                           </Link>
                         </div>
                       </div>
-                      <div>Quantity: {product.quantity}</div>
+                      <div>Quantity: {product.stockAmount} items</div>
                       <div>Price: ${product.price}</div>
-                      <button onClick={() => handleEdit(product.id)}>
-                        Edit
-                      </button>
-                      <button onClick={() => handleDelete(product.id)}>
-                        Delete
-                      </button>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-around",
+                        }}
+                      >
+                        <button
+                          className="add-to-cart"
+                          onClick={() => handleEdit(product.id)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="add-to-cart"
+                          onClick={() => handleDelete(product.id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
                   );
                 })
@@ -184,8 +203,10 @@ const AdminPage = () => {
                       </div>
                       <div>Email: {user.email}</div>
                       <div>Admin Rights: {user.isAdmin ? "Yes" : "No"}</div>
-                      <div style ={{display: "flex", gap: "1rem"}}>
-                        <button onClick={()=>handleClick(user.id)}>View User</button>
+                      <div style={{ display: "flex", gap: "1rem" }}>
+                        <button onClick={() => handleClick(user.id)}>
+                          View User
+                        </button>
                       </div>
                     </div>
                   );

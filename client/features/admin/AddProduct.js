@@ -27,7 +27,7 @@ export const AddProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addProductAsync({ name, price, quantity, description, type }));
-    navigate("./admin");
+    navigate("/admin");
   };
 
   const onChange = (e) => {

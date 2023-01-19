@@ -6,6 +6,7 @@ import { fetchProductsAsync, selectProducts } from "../Slices/productsSlice";
 import { addItemToCartDatabase, addToCart } from "../Slices/cartSlice";
 import { fetchOrdersAsync, selectOrders } from "../Slices/ordersSlice";
 
+
 export const MainPage = ({ userId, isLoggedIn }) => {
   const dispatch = useDispatch();
 
@@ -38,7 +39,7 @@ export const MainPage = ({ userId, isLoggedIn }) => {
           {products
             ? products.map((product) => {
                 return (
-                  <ul className="test" key={product.id}>
+                  <ul className="test" key={`${product.name}: ${product.id}`}>
                     <div className="product-box">
                       <Link to={`/products/${product.id}`}>
                         <img
@@ -56,7 +57,7 @@ export const MainPage = ({ userId, isLoggedIn }) => {
                           </Link>
                         </h3>
 
-                        <button onClick={() => handleAddToCart(product)}>
+                        <button className="add-to-cart" onClick={() => handleAddToCart(product)}>
                           Add To Cart
                         </button>
                       </div>

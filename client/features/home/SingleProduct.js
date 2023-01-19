@@ -38,7 +38,7 @@ export const SingleProductView = () => {
             >
               add to cart
             </button>
-          <h4>In Stock: {product.quantity ? "YES" : "NO"}</h4>
+          <h4>In Stock: {product.stockAmount ? "YES" : "NO"}</h4>
           <h5>Category:{product.type}</h5>
         </div>
       </div>
