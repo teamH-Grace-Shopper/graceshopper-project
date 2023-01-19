@@ -53,14 +53,14 @@ export const addItemToCartDatabase = createAsyncThunk(
 
 export const increaseCartItemInDb = createAsyncThunk(
   "cart/increase",
-  async ({ cartQuantity, productId, orderId }) => {
+  async ({ userId, cartQuantity, productId, orderId }) => {
     try {
-      await axios.post(`/api/order-item/orders/${orderId}`, {
+      await axios.put(`/api/orders/${orderId}/order-items`, {
         cartQuantity,
         productId,
         orderId,
       });
-      const { data } = await axios.get(`/api/order-item/orders/${orderId}`);
+      const { data } = await axios.get(`/api/orders/${orderId}/order-items`);
       console.log("increase in DB", data);
       return data;
     } catch (err) {}

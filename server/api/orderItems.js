@@ -46,8 +46,12 @@ router.post("/orders/:id", async (req, res, next) => {
 // UPDATE /api/orders/:id - update orderItem
 router.put("/orders/:id", async (req, res, next) => {
   try {
-    const orderItem = await OrderItem.findByPk(req.params.id);
-    res.status(200).send(await orderItem.update(req.body));
+    const cartOrder = await OrderItem.findAll({
+      where: {
+        orderId: req.params.id},
+        include: [Product]
+      });
+    res.status(200).send(cartOrder.update(req.body));
   } catch (err) {
     next(err);
   }

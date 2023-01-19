@@ -18,9 +18,9 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutAndRedirectHome = () => {
+    navigate("/");
     dispatch(logout());
     dispatch(clearOrder());
-    navigate("/");
   };
   const firstName = useSelector((state) => state.auth.me.firstName);
   const cart = useSelector(selectUserCart);
@@ -62,14 +62,14 @@ const Navbar = () => {
                 Account
               </Link>
               <Link to="/" className="homeButton">
-                <HomeIcon />
+                Home <HomeIcon />
               </Link>
               <Link
                 type="button"
                 onClick={logoutAndRedirectHome}
                 className="logoutButton"
               >
-                <LogoutIcon fontSize="small" />
+                Logout <LogoutIcon fontSize="small" />
               </Link>
               {isAdmin ? (
                 <Link
@@ -115,7 +115,7 @@ const Navbar = () => {
                 fontSize: "1.5rem",
               }}
             >
-              {cart ? cart.length : 0}
+              {cart ? cart.length : null}
             </span>
           </Link>
         </div>

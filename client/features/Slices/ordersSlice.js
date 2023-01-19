@@ -4,9 +4,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 //Admin can see all orders
 export const fetchOrdersAsync = createAsyncThunk(
     "orders/fetchAll",
-    async () => {
+    async (id) => {
       try {
-        const { data } = await axios.get(`/api/orders`);
+        const { data } = await axios.get(`/api/orders/users/${id}`);
         return data;
       } catch (err) {
         console.log(err);

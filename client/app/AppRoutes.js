@@ -39,8 +39,8 @@ const AppRoutes = () => {
       {/* IF LOGGED IN ROUTES */}
       {isLoggedIn ? (
         <Routes>
-          <Route to="/*" element={<MainPage />} />
-          <Route path="/" element={<MainPage />} />
+          <Route to="/*" element={<MainPage userId={userId} isLoggedIn={isLoggedIn} user={user} />} />
+          <Route path="/" element={<MainPage userId={userId} isLoggedIn={isLoggedIn} user={user}/>} />
 
           {/* My Account Page */}
           <Route path="/my-account" element={<MyAccount />} />
@@ -57,7 +57,7 @@ const AppRoutes = () => {
             {isAdmin ? (
               <Route path="/admin" element={<AdminPage />} />
             ) : (
-              <Route element={<MainPage />} />
+              <Route element={<MainPage userId={userId} isLoggedIn={isLoggedIn} user={user}/>} />
             )}
             {isAdmin ? (
               <Route
@@ -84,8 +84,8 @@ const AppRoutes = () => {
       ) : (
         // NOT LOGGED IN ROUTES
         <Routes>
-          <Route to="/*" element={<MainPage />} />
-          <Route path="/" element={<MainPage />} />
+          <Route to="/*" element={<MainPage userId={userId} isLoggedIn={isLoggedIn} user={user}/>} />
+          <Route path="/" element={<MainPage userId={userId} isLoggedIn={isLoggedIn} user={user}/>} />
           <Route
             path="/login"
             element={<AuthForm name="login" displayName="Login" />}

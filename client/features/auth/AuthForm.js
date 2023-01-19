@@ -13,12 +13,9 @@ import { fetchUsersAsync, selectUsers } from "../Slices/usersSlice";
 const AuthForm = ({ name, displayName }) => {
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const users = useSelector(selectUsers);
-  console.log("users in login/signup------------>", users);
 
-  useEffect(() => {
-    dispatch(fetchUsersAsync());
-  }, []);
+
+
   const navigate = useNavigate();
 
   const handleSubmit = (evt) => {
