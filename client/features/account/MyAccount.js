@@ -238,15 +238,31 @@ const MyAccount = () => {
             <div>
               <h1>Your Details</h1>
               <p>
-                Name: {user.firstName} {user.lastName}
+                <b>Name:</b> {user.firstName} {user.lastName}
               </p>
-              <p>Email: {user.email}</p>
-              <p>Username: {user.username}</p>
-              <p>Address: {user.address1}</p>
-              {user.address2 ? <p>Address2: {user.address2}</p> : null}
-              <p>City: {user.city}</p>
-              <p>State: {user.state}</p>
-              <p>Zip Code: {user.zipCode}</p>
+              <p>
+                <b>Email:</b> {user.email}
+              </p>
+              <p>
+                <b>Username:</b> {user.username}
+              </p>
+              <p>
+                <b>Address:</b> {user.address1}
+              </p>
+              {user.address2 ? (
+                <p>
+                  <b>Address2:</b> {user.address2}
+                </p>
+              ) : null}
+              <p>
+                <b>City:</b> {user.city}
+              </p>
+              <p>
+                <b>State:</b> {user.state}
+              </p>
+              <p>
+                <b>Zip Code:</b> {user.zipCode}
+              </p>
             </div>
 
             {/* UPDATING USER  */}

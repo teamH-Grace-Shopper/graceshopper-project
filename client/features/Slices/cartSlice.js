@@ -101,14 +101,11 @@ const cartSlice = createSlice({
       // if item in cart then get the index and increment by 1
       if (itemAdd) {
         itemAdd.cartQuantity += 1;
-        // state.cartTotalQuantity += 1;
-        // state.cartTotalAmount += Number(action.payload.price);
+
       } else {
         // push the item in the cart and add the cartQuantity property to the product
         const tempProduct = { ...action.payload, cartQuantity: 1 };
         state.push(tempProduct);
-        // state.cartTotalQuantity += tempProduct.cartQuantity;
-        // state.cartTotalAmount += Number(action.payload.price);
       }
 
       localStorage.setItem("cartItems", JSON.stringify(state));
@@ -140,47 +137,23 @@ const cartSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCartAsync.fulfilled, (state, action) => {
-      console.log("action payload in cart: ", action.payload);
-      // return action.payload.filter(cart => cart.completeStatus === null || !cart.completeStatus ? cart.orderItems : null)
+
       if (action.payload) {
         let userCart = action.payload.map((item) => item.product);
-        console.log("userCart: ", userCart);
-        //   let newCart = items.orderItems.map((item) => item.product);
-        //   return newCart;
         localStorage.setItem("cartItems", JSON.stringify(userCart));
         return userCart;
       }
     });
     builder.addCase(addItemToCartDatabase.fulfilled, (state, action) => {
-      console.log("added to cart ASYNC: ", action.payload);
-      //   state.push(action.payload);
-      // see if and find if item is in the cart already, if item index doesn't exists index will be -1
-      //   const itemAdd = state.find((item) => item.id === action.payload.id);
-      //   // if item in cart then get the index and increment by 1
-      //   if (itemAdd) {
-      //     itemAdd.cartQuantity += 1;
-      //     // state.cartTotalQuantity += 1;
-      //     // state.cartTotalAmount += Number(action.payload.price);
-      //   } else {
-      //     // push the item in the cart and add the cartQuantity property to the product
-      //     const tempProduct = { ...action.payload, cartQuantity: 1 };
-      //     state.push(tempProduct);
-      //     // state.cartTotalQuantity += tempProduct.cartQuantity;
-      //     // state.cartTotalAmount += Number(action.payload.price);
-      //   }
 
-      //   localStorage.setItem("cartItems", JSON.stringify(state));
     });
     builder.addCase(increaseCartItemInDb.fulfilled, (state, action) => {
-      console.log("action payload with increase: ", action.payload);
-      //   state.push(action.payload);
-      //   localStorage.setItem("cartItems", JSON.stringify(state));
+
     });
   },
 });
 
 export const selectUserCart = (state) => {
-  console.log("state of cart: ", state.cart);
   return state.cart;
 };
 

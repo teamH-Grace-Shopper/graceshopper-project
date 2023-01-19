@@ -23,7 +23,6 @@ const UpdateProduct = (props) => {
 
   const dispatch = useDispatch();
   const product = useSelector(selectProduct);
-  console.log("current product", product);
 
   useEffect(() => {
     dispatch(fetchProduct(productId));
@@ -34,13 +33,21 @@ const UpdateProduct = (props) => {
   const [quantity, setQuantity] = useState();
   const [description, setDescription] = useState();
   const [type, setType] = useState();
-  console.log("current values:", name, price, quantity, type)
 
   const theme = createTheme();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProductAsync({ id: productId, name, price, quantity, description, type }));
+    dispatch(
+      updateProductAsync({
+        id: productId,
+        name,
+        price,
+        quantity,
+        description,
+        type,
+      })
+    );
   };
 
   const onChange = (e) => {

@@ -17,7 +17,9 @@ const Confirmation = () => {
     const updatedCompleteOrder = {id, date}
     dispatch(completeUserCartDatabase(updatedCompleteOrder))
   };
-    
+  
+  const contract = Math.floor(Math.random()*100000+1000)
+
   return (
     <div id="confirmation-page">
       <div className="confirmationBox">
@@ -26,12 +28,12 @@ const Confirmation = () => {
 
         <h2 className="confirmation-text"> Your souls are being summoned</h2>
         <h2 className="confirmation-text-2">
-          {" "}
-          Your Contract ID is: {orderNumber}
+
+          Your Contract ID is: {orderNumber ? orderNumber : contract}
         </h2>
         <h2 className="confirmation-text-3">
-          {" "}
-          A confirmation contract will be sent to: {email}{" "}
+
+          A confirmation contract will be sent to: {email ? email : "YOUR EMAIL!"}
         </h2>
 
         <Link to="/">

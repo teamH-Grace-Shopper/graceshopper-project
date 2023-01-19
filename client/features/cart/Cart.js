@@ -1,13 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  AddToUserOrderAsync,
-  fetchUser,
-  selectUser,
-  updateUserAsync,
-} from "../Slices/userSlice";
+import { fetchUser, selectUser } from "../Slices/userSlice";
 import {
   fetchCartAsync,
   selectUserCart,
@@ -15,7 +10,6 @@ import {
   increaseQuantity,
   removeItem,
   clearOrder,
-  addItemToCartDatabase,
   increaseCartItemInDb,
 } from "../Slices/cartSlice";
 import { selectProducts } from "../Slices/productsSlice";
@@ -53,24 +47,16 @@ const Cart = () => {
       : "nothing"
   );
 
-  if (localCart) {
-    var currCart = JSON.parse(localCart);
-  }
-
   useEffect(() => {
-    console.log("userId CART: ", userId);
     if (userId) dispatch(fetchUser(userId));
-    console.log("orderId .THEN--->", orderId);
+
     if (userId) dispatch(fetchOrdersAsync(userId));
     if (userId) dispatch(fetchCartAsync({ userId, orderId, products }));
   }, [dispatch, userId, orderId]);
 
   const handleIncreaseToOrder = (product) => {
-    console.log("IS LOGGED IN BEFORE??", isLoggedIn);
     dispatch(increaseQuantity(product));
     if (isLoggedIn) {
-      console.log("IS LOGGED IN??", isLoggedIn);
-      console.log("PRODUCT GETTING ADDED", product);
       const productId = product.id;
       const cartQuantity = product.cartQuantity;
       dispatch(
@@ -79,15 +65,12 @@ const Cart = () => {
     }
   };
   const handleDecreaseOrder = (product) => {
-    console.log("Decrease product quantity in order clicked");
     dispatch(decreaseQuantity(product));
   };
   const handleRemoveFromOrder = (id) => {
-    console.log("remove product from order clicked");
     dispatch(removeItem(id));
   };
   const handleClearOrder = () => {
-    console.log("Delete order clicked");
     dispatch(clearOrder());
   };
 

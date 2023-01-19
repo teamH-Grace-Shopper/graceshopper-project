@@ -11,8 +11,6 @@ const UserAccount = () => {
     dispatch(fetchUser(userId));
   }, []);
 
-  console.log("user orderItems: ", user.orders);
-
   if (user.orders && user.orders.length) {
     user.orders.map((order) => {
       return order;
@@ -47,16 +45,23 @@ const UserAccount = () => {
                 <p>Order Number: {order.orderNumber}</p>
                 {order.completeStatus ? (
                   <p>Order Date: {order.completeStatus}</p>
-                ) : <p>Order Date: Current Cart</p>}
-                <div>
-                  Items in Order: {order.orderItems.length}
-                </div>
-                <p>Order Total: ${order.orderItems ? order.orderItems.reduce((total,currVal)=>{
-                  console.log("al;ksdfhjldaksjhflkajsd_____", order)
-                    return (
-                        total + Number(currVal.product.price * currVal.product.cartQuantity)
-                    )
-                }, 0): "No"}</p>
+                ) : (
+                  <p>Order Date: Current Cart</p>
+                )}
+                <div>Items in Order: {order.orderItems.length}</div>
+                <p>
+                  Order Total: $
+                  {order.orderItems
+                    ? order.orderItems.reduce((total, currVal) => {
+                        return (
+                          total +
+                          Number(
+                            currVal.product.price * currVal.product.cartQuantity
+                          )
+                        );
+                      }, 0)
+                    : "No"}
+                </p>
               </div>
             );
           })

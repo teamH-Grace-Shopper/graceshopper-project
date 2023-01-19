@@ -143,7 +143,6 @@ const AdminPage = () => {
                       <button onClick={() => handleDelete(product.id)}>
                         Delete
                       </button>
-                      {/* {showForm ? <UpdateProduct product={product} /> : null} */}
                     </div>
                   );
                 })

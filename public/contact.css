@@ -9,12 +9,12 @@ button, select {
 text-transform: none;
 }
 
-button, input, select, textarea {
+button, input.input, select, textarea {
 color: #390b4a;
 margin: 0;
 }
 
-input {
+input.input {
 line-height: normal;
 }
 
@@ -66,7 +66,7 @@ float: right;
 width: 45%;
 }
 
-input[type='text'], [type='email'], [type='password'], select, textarea {
+input[type='text'].input, [type='email'].input, [type='password'].input, select, textarea {
 background: none;
 border: none;
 border-bottom: solid 2px #390b4a;

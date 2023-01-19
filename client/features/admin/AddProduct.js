@@ -22,24 +22,22 @@ export const AddProduct = () => {
   const [type, setType] = useState("");
   const theme = createTheme();
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      addProductAsync({ name, price, quantity, description, type })
-    );
-    navigate('./admin')
+    dispatch(addProductAsync({ name, price, quantity, description, type }));
+    navigate("./admin");
   };
 
   const onChange = (e) => {
     const value = e.target.value;
     const nameInput = e.target.name;
     if (nameInput === "name") setName(value);
-    if (nameInput === 'price') setPrice(value)
-    if (nameInput === 'quantity') setQuantity(value)
-    if (nameInput === 'description') setDescription(value)
-    if (nameInput === 'type') setType(value)
+    if (nameInput === "price") setPrice(value);
+    if (nameInput === "quantity") setQuantity(value);
+    if (nameInput === "description") setDescription(value);
+    if (nameInput === "type") setType(value);
   };
 
   return (
@@ -55,7 +53,7 @@ export const AddProduct = () => {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "success.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h4">
@@ -136,7 +134,7 @@ export const AddProduct = () => {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2, height: "60px", fontSize: "1.25rem" }}
-                color="success"
+                color="secondary"
               >
                 Add Product
               </Button>
@@ -146,58 +144,14 @@ export const AddProduct = () => {
                 sx={{ mt: 3, mb: 2, height: "60px", fontSize: "1.25rem" }}
                 fullWidth
                 href="/admin"
-                color="success"
+                color="secondary"
               >
-                Back To Management 
+                Back To Management
               </Button>
             </Box>
           </Box>
         </Container>
       </ThemeProvider>
-      {/* <form className="AddProductForm" onSubmit={handleSubmit}>
-        <div className="formTitle"> New Product Form</div>
-        <div>
-          <label> Name </label>
-          <input
-            className="productName"
-            placeholder="product name"
-            onChange={(e) => setProductName(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Price</label>
-          <input
-            className="productPrice"
-            placeholder="product price"
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Quantity</label>
-          <input
-            className="productQuantity"
-            placeholder="product quantity"
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-        </div>
-        <label>Description</label>
-        <input
-          className="productDescription"
-          placeholder="product description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <div>
-          <label>Product Type</label>
-          <input
-            className="productType"
-            placeholder="product type"
-            onChange={(e) => setType(e.target.value)}
-          />
-        </div>
-        <button className="addProductFormButton" type="submit">
-          Add Product
-        </button>
-      </form> */}
     </>
   );
 };

@@ -75,14 +75,6 @@ const Checkout = () => {
                 <label className="address-input-title">City</label>
                 <input className="address-input input-box"></input>
               </div>
-              {/* <div className="address-input-box country">
-                <label className="address-input-title">Country/region</label>
-                <select className="address-input  input-box" name="country">
-                  <option value="australia">Australia</option>
-                  <option value="canada">Canada</option>
-                  <option value="usa">USA</option>
-                </select>
-              </div> */}
               <div className="address-input-box state">
                 <label className="address-input-title">State</label>
                 <input className="address-input input-box"></input>

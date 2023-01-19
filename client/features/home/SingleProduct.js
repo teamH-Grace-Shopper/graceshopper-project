@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct, selectProduct } from "../Slices/productSlice";
@@ -39,7 +38,6 @@ export const SingleProductView = () => {
             >
               add to cart
             </button>
-          {/* </Link> */}
           <h4>In Stock: {product.quantity ? "YES" : "NO"}</h4>
           <h5>Category:{product.type}</h5>
         </div>

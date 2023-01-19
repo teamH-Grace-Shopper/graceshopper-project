@@ -25,8 +25,7 @@ export const updateUserAsync = createAsyncThunk(
           { address1, city, state, zipCode },
           {
             headers: { authorization: token },
-          }
-          
+          }         
         );
         return data;
       } catch (err) {
@@ -52,8 +51,7 @@ export const AddToUserOrderAsync = createAsyncThunk(
         { orders },
         {
           headers: { authorization: token },
-        }
-        
+        } 
       );
       console.log("data from addUserOrder", data);
       return data;

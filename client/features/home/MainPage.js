@@ -6,16 +6,12 @@ import { fetchProductsAsync, selectProducts } from "../Slices/productsSlice";
 import { addItemToCartDatabase, addToCart } from "../Slices/cartSlice";
 import { fetchOrdersAsync, selectOrders } from "../Slices/ordersSlice";
 
-export const MainPage = ({ userId, isLoggedIn, user }) => {
+export const MainPage = ({ userId, isLoggedIn }) => {
   const dispatch = useDispatch();
-  console.log("userId", userId);
-  console.log("user", user);
-  console.log("loggedIn?", isLoggedIn);
 
   const products = useSelector(selectProducts);
 
   const orders = useSelector(selectOrders);
-  console.log("ORDERSLKS:DJF:LSKDJF:LKS", orders);
 
   useEffect(() => {
     dispatch(fetchProductsAsync());
@@ -25,18 +21,14 @@ export const MainPage = ({ userId, isLoggedIn, user }) => {
 
   if (isLoggedIn && orders) {
     const order = orders.find((order) => order.completeStatus === null);
-    console.log("CURRENT CART: ", order);
-    // const currCart = orderItems.map(item=>item.product)
-    // console.log("CURRENT CART:" , currCart)
   }
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
     alert(`Added ${product.name} to your cart`);
-    if (isLoggedIn){
-      dispatch(addItemToCartDatabase(product))
+    if (isLoggedIn) {
+      dispatch(addItemToCartDatabase(product));
     }
-
   };
   return (
     <div id="main-body">
@@ -63,7 +55,7 @@ export const MainPage = ({ userId, isLoggedIn, user }) => {
                             {product.name}
                           </Link>
                         </h3>
-                        {/* button className="quick-add-to-cart" */}
+
                         <button onClick={() => handleAddToCart(product)}>
                           Add To Cart
                         </button>

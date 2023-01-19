@@ -8,17 +8,15 @@ import { clearOrder } from "../Slices/cartSlice";
 
 import LogoutIcon from "@mui/icons-material/Logout";
 import HomeIcon from "@mui/icons-material/Home";
-import LoginIcon from '@mui/icons-material/Login';
+import LoginIcon from "@mui/icons-material/Login";
 import SettingsSharpIcon from "@mui/icons-material/SettingsSharp";
-import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const isAdmin = useSelector((state) => state.auth.me.isAdmin);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const logoutAndRedirectHome = () => {
-    navigate("/");
     dispatch(logout());
     dispatch(clearOrder());
   };
@@ -65,6 +63,7 @@ const Navbar = () => {
                 Home <HomeIcon />
               </Link>
               <Link
+                to="/"
                 type="button"
                 onClick={logoutAndRedirectHome}
                 className="logoutButton"
@@ -92,14 +91,14 @@ const Navbar = () => {
                 className="loginButton"
                 onClick={showLoginSignUp}
               >
-                Login <LoginIcon fontSize="small"/>
+                Login <LoginIcon fontSize="small" />
               </Link>
               <Link
                 to="/signup"
                 className="signUpButton"
                 onClick={showLoginSignUp}
               >
-                Sign Up <AppRegistrationIcon/>
+                Sign Up <AppRegistrationIcon />
               </Link>
             </div>
           )}
