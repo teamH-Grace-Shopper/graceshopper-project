@@ -21,7 +21,7 @@ const UserAccount = () => {
 
   return (
     <div>
-      <h1>{user.firstName}'s Account</h1>
+      <h1> You are viewing {user.firstName}'s Account</h1>
       <div>
         <p>
           Name: {user.firstName} {user.lastName}
@@ -47,13 +47,14 @@ const UserAccount = () => {
                 <p>Order Number: {order.orderNumber}</p>
                 {order.completeStatus ? (
                   <p>Order Date: {order.completeStatus}</p>
-                ) : null}
+                ) : <p>Order Date: Current Cart</p>}
                 <div>
                   Items in Order: {order.orderItems.length}
                 </div>
                 <p>Order Total: ${order.orderItems ? order.orderItems.reduce((total,currVal)=>{
+                  console.log("al;ksdfhjldaksjhflkajsd_____", order)
                     return (
-                        total + Number(currVal.product.price * currVal.quantity)
+                        total + Number(currVal.product.price * currVal.product.cartQuantity)
                     )
                 }, 0): "No"}</p>
               </div>

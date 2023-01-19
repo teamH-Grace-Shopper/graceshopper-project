@@ -149,8 +149,17 @@ const MyAccount = () => {
 
   return (
     <div>
-      <div style={{fontSize: "1.5rem", width: "100%", display: "flex", justifyContent: "center", fontFamily: "'Playfair Display', serif", fontWeight: "bold"}}>
-        <p >WELCOME BACK {name.toUpperCase()}!</p>
+      <div
+        style={{
+          fontSize: "1.5rem",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          fontFamily: "'Playfair Display', serif",
+          fontWeight: "bold",
+        }}
+      >
+        <p>WELCOME BACK {name.toUpperCase()}!</p>
       </div>
 
       <Box sx={{ width: "100%" }}>
@@ -182,7 +191,10 @@ const MyAccount = () => {
                 user.orders.map((order) => {
                   console.log("order: ", order);
                   return (
-                    <div key={order.id} style={{ border: "1px solid black",padding: "25px" }}>
+                    <div
+                      key={order.id}
+                      style={{ border: "1px solid black", padding: "25px" }}
+                    >
                       {order.completeStatus ? (
                         <>
                           <p>Order Number: {order.orderNumber}</p>
@@ -249,7 +261,7 @@ const MyAccount = () => {
                     alignItems: "center",
                   }}
                 >
-                  <Avatar sx={{ m: 1, bgcolor: "success.main" }}>
+                  <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
                     <LockOutlinedIcon />
                   </Avatar>
                   <Typography component="h1" variant="h4">
@@ -268,7 +280,6 @@ const MyAccount = () => {
                       required
                       fullWidth
                       label="address"
-                      // autoComplete="address"
                       type="text"
                       value={address1}
                       name="address1"
@@ -285,18 +296,6 @@ const MyAccount = () => {
                       name="city"
                       onChange={(e) => setCity(e.target.value)}
                     />
-
-                    {/* <TextField
-              margin="normal"
-              required
-              fullWidth
-              label="state"
-              // autoComplete="state"
-              type="state"
-              value={state}
-              name="state"
-              onChange={(e) => setState(e.target.value)}
-            /> */}
                     <InputLabel id="demo-simple-select-helper-label">
                       state
                     </InputLabel>
@@ -336,7 +335,7 @@ const MyAccount = () => {
                       fullWidth
                       variant="contained"
                       sx={{ mt: 3, mb: 2, height: "60px", fontSize: "1.25rem" }}
-                      color="success"
+                      color="secondary"
                     >
                       Edit Address
                     </Button>
@@ -346,7 +345,7 @@ const MyAccount = () => {
                       sx={{ mt: 3, mb: 2, height: "60px", fontSize: "1.25rem" }}
                       fullWidth
                       href="/my-account"
-                      color="success"
+                      color="secondary"
                     >
                       Back To Orders
                     </Button>

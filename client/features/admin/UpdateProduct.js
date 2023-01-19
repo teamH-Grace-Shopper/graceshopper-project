@@ -65,13 +65,11 @@ const UpdateProduct = (props) => {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "success.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h4">
-            EDIT PRODUCT 
-            <br/> 
-            {product.name}
+            EDIT PRODUCT: {product.name}
           </Typography>
           <Box
             component="form"
@@ -148,7 +146,7 @@ const UpdateProduct = (props) => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2, height: "60px", fontSize: "1.25rem" }}
-              color="success"
+              color="secondary"
             >
               Edit Product
             </Button>
@@ -158,7 +156,7 @@ const UpdateProduct = (props) => {
               sx={{ mt: 3, mb: 2, height: "60px", fontSize: "1.25rem" }}
               fullWidth
               href="/admin"
-              color="success"
+              color="secondary"
             >
               Back To Management
             </Button>

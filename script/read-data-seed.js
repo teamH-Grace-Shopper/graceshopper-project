@@ -21,6 +21,9 @@ const loremHipsum = () =>
  *      match the models, and populates the database.
  */
 async function seed() {
+  /*
+   *** HARD CODED USERS START
+   */
   const users = [
     {
       username: "grados123",
@@ -35,11 +38,11 @@ async function seed() {
       isAdmin: false,
     },
     {
-      username: "joe",
+      username: "suzy123",
       password: "123",
-      email: "aguila@gmail.com",
-      firstName: "Nick",
-      lastName: "Aguila",
+      email: "s.berincha@gmail.com",
+      firstName: "Suzette",
+      lastName: "Berincha",
       address1: "123 Lupe Track",
       city: "Miami",
       state: "FL",
@@ -47,11 +50,23 @@ async function seed() {
       isAdmin: true,
     },
     {
-      username: "robert",
+      username: "joe123",
+      password: "123",
+      email: "joe@gmail.com",
+      firstName: "Joe",
+      lastName: "Bud",
+      address1: "123 Lupe Track",
+      city: "Miami",
+      state: "FL",
+      zipCode: 55555,
+      isAdmin: true,
+    },
+    {
+      username: "robert123",
       password: "123",
       email: "robert@gmail.com",
-      firstName: "robert",
-      lastName: "robert",
+      firstName: "Robert",
+      lastName: "D'Nori",
       address1: "123 Lupe Track",
       city: "Robert",
       state: "FL",
@@ -59,135 +74,157 @@ async function seed() {
       isAdmin: false,
     },
   ];
+  /*
+   *** END
+   */
 
+  /*
+   *** PRODUCT LIST START
+   */
   const productList = [
     {
       name: "Integrity",
-      price: 10.00,
+      price: 100.0,
       description: loremHipsum(),
       type: "GOOD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1589578527966-fdac0f44566c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
     },
     {
       name: "Diligence",
-      price: 12.00,
+      price: 120.0,
       description: loremHipsum(),
       type: "GOOD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1506452819137-0422416856b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=773&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1506452819137-0422416856b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=773&q=80",
     },
     {
       name: "Hope",
-      price: 8.00,
+      price: 80.0,
       description: loremHipsum(),
       type: "GOOD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1610894065081-fce3e6833dcf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1610894065081-fce3e6833dcf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80",
     },
     {
       name: "Courage",
-      price: 15.00,
+      price: 150.0,
       description: loremHipsum(),
       type: "GOOD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1592912807899-df995a7dd731?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1592912807899-df995a7dd731?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
     },
     {
       name: "Patience",
-      price: 8.00,
+      price: 80.0,
       description: loremHipsum(),
       type: "GOOD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1452109777848-a4de775da10d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1452109777848-a4de775da10d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80",
     },
     {
       name: "Humility",
-      price: 13.00,
+      price: 130.0,
       description: loremHipsum(),
       type: "GOOD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1510146758428-e5e4b17b8b6a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1510146758428-e5e4b17b8b6a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     },
     {
       name: "Temperance",
-      price: 9.00,
+      price: 90.0,
       description: loremHipsum(),
       type: "GOOD",
-      stockAmount: 50, 
-      imageUrl: "https://images.unsplash.com/photo-1639390070513-7e786412ac9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80"
+      stockAmount: 50,
+      imageUrl:
+        "https://images.unsplash.com/photo-1639390070513-7e786412ac9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80",
     },
     {
       name: "Charity",
-      price: 18.00,
+      price: 180.0,
       description: loremHipsum(),
       type: "GOOD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1452109777848-a4de775da10d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1452109777848-a4de775da10d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80",
     },
     {
       name: "Kindness",
-      price: 4.00,
+      price: 40.0,
       description: loremHipsum(),
       type: "GOOD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1579208575657-c595a05383b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1579208575657-c595a05383b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     },
     {
       name: "Pride",
-      price: 25.00,
+      price: 250.0,
       description: loremHipsum(),
       type: "BAD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1505274664176-44ccaa7969a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1505274664176-44ccaa7969a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
     },
     {
       name: "Lust",
-      price: 15.00,
+      price: 150.0,
       description: loremHipsum(),
       type: "BAD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1631894190936-90c39f894f2b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1631894190936-90c39f894f2b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80",
     },
     {
       name: "Envy",
-      price: 18.00,
+      price: 180.0,
       description: loremHipsum(),
       type: "BAD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1491319669671-30014eb16b8d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=759&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1491319669671-30014eb16b8d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=759&q=80",
     },
     {
       name: "Greed",
-      price: 10.00,
+      price: 100.0,
       description: loremHipsum(),
       type: "BAD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1589666477647-20061470911d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1589666477647-20061470911d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
     },
     {
       name: "Wrath",
-      price: 25.00,
+      price: 250.0,
       description: loremHipsum(),
       type: "BAD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1592623159714-59671c62aebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=416&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1592623159714-59671c62aebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=416&q=80",
     },
     {
       name: "Sloth",
-      price: 9.00,
+      price: 90.0,
       description: loremHipsum(),
       type: "BAD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1668437701504-4c6689c3ce06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=417&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1668437701504-4c6689c3ce06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=417&q=80",
     },
     {
       name: "Gluttony",
-      price: 13.00,
+      price: 130.0,
       description: loremHipsum(),
       type: "BAD",
       stockAmount: 50,
-      imageUrl: "https://images.unsplash.com/photo-1536703219213-0223580c76b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+      imageUrl:
+        "https://images.unsplash.com/photo-1536703219213-0223580c76b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
     },
   ];
   const orders = [
